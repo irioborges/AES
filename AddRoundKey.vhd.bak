@@ -1,0 +1,38 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity aes is
+  port(
+    msg, chave1, chave2 : in std_logic_vector(63 downto 0);
+	 mensagem_criptografada : out std_logic_vector(17 downto 0) 
+  );
+end aes;
+
+architecture inst_aes of aes is
+  type matriz is array (integer range 0 to 7) of std_logic_vector (15 downto 0);
+  signal State, Cipherkey : matriz;
+
+begin 
+  --Assinala a mensagem a ser criptografada a matriz state
+  State(0) <= msg(63 downto 48);
+  State(1) <= msg(47 downto 32);
+  State(2) <= msg(31 downto 16);
+  State(3) <= msg(15 downto 0);
+  State(4) <= "0000000000000000";
+  State(5) <= "0000000000000000";
+  State(6) <= "0000000000000000";
+  State(7) <= "0000000000000000";
+  CipherKey(0) <= chave1(63 downto 48);
+  CipherKey(1) <= chave1(47 downto 32);
+  CipherKey(2) <= chave1(31 downto 16);
+  CipherKey(3) <= chave1(15 downto 0);
+  CipherKey(4) <= chave2(63 downto 48);
+  CipherKey(5) <= chave2(47 downto 32);
+  CipherKey(6) <= chave2(31 downto 16);
+  CipherKey(7) <= chave1(15 downto 0);
+  
+  
+  
+  
+  
+end inst_aes;
