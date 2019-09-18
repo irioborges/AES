@@ -122,16 +122,16 @@ begin
 	 TabSubBytes(67) <= "00011010";
 	 TabSubBytes(68) <= "00011011";
 	 TabSubBytes(69) <= "01101110";
-	 TabSubBytes(70) <= "";
-	 TabSubBytes(71) <= "";
-	 TabSubBytes(72) <= "";
-	 TabSubBytes(73) <= "";
-	 TabSubBytes(74) <= "";
-	 TabSubBytes(75) <= "";
-	 TabSubBytes(76) <= "";
-	 TabSubBytes(77) <= ""; 
-	 TabSubBytes(78) <= "";
-	 TabSubBytes(79) <= "";
+	 TabSubBytes(70) <= "01011010";
+	 TabSubBytes(71) <= "10100000";
+	 TabSubBytes(72) <= "01010010";
+	 TabSubBytes(73) <= "00111011";
+	 TabSubBytes(74) <= "11010110";
+	 TabSubBytes(75) <= "10110011";
+	 TabSubBytes(76) <= "00101001";
+	 TabSubBytes(77) <= "11100011"; 
+	 TabSubBytes(78) <= "00101111";
+	 TabSubBytes(79) <= "10000100";
 	 --Linha 5
 	 TabSubBytes(80) <= "00000000";
 	 TabSubBytes(81) <= "00000000";
