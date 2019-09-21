@@ -1,5 +1,5 @@
 Flow report for aes
-Wed Sep 18 22:59:35 2019
+Fri Sep 20 10:43:24 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Wed Sep 18 22:59:35 2019           ;
+; Flow Status                        ; Successful - Fri Sep 20 10:43:24 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; aes                                             ;
 ; Top-level Entity Name              ; aes                                             ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/18/2019 22:59:12 ;
+; Start date & time ; 09/20/2019 10:43:01 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; aes                 ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                        ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 963354629630.156885835204620 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 963354629630.156898698102588 ; --            ; --          ; --             ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; On                           ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                  ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)    ; <None>        ; --          ; --             ;
@@ -94,12 +94,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:02     ; 1.0                     ; 466 MB              ; 00:00:02                           ;
+; Analysis & Synthesis      ; 00:00:03     ; 1.0                     ; 465 MB              ; 00:00:02                           ;
 ; Fitter                    ; 00:00:11     ; 1.0                     ; 629 MB              ; 00:00:11                           ;
 ; Assembler                 ; 00:00:03     ; 1.0                     ; 408 MB              ; 00:00:02                           ;
 ; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 442 MB              ; 00:00:03                           ;
 ; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 367 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:19     ; --                      ; --                  ; 00:00:19                           ;
+; Total                     ; 00:00:20     ; --                      ; --                  ; 00:00:19                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

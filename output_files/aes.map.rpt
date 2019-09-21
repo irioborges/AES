@@ -1,5 +1,5 @@
 Analysis & Synthesis report for aes
-Wed Sep 18 22:59:14 2019
+Fri Sep 20 10:43:03 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -41,7 +41,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Sep 18 22:59:14 2019           ;
+; Analysis & Synthesis Status        ; Successful - Fri Sep 20 10:43:03 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; aes                                             ;
 ; Top-level Entity Name              ; aes                                             ;
@@ -165,33 +165,33 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+-----------------+-----------------------------------+---------+
 
 
-+------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary          ;
-+---------------------------------------------+--------+
-; Resource                                    ; Usage  ;
-+---------------------------------------------+--------+
-;                                             ;        ;
-; Total combinational functions               ; 0      ;
-; Logic element usage by number of LUT inputs ;        ;
-;     -- 4 input functions                    ; 0      ;
-;     -- 3 input functions                    ; 0      ;
-;     -- <=2 input functions                  ; 0      ;
-;                                             ;        ;
-; Logic elements by mode                      ;        ;
-;     -- normal mode                          ; 0      ;
-;     -- arithmetic mode                      ; 0      ;
-;                                             ;        ;
-; Total registers                             ; 0      ;
-;     -- Dedicated logic registers            ; 0      ;
-;     -- I/O registers                        ; 0      ;
-;                                             ;        ;
-; I/O pins                                    ; 192    ;
-; Embedded Multiplier 9-bit elements          ; 0      ;
-; Maximum fan-out node                        ; msg[0] ;
-; Maximum fan-out                             ; 1      ;
-; Total fan-out                               ; 192    ;
-; Average fan-out                             ; 0.50   ;
-+---------------------------------------------+--------+
++--------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary            ;
++---------------------------------------------+----------+
+; Resource                                    ; Usage    ;
++---------------------------------------------+----------+
+;                                             ;          ;
+; Total combinational functions               ; 0        ;
+; Logic element usage by number of LUT inputs ;          ;
+;     -- 4 input functions                    ; 0        ;
+;     -- 3 input functions                    ; 0        ;
+;     -- <=2 input functions                  ; 0        ;
+;                                             ;          ;
+; Logic elements by mode                      ;          ;
+;     -- normal mode                          ; 0        ;
+;     -- arithmetic mode                      ; 0        ;
+;                                             ;          ;
+; Total registers                             ; 0        ;
+;     -- Dedicated logic registers            ; 0        ;
+;     -- I/O registers                        ; 0        ;
+;                                             ;          ;
+; I/O pins                                    ; 192      ;
+; Embedded Multiplier 9-bit elements          ; 0        ;
+; Maximum fan-out node                        ; msg[127] ;
+; Maximum fan-out                             ; 1        ;
+; Total fan-out                               ; 192      ;
+; Average fan-out                             ; 0.50     ;
++---------------------------------------------+----------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -234,7 +234,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Sep 18 22:59:12 2019
+    Info: Processing started: Fri Sep 20 10:43:00 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off aes -c aes
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file aes.vhd
@@ -247,221 +247,215 @@ Info (12021): Found 2 design units, including 1 entities, in source file po_sub.
     Info (12022): Found design unit 1: PO_Sub-rtlBSN
     Info (12023): Found entity 1: PO_Sub
 Info (12127): Elaborating entity "aes" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at aes.vhd(7): used implicit default value for signal "mensagem_criptografada" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at aes.vhd(16): object "TabSubBytes" assigned a value but never read
-Warning (10492): VHDL Process Statement warning at aes.vhd(33): signal "Key" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(34): signal "Key" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(35): signal "Key" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(36): signal "Key" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10541): VHDL Signal Declaration warning at aes.vhd(8): used implicit default value for signal "mensagem_criptografada" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10492): VHDL Process Statement warning at aes.vhd(37): signal "Key" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(38): signal "Key" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(39): signal "Key" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(40): signal "Key" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(45): signal "State" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(45): signal "Cipherkey" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(43): signal "State" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(43): signal "Cipherkey" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(323): signal "State" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(324): signal "TabSubBytes" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "mensagem_criptografada[0]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[1]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[2]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[3]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[4]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[5]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[6]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[7]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[8]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[9]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[10]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[11]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[12]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[13]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[14]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[15]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[16]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[17]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[18]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[19]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[20]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[21]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[22]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[23]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[24]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[25]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[26]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[27]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[28]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[29]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[30]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[31]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[32]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[33]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[34]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[35]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[36]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[37]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[38]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[39]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[40]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[41]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[42]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[43]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[44]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[45]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[46]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[47]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[48]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[49]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[50]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[51]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[52]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[53]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[54]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[55]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[56]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[57]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[58]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[59]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[60]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[61]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[62]" is stuck at GND
     Warning (13410): Pin "mensagem_criptografada[63]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[62]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[61]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[60]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[59]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[58]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[57]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[56]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[55]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[54]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[53]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[52]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[51]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[50]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[49]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[48]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[47]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[46]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[45]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[44]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[43]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[42]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[41]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[40]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[39]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[38]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[37]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[36]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[35]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[34]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[33]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[32]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[31]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[30]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[29]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[28]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[27]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[26]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[25]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[24]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[23]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[22]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[21]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[20]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[19]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[18]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[17]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[16]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[15]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[14]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[13]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[12]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[11]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[10]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[9]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[8]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[7]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[6]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[5]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[4]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[3]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[2]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[1]" is stuck at GND
+    Warning (13410): Pin "mensagem_criptografada[0]" is stuck at GND
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 128 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "msg[0]"
-    Warning (15610): No output dependent on input pin "msg[1]"
-    Warning (15610): No output dependent on input pin "msg[2]"
-    Warning (15610): No output dependent on input pin "msg[3]"
-    Warning (15610): No output dependent on input pin "msg[4]"
-    Warning (15610): No output dependent on input pin "msg[5]"
-    Warning (15610): No output dependent on input pin "msg[6]"
-    Warning (15610): No output dependent on input pin "msg[7]"
-    Warning (15610): No output dependent on input pin "msg[8]"
-    Warning (15610): No output dependent on input pin "msg[9]"
-    Warning (15610): No output dependent on input pin "msg[10]"
-    Warning (15610): No output dependent on input pin "msg[11]"
-    Warning (15610): No output dependent on input pin "msg[12]"
-    Warning (15610): No output dependent on input pin "msg[13]"
-    Warning (15610): No output dependent on input pin "msg[14]"
-    Warning (15610): No output dependent on input pin "msg[15]"
-    Warning (15610): No output dependent on input pin "msg[16]"
-    Warning (15610): No output dependent on input pin "msg[17]"
-    Warning (15610): No output dependent on input pin "msg[18]"
-    Warning (15610): No output dependent on input pin "msg[19]"
-    Warning (15610): No output dependent on input pin "msg[20]"
-    Warning (15610): No output dependent on input pin "msg[21]"
-    Warning (15610): No output dependent on input pin "msg[22]"
-    Warning (15610): No output dependent on input pin "msg[23]"
-    Warning (15610): No output dependent on input pin "msg[24]"
-    Warning (15610): No output dependent on input pin "msg[25]"
-    Warning (15610): No output dependent on input pin "msg[26]"
-    Warning (15610): No output dependent on input pin "msg[27]"
-    Warning (15610): No output dependent on input pin "msg[28]"
-    Warning (15610): No output dependent on input pin "msg[29]"
-    Warning (15610): No output dependent on input pin "msg[30]"
-    Warning (15610): No output dependent on input pin "msg[31]"
-    Warning (15610): No output dependent on input pin "msg[32]"
-    Warning (15610): No output dependent on input pin "msg[33]"
-    Warning (15610): No output dependent on input pin "msg[34]"
-    Warning (15610): No output dependent on input pin "msg[35]"
-    Warning (15610): No output dependent on input pin "msg[36]"
-    Warning (15610): No output dependent on input pin "msg[37]"
-    Warning (15610): No output dependent on input pin "msg[38]"
-    Warning (15610): No output dependent on input pin "msg[39]"
-    Warning (15610): No output dependent on input pin "msg[40]"
-    Warning (15610): No output dependent on input pin "msg[41]"
-    Warning (15610): No output dependent on input pin "msg[42]"
-    Warning (15610): No output dependent on input pin "msg[43]"
-    Warning (15610): No output dependent on input pin "msg[44]"
-    Warning (15610): No output dependent on input pin "msg[45]"
-    Warning (15610): No output dependent on input pin "msg[46]"
-    Warning (15610): No output dependent on input pin "msg[47]"
-    Warning (15610): No output dependent on input pin "msg[48]"
-    Warning (15610): No output dependent on input pin "msg[49]"
-    Warning (15610): No output dependent on input pin "msg[50]"
-    Warning (15610): No output dependent on input pin "msg[51]"
-    Warning (15610): No output dependent on input pin "msg[52]"
-    Warning (15610): No output dependent on input pin "msg[53]"
-    Warning (15610): No output dependent on input pin "msg[54]"
-    Warning (15610): No output dependent on input pin "msg[55]"
-    Warning (15610): No output dependent on input pin "msg[56]"
-    Warning (15610): No output dependent on input pin "msg[57]"
-    Warning (15610): No output dependent on input pin "msg[58]"
-    Warning (15610): No output dependent on input pin "msg[59]"
-    Warning (15610): No output dependent on input pin "msg[60]"
-    Warning (15610): No output dependent on input pin "msg[61]"
-    Warning (15610): No output dependent on input pin "msg[62]"
-    Warning (15610): No output dependent on input pin "msg[63]"
-    Warning (15610): No output dependent on input pin "msg[64]"
-    Warning (15610): No output dependent on input pin "msg[65]"
-    Warning (15610): No output dependent on input pin "msg[66]"
-    Warning (15610): No output dependent on input pin "msg[67]"
-    Warning (15610): No output dependent on input pin "msg[68]"
-    Warning (15610): No output dependent on input pin "msg[69]"
-    Warning (15610): No output dependent on input pin "msg[70]"
-    Warning (15610): No output dependent on input pin "msg[71]"
-    Warning (15610): No output dependent on input pin "msg[72]"
-    Warning (15610): No output dependent on input pin "msg[73]"
-    Warning (15610): No output dependent on input pin "msg[74]"
-    Warning (15610): No output dependent on input pin "msg[75]"
-    Warning (15610): No output dependent on input pin "msg[76]"
-    Warning (15610): No output dependent on input pin "msg[77]"
-    Warning (15610): No output dependent on input pin "msg[78]"
-    Warning (15610): No output dependent on input pin "msg[79]"
-    Warning (15610): No output dependent on input pin "msg[80]"
-    Warning (15610): No output dependent on input pin "msg[81]"
-    Warning (15610): No output dependent on input pin "msg[82]"
-    Warning (15610): No output dependent on input pin "msg[83]"
-    Warning (15610): No output dependent on input pin "msg[84]"
-    Warning (15610): No output dependent on input pin "msg[85]"
-    Warning (15610): No output dependent on input pin "msg[86]"
-    Warning (15610): No output dependent on input pin "msg[87]"
-    Warning (15610): No output dependent on input pin "msg[88]"
-    Warning (15610): No output dependent on input pin "msg[89]"
-    Warning (15610): No output dependent on input pin "msg[90]"
-    Warning (15610): No output dependent on input pin "msg[91]"
-    Warning (15610): No output dependent on input pin "msg[92]"
-    Warning (15610): No output dependent on input pin "msg[93]"
-    Warning (15610): No output dependent on input pin "msg[94]"
-    Warning (15610): No output dependent on input pin "msg[95]"
-    Warning (15610): No output dependent on input pin "msg[96]"
-    Warning (15610): No output dependent on input pin "msg[97]"
-    Warning (15610): No output dependent on input pin "msg[98]"
-    Warning (15610): No output dependent on input pin "msg[99]"
-    Warning (15610): No output dependent on input pin "msg[100]"
-    Warning (15610): No output dependent on input pin "msg[101]"
-    Warning (15610): No output dependent on input pin "msg[102]"
-    Warning (15610): No output dependent on input pin "msg[103]"
-    Warning (15610): No output dependent on input pin "msg[104]"
-    Warning (15610): No output dependent on input pin "msg[105]"
-    Warning (15610): No output dependent on input pin "msg[106]"
-    Warning (15610): No output dependent on input pin "msg[107]"
-    Warning (15610): No output dependent on input pin "msg[108]"
-    Warning (15610): No output dependent on input pin "msg[109]"
-    Warning (15610): No output dependent on input pin "msg[110]"
-    Warning (15610): No output dependent on input pin "msg[111]"
-    Warning (15610): No output dependent on input pin "msg[112]"
-    Warning (15610): No output dependent on input pin "msg[113]"
-    Warning (15610): No output dependent on input pin "msg[114]"
-    Warning (15610): No output dependent on input pin "msg[115]"
-    Warning (15610): No output dependent on input pin "msg[116]"
-    Warning (15610): No output dependent on input pin "msg[117]"
-    Warning (15610): No output dependent on input pin "msg[118]"
-    Warning (15610): No output dependent on input pin "msg[119]"
-    Warning (15610): No output dependent on input pin "msg[120]"
-    Warning (15610): No output dependent on input pin "msg[121]"
-    Warning (15610): No output dependent on input pin "msg[122]"
-    Warning (15610): No output dependent on input pin "msg[123]"
-    Warning (15610): No output dependent on input pin "msg[124]"
-    Warning (15610): No output dependent on input pin "msg[125]"
-    Warning (15610): No output dependent on input pin "msg[126]"
     Warning (15610): No output dependent on input pin "msg[127]"
+    Warning (15610): No output dependent on input pin "msg[126]"
+    Warning (15610): No output dependent on input pin "msg[125]"
+    Warning (15610): No output dependent on input pin "msg[124]"
+    Warning (15610): No output dependent on input pin "msg[123]"
+    Warning (15610): No output dependent on input pin "msg[122]"
+    Warning (15610): No output dependent on input pin "msg[121]"
+    Warning (15610): No output dependent on input pin "msg[120]"
+    Warning (15610): No output dependent on input pin "msg[119]"
+    Warning (15610): No output dependent on input pin "msg[118]"
+    Warning (15610): No output dependent on input pin "msg[117]"
+    Warning (15610): No output dependent on input pin "msg[116]"
+    Warning (15610): No output dependent on input pin "msg[115]"
+    Warning (15610): No output dependent on input pin "msg[114]"
+    Warning (15610): No output dependent on input pin "msg[113]"
+    Warning (15610): No output dependent on input pin "msg[112]"
+    Warning (15610): No output dependent on input pin "msg[111]"
+    Warning (15610): No output dependent on input pin "msg[110]"
+    Warning (15610): No output dependent on input pin "msg[109]"
+    Warning (15610): No output dependent on input pin "msg[108]"
+    Warning (15610): No output dependent on input pin "msg[107]"
+    Warning (15610): No output dependent on input pin "msg[106]"
+    Warning (15610): No output dependent on input pin "msg[105]"
+    Warning (15610): No output dependent on input pin "msg[104]"
+    Warning (15610): No output dependent on input pin "msg[103]"
+    Warning (15610): No output dependent on input pin "msg[102]"
+    Warning (15610): No output dependent on input pin "msg[101]"
+    Warning (15610): No output dependent on input pin "msg[100]"
+    Warning (15610): No output dependent on input pin "msg[99]"
+    Warning (15610): No output dependent on input pin "msg[98]"
+    Warning (15610): No output dependent on input pin "msg[97]"
+    Warning (15610): No output dependent on input pin "msg[96]"
+    Warning (15610): No output dependent on input pin "msg[95]"
+    Warning (15610): No output dependent on input pin "msg[94]"
+    Warning (15610): No output dependent on input pin "msg[93]"
+    Warning (15610): No output dependent on input pin "msg[92]"
+    Warning (15610): No output dependent on input pin "msg[91]"
+    Warning (15610): No output dependent on input pin "msg[90]"
+    Warning (15610): No output dependent on input pin "msg[89]"
+    Warning (15610): No output dependent on input pin "msg[88]"
+    Warning (15610): No output dependent on input pin "msg[87]"
+    Warning (15610): No output dependent on input pin "msg[86]"
+    Warning (15610): No output dependent on input pin "msg[85]"
+    Warning (15610): No output dependent on input pin "msg[84]"
+    Warning (15610): No output dependent on input pin "msg[83]"
+    Warning (15610): No output dependent on input pin "msg[82]"
+    Warning (15610): No output dependent on input pin "msg[81]"
+    Warning (15610): No output dependent on input pin "msg[80]"
+    Warning (15610): No output dependent on input pin "msg[79]"
+    Warning (15610): No output dependent on input pin "msg[78]"
+    Warning (15610): No output dependent on input pin "msg[77]"
+    Warning (15610): No output dependent on input pin "msg[76]"
+    Warning (15610): No output dependent on input pin "msg[75]"
+    Warning (15610): No output dependent on input pin "msg[74]"
+    Warning (15610): No output dependent on input pin "msg[73]"
+    Warning (15610): No output dependent on input pin "msg[72]"
+    Warning (15610): No output dependent on input pin "msg[71]"
+    Warning (15610): No output dependent on input pin "msg[70]"
+    Warning (15610): No output dependent on input pin "msg[69]"
+    Warning (15610): No output dependent on input pin "msg[68]"
+    Warning (15610): No output dependent on input pin "msg[67]"
+    Warning (15610): No output dependent on input pin "msg[66]"
+    Warning (15610): No output dependent on input pin "msg[65]"
+    Warning (15610): No output dependent on input pin "msg[64]"
+    Warning (15610): No output dependent on input pin "msg[63]"
+    Warning (15610): No output dependent on input pin "msg[62]"
+    Warning (15610): No output dependent on input pin "msg[61]"
+    Warning (15610): No output dependent on input pin "msg[60]"
+    Warning (15610): No output dependent on input pin "msg[59]"
+    Warning (15610): No output dependent on input pin "msg[58]"
+    Warning (15610): No output dependent on input pin "msg[57]"
+    Warning (15610): No output dependent on input pin "msg[56]"
+    Warning (15610): No output dependent on input pin "msg[55]"
+    Warning (15610): No output dependent on input pin "msg[54]"
+    Warning (15610): No output dependent on input pin "msg[53]"
+    Warning (15610): No output dependent on input pin "msg[52]"
+    Warning (15610): No output dependent on input pin "msg[51]"
+    Warning (15610): No output dependent on input pin "msg[50]"
+    Warning (15610): No output dependent on input pin "msg[49]"
+    Warning (15610): No output dependent on input pin "msg[48]"
+    Warning (15610): No output dependent on input pin "msg[47]"
+    Warning (15610): No output dependent on input pin "msg[46]"
+    Warning (15610): No output dependent on input pin "msg[45]"
+    Warning (15610): No output dependent on input pin "msg[44]"
+    Warning (15610): No output dependent on input pin "msg[43]"
+    Warning (15610): No output dependent on input pin "msg[42]"
+    Warning (15610): No output dependent on input pin "msg[41]"
+    Warning (15610): No output dependent on input pin "msg[40]"
+    Warning (15610): No output dependent on input pin "msg[39]"
+    Warning (15610): No output dependent on input pin "msg[38]"
+    Warning (15610): No output dependent on input pin "msg[37]"
+    Warning (15610): No output dependent on input pin "msg[36]"
+    Warning (15610): No output dependent on input pin "msg[35]"
+    Warning (15610): No output dependent on input pin "msg[34]"
+    Warning (15610): No output dependent on input pin "msg[33]"
+    Warning (15610): No output dependent on input pin "msg[32]"
+    Warning (15610): No output dependent on input pin "msg[31]"
+    Warning (15610): No output dependent on input pin "msg[30]"
+    Warning (15610): No output dependent on input pin "msg[29]"
+    Warning (15610): No output dependent on input pin "msg[28]"
+    Warning (15610): No output dependent on input pin "msg[27]"
+    Warning (15610): No output dependent on input pin "msg[26]"
+    Warning (15610): No output dependent on input pin "msg[25]"
+    Warning (15610): No output dependent on input pin "msg[24]"
+    Warning (15610): No output dependent on input pin "msg[23]"
+    Warning (15610): No output dependent on input pin "msg[22]"
+    Warning (15610): No output dependent on input pin "msg[21]"
+    Warning (15610): No output dependent on input pin "msg[20]"
+    Warning (15610): No output dependent on input pin "msg[19]"
+    Warning (15610): No output dependent on input pin "msg[18]"
+    Warning (15610): No output dependent on input pin "msg[17]"
+    Warning (15610): No output dependent on input pin "msg[16]"
+    Warning (15610): No output dependent on input pin "msg[15]"
+    Warning (15610): No output dependent on input pin "msg[14]"
+    Warning (15610): No output dependent on input pin "msg[13]"
+    Warning (15610): No output dependent on input pin "msg[12]"
+    Warning (15610): No output dependent on input pin "msg[11]"
+    Warning (15610): No output dependent on input pin "msg[10]"
+    Warning (15610): No output dependent on input pin "msg[9]"
+    Warning (15610): No output dependent on input pin "msg[8]"
+    Warning (15610): No output dependent on input pin "msg[7]"
+    Warning (15610): No output dependent on input pin "msg[6]"
+    Warning (15610): No output dependent on input pin "msg[5]"
+    Warning (15610): No output dependent on input pin "msg[4]"
+    Warning (15610): No output dependent on input pin "msg[3]"
+    Warning (15610): No output dependent on input pin "msg[2]"
+    Warning (15610): No output dependent on input pin "msg[1]"
+    Warning (15610): No output dependent on input pin "msg[0]"
 Info (21057): Implemented 192 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 128 input pins
     Info (21059): Implemented 64 output pins
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 207 warnings
-    Info: Peak virtual memory: 466 megabytes
-    Info: Processing ended: Wed Sep 18 22:59:14 2019
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 201 warnings
+    Info: Peak virtual memory: 465 megabytes
+    Info: Processing ended: Fri Sep 20 10:43:03 2019
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 

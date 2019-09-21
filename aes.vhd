@@ -1,47 +1,45 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity aes is
   port(
-    msg : in std_logic_vector(127 downto 0);
-	 mensagem_criptografada : out std_logic_vector(63 downto 0) 
+    msg : in std_logic_vector(0 to 127);
+	 mensagem_criptografada : out std_logic_vector(0 to 63) 
   );
 end aes;
 
 architecture inst_aes of aes is
-  type matriz is array (integer range 0 to 7) of std_logic_vector (15 downto 0);
-  type subByte is array (integer range 0 to 255) of std_logic_vector(7 downto 0);
+  type matriz is array (integer range 0 to 15) of std_logic_vector (0 to 7);
+  type subByte is array (integer range 0 to 255) of std_logic_vector(0 to 7);
   signal State, Cipherkey : matriz;
-  signal Key : std_logic_vector(127 downto 0);
+  signal Key : std_logic_vector(0 to 127);
   signal TabSubBytes : subByte;
+  signal temp : std_logic_vector(0 to 7);
 
 begin 
   --          0000    0001    0002    0003    0004    0005    0006    0007    0008    0009    0000    0001    0002    0003    0004    0005                                                                                            
   Key <= "00110000001100010011001000110011001101000011010100110110001101110011100000111001001100000011000100110010001100110011010000110101";
   process(msg)
+  --Declaração de variáveis
+  variable posicao : integer;
+  --variable temp : std_logic_vector(0 to 7);
+  --Fim de declaração de variáveis
   begin 
+    
     --Assinala a mensagem a ser criptografada na matriz state
-    State(0) <= msg(127 downto 112);
-    State(1) <= msg(111 downto 96);
-    State(2) <= msg(95 downto 80);
-    State(3) <= msg(79 downto 64);
-    State(4) <= msg(63 downto 48);
-    State(5) <= msg(47 downto 32);
-    State(6) <= msg(31 downto 16);
-    State(7) <= msg(15 downto 0);
+	 for i in 0 to 15 loop 
+      State(i) <= msg((120 - (i * 8)) to (127 - (i * 8)));
+    end loop;
+	 
     --Assinala a chave a ser utilizada(0123456789012345) na matriz key
-    CipherKey(0) <= Key(127 downto 112);
-    CipherKey(1) <= Key(111 downto 96);
-    CipherKey(2) <= Key(95 downto 80);
-    CipherKey(3) <= Key(79 downto 64);
-    CipherKey(4) <= Key(63 downto 48);
-    CipherKey(5) <= Key(47 downto 32);
-    CipherKey(6) <= Key(31 downto 16);
-    CipherKey(7) <= Key(15 downto 0);
-  
+	 for i in 0 to 15 loop 
+      CipherKey(i) <= Key((120 - (i * 8)) to (127 - (i * 8)));
+    end loop;
+      
     --Faz o AddRoundKey
-    for i in 0 to 7 loop 
-	   for j in 0 to 15 loop 
+    for i in 0 to 15 loop 
+	   for j in 0 to 7 loop 
         State(i)(j) <= State(i)(j) xor CipherKey(i)(j);
 		end loop;  
     end loop;
@@ -319,6 +317,24 @@ begin
 	 TabSubBytes(253) <= "01010100";
 	 TabSubBytes(254) <= "10111011";
 	 TabSubBytes(255) <= "00010110";
+	 
+	 --Etapa de SubBytes
+	 for i in 0 to 15 loop 
+	   posicao := to_integer(unsigned(State(i)(0 to 7)));
+      State(i) <= TabSubBytes(posicao);
+    end loop;
+	 
+	 --Etapa de ShiftRows
+	 for i in 4 to 7 loop --Rotaciona um byte a esquerda
+	 
+	 end loop;
+	 for i in 8 to 11 loop --Rotaciona duas vezes um byte a esquerda
+	 
+	 end loop;
+	 for i in 12 to 15 loop --Rotaciona três vezes um byte a esquerda
+	 
+	 end loop;
+	 
   end process;
   
 end inst_aes;
