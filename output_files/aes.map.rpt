@@ -1,5 +1,5 @@
 Analysis & Synthesis report for aes
-Fri Sep 20 10:43:03 2019
+Mon Oct 28 16:01:37 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -13,9 +13,16 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  8. State Machine - |aes|PC_AES:PC|state
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Parameter Settings for User Entity Instance: Top-level Entity: |aes
+ 13. Parameter Settings for User Entity Instance: registerNbits:RegAdder
+ 14. Port Connectivity Checks: "registerNbits:RegAdder"
+ 15. Port Connectivity Checks: "PC_AES:PC"
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
 
 
 
@@ -41,7 +48,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Sep 20 10:43:03 2019           ;
+; Analysis & Synthesis Status        ; Successful - Mon Oct 28 16:01:37 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; aes                                             ;
 ; Top-level Entity Name              ; aes                                             ;
@@ -50,7 +57,7 @@ applicable agreement for further details.
 ;     Total combinational functions  ; 0                                               ;
 ;     Dedicated logic registers      ; 0                                               ;
 ; Total registers                    ; 0                                               ;
-; Total pins                         ; 192                                             ;
+; Total pins                         ; 195                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -156,13 +163,15 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                             ;
-+----------------------------------+-----------------+-----------------+-----------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path      ; Library ;
-+----------------------------------+-----------------+-----------------+-----------------------------------+---------+
-; aes.vhd                          ; yes             ; User VHDL File  ; C:/designs/semipresencial/aes.vhd ;         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                       ;
++----------------------------------+-----------------+-----------------+---------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                ; Library ;
++----------------------------------+-----------------+-----------------+---------------------------------------------+---------+
+; aes.vhd                          ; yes             ; User VHDL File  ; C:/designs/semipresencial/aes.vhd           ;         ;
+; registerNbits.vhd                ; yes             ; User VHDL File  ; C:/designs/semipresencial/registerNbits.vhd ;         ;
+; PC_AES.vhd                       ; yes             ; User VHDL File  ; C:/designs/semipresencial/PC_AES.vhd        ;         ;
++----------------------------------+-----------------+-----------------+---------------------------------------------+---------+
 
 
 +--------------------------------------------------------+
@@ -185,11 +194,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;     -- Dedicated logic registers            ; 0        ;
 ;     -- I/O registers                        ; 0        ;
 ;                                             ;          ;
-; I/O pins                                    ; 192      ;
+; I/O pins                                    ; 195      ;
 ; Embedded Multiplier 9-bit elements          ; 0        ;
 ; Maximum fan-out node                        ; msg[127] ;
 ; Maximum fan-out                             ; 1        ;
-; Total fan-out                               ; 192      ;
+; Total fan-out                               ; 195      ;
 ; Average fan-out                             ; 0.50     ;
 +---------------------------------------------+----------+
 
@@ -199,9 +208,45 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |aes                       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 192  ; 0            ; |aes                ; work         ;
+; |aes                       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 195  ; 0            ; |aes                ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------+
+; State Machine - |aes|PC_AES:PC|state                                     ;
++--------------+--------------+--------------+--------------+--------------+
+; Name         ; state.state2 ; state.state4 ; state.state3 ; state.state1 ;
++--------------+--------------+--------------+--------------+--------------+
+; state.state1 ; 0            ; 0            ; 0            ; 0            ;
+; state.state3 ; 0            ; 0            ; 1            ; 1            ;
+; state.state4 ; 0            ; 1            ; 0            ; 1            ;
+; state.state2 ; 1            ; 0            ; 0            ; 1            ;
++--------------+--------------+--------------+--------------+--------------+
+
+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; PC_AES:PC|state.state3                ; Lost fanout        ;
+; PC_AES:PC|state.state4                ; Lost fanout        ;
+; PC_AES:PC|state.state2                ; Lost fanout        ;
+; PC_AES:PC|state.state1                ; Lost fanout        ;
+; Total Number of Removed Registers = 4 ;                    ;
++---------------------------------------+--------------------+
+
+
++--------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                          ;
++------------------------+--------------------+----------------------------------------+
+; Register name          ; Reason for Removal ; Registers Removed due to This Register ;
++------------------------+--------------------+----------------------------------------+
+; PC_AES:PC|state.state3 ; Lost Fanouts       ; PC_AES:PC|state.state2                 ;
+; PC_AES:PC|state.state4 ; Lost Fanouts       ; PC_AES:PC|state.state1                 ;
++------------------------+--------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -219,6 +264,48 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |aes ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; DATA_WIDTH_AES ; 128   ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: registerNbits:RegAdder ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; data_width     ; 128   ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "registerNbits:RegAdder"                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "PC_AES:PC"                                                                                ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; en_inputs  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; ctrl_mux1  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; ctrl_mux2  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; en_regula  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; state_view ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +-------------------------------+
 ; Elapsed Time Per Partition    ;
 +----------------+--------------+
@@ -234,7 +321,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri Sep 20 10:43:00 2019
+    Info: Processing started: Mon Oct 28 16:01:34 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off aes -c aes
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file aes.vhd
@@ -243,16 +330,28 @@ Info (12021): Found 2 design units, including 1 entities, in source file aes.vhd
 Info (12021): Found 2 design units, including 1 entities, in source file addroundkey.vhd
     Info (12022): Found design unit 1: AddRoundKey-inst_AddRoundKey
     Info (12023): Found entity 1: AddRoundKey
-Info (12021): Found 2 design units, including 1 entities, in source file po_sub.vhd
-    Info (12022): Found design unit 1: PO_Sub-rtlBSN
-    Info (12023): Found entity 1: PO_Sub
+Info (12021): Found 2 design units, including 1 entities, in source file registernbits.vhd
+    Info (12022): Found design unit 1: registerNbits-rtl
+    Info (12023): Found entity 1: registerNbits
+Info (12021): Found 2 design units, including 1 entities, in source file subbytes.vhd
+    Info (12022): Found design unit 1: SubBytes-inst_SubBytes
+    Info (12023): Found entity 1: SubBytes
+Info (12021): Found 2 design units, including 1 entities, in source file pc_aes.vhd
+    Info (12022): Found design unit 1: PC_AES-BEHAVIOR
+    Info (12023): Found entity 1: PC_AES
 Info (12127): Elaborating entity "aes" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at aes.vhd(8): used implicit default value for signal "mensagem_criptografada" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10492): VHDL Process Statement warning at aes.vhd(37): signal "Key" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(43): signal "State" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(43): signal "Cipherkey" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(323): signal "State" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(324): signal "TabSubBytes" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10541): VHDL Signal Declaration warning at aes.vhd(12): used implicit default value for signal "mensagem_criptografada" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at aes.vhd(24): used implicit default value for signal "TabSubBytes" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at aes.vhd(26): used implicit default value for signal "outAdder" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at aes.vhd(26): object "outRegAdder" assigned a value but never read
+Warning (10492): VHDL Process Statement warning at aes.vhd(101): signal "msg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(106): signal "Key" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(112): signal "State" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(112): signal "Cipherkey" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(120): signal "State" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(121): signal "TabSubBytes" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "PC_AES" for hierarchy "PC_AES:PC"
+Info (12128): Elaborating entity "registerNbits" for hierarchy "registerNbits:RegAdder"
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "mensagem_criptografada[63]" is stuck at GND
     Warning (13410): Pin "mensagem_criptografada[62]" is stuck at GND
@@ -318,9 +417,10 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "mensagem_criptografada[2]" is stuck at GND
     Warning (13410): Pin "mensagem_criptografada[1]" is stuck at GND
     Warning (13410): Pin "mensagem_criptografada[0]" is stuck at GND
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 128 input pin(s) that do not drive logic
+Warning (21074): Design contains 131 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "msg[127]"
     Warning (15610): No output dependent on input pin "msg[126]"
     Warning (15610): No output dependent on input pin "msg[125]"
@@ -449,12 +549,15 @@ Warning (21074): Design contains 128 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "msg[2]"
     Warning (15610): No output dependent on input pin "msg[1]"
     Warning (15610): No output dependent on input pin "msg[0]"
-Info (21057): Implemented 192 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 128 input pins
+    Warning (15610): No output dependent on input pin "En_regAdder"
+    Warning (15610): No output dependent on input pin "clk"
+    Warning (15610): No output dependent on input pin "reset"
+Info (21057): Implemented 195 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 131 input pins
     Info (21059): Implemented 64 output pins
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 201 warnings
-    Info: Peak virtual memory: 465 megabytes
-    Info: Processing ended: Fri Sep 20 10:43:03 2019
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 208 warnings
+    Info: Peak virtual memory: 477 megabytes
+    Info: Processing ended: Mon Oct 28 16:01:37 2019
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 

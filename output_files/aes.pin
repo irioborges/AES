@@ -68,120 +68,120 @@ CHIP  "aes"  ASSIGNED TO AN: EP3C25F324C6
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
-msg[27]                      : A1        : input  : 2.5 V             :         : 8         : N              
-mensagem_criptografada[4]    : A2        : output : 2.5 V             :         : 8         : N              
-mensagem_criptografada[43]   : A3        : output : 2.5 V             :         : 8         : N              
-mensagem_criptografada[44]   : A4        : output : 2.5 V             :         : 8         : N              
-msg[78]                      : A5        : input  : 2.5 V             :         : 8         : N              
-mensagem_criptografada[36]   : A6        : output : 2.5 V             :         : 8         : N              
+msg[25]                      : A1        : input  : 2.5 V             :         : 8         : N              
+msg[125]                     : A2        : input  : 2.5 V             :         : 8         : N              
+msg[111]                     : A3        : input  : 2.5 V             :         : 8         : N              
+mensagem_criptografada[41]   : A4        : output : 2.5 V             :         : 8         : N              
+msg[79]                      : A5        : input  : 2.5 V             :         : 8         : N              
+msg[81]                      : A6        : input  : 2.5 V             :         : 8         : N              
 msg[108]                     : A7        : input  : 2.5 V             :         : 8         : N              
-mensagem_criptografada[3]    : A8        : output : 2.5 V             :         : 8         : N              
+msg[17]                      : A8        : input  : 2.5 V             :         : 8         : N              
 GND+                         : A9        :        :                   :         : 8         :                
 msg[97]                      : A10       : input  : 2.5 V             :         : 7         : N              
-mensagem_criptografada[59]   : A11       : output : 2.5 V             :         : 7         : N              
-msg[104]                     : A12       : input  : 2.5 V             :         : 7         : N              
+msg[14]                      : A11       : input  : 2.5 V             :         : 7         : N              
+msg[118]                     : A12       : input  : 2.5 V             :         : 7         : N              
 msg[120]                     : A13       : input  : 2.5 V             :         : 7         : N              
 msg[21]                      : A14       : input  : 2.5 V             :         : 7         : N              
-msg[121]                     : A15       : input  : 2.5 V             :         : 7         : N              
-msg[115]                     : A16       : input  : 2.5 V             :         : 7         : N              
-mensagem_criptografada[57]   : A17       : output : 2.5 V             :         : 7         : N              
-mensagem_criptografada[63]   : A18       : output : 2.5 V             :         : 7         : N              
-msg[13]                      : B1        : input  : 2.5 V             :         : 1         : N              
-mensagem_criptografada[61]   : B2        : output : 2.5 V             :         : 1         : N              
-mensagem_criptografada[23]   : B3        : output : 2.5 V             :         : 8         : N              
-mensagem_criptografada[26]   : B4        : output : 2.5 V             :         : 8         : N              
+msg[6]                       : A15       : input  : 2.5 V             :         : 7         : N              
+mensagem_criptografada[17]   : A16       : output : 2.5 V             :         : 7         : N              
+msg[70]                      : A17       : input  : 2.5 V             :         : 7         : N              
+mensagem_criptografada[61]   : A18       : output : 2.5 V             :         : 7         : N              
+msg[9]                       : B1        : input  : 2.5 V             :         : 1         : N              
+mensagem_criptografada[9]    : B2        : output : 2.5 V             :         : 1         : N              
+mensagem_criptografada[20]   : B3        : output : 2.5 V             :         : 8         : N              
+mensagem_criptografada[23]   : B4        : output : 2.5 V             :         : 8         : N              
 msg[82]                      : B5        : input  : 2.5 V             :         : 8         : N              
-msg[53]                      : B6        : input  : 2.5 V             :         : 8         : N              
-mensagem_criptografada[56]   : B7        : output : 2.5 V             :         : 8         : N              
-msg[50]                      : B8        : input  : 2.5 V             :         : 8         : N              
+mensagem_criptografada[54]   : B6        : output : 2.5 V             :         : 8         : N              
+msg[101]                     : B7        : input  : 2.5 V             :         : 8         : N              
+msg[49]                      : B8        : input  : 2.5 V             :         : 8         : N              
 GND+                         : B9        :        :                   :         : 8         :                
 msg[96]                      : B10       : input  : 2.5 V             :         : 7         : N              
-mensagem_criptografada[9]    : B11       : output : 2.5 V             :         : 7         : N              
-msg[16]                      : B12       : input  : 2.5 V             :         : 7         : N              
-msg[105]                     : B13       : input  : 2.5 V             :         : 7         : N              
-msg[19]                      : B14       : input  : 2.5 V             :         : 7         : N              
-msg[0]                       : B15       : input  : 2.5 V             :         : 7         : N              
+msg[76]                      : B11       : input  : 2.5 V             :         : 7         : N              
+msg[103]                     : B12       : input  : 2.5 V             :         : 7         : N              
+msg[92]                      : B13       : input  : 2.5 V             :         : 7         : N              
+msg[18]                      : B14       : input  : 2.5 V             :         : 7         : N              
+mensagem_criptografada[62]   : B15       : output : 2.5 V             :         : 7         : N              
 msg[114]                     : B16       : input  : 2.5 V             :         : 7         : N              
-mensagem_criptografada[2]    : B17       : output : 2.5 V             :         : 6         : N              
-msg[103]                     : B18       : input  : 2.5 V             :         : 6         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : C1        :        :                   :         : 1         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : C2        :        :                   :         : 1         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : C3        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : B17       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : B18       :        :                   :         : 6         :                
+msg[102]                     : C1        : input  : 2.5 V             :         : 1         : N              
+msg[72]                      : C2        : input  : 2.5 V             :         : 1         : N              
+mensagem_criptografada[6]    : C3        : output : 2.5 V             :         : 1         : N              
 GND                          : C4        : gnd    :                   :         :           :                
-mensagem_criptografada[51]   : C5        : output : 2.5 V             :         : 8         : N              
+mensagem_criptografada[44]   : C5        : output : 2.5 V             :         : 8         : N              
 GND                          : C6        : gnd    :                   :         :           :                
-msg[74]                      : C7        : input  : 2.5 V             :         : 8         : N              
+mensagem_criptografada[55]   : C7        : output : 2.5 V             :         : 8         : N              
 GND                          : C8        : gnd    :                   :         :           :                
-msg[12]                      : C9        : input  : 2.5 V             :         : 8         : N              
-msg[44]                      : C10       : input  : 2.5 V             :         : 7         : N              
+msg[0]                       : C9        : input  : 2.5 V             :         : 8         : N              
+msg[42]                      : C10       : input  : 2.5 V             :         : 7         : N              
 GND                          : C11       : gnd    :                   :         :           :                
-mensagem_criptografada[42]   : C12       : output : 2.5 V             :         : 7         : N              
+mensagem_criptografada[40]   : C12       : output : 2.5 V             :         : 7         : N              
 GND                          : C13       : gnd    :                   :         :           :                
-msg[113]                     : C14       : input  : 2.5 V             :         : 7         : N              
+msg[112]                     : C14       : input  : 2.5 V             :         : 7         : N              
 GND                          : C15       : gnd    :                   :         :           :                
-mensagem_criptografada[50]   : C16       : output : 2.5 V             :         : 7         : N              
-msg[73]                      : C17       : input  : 2.5 V             :         : 6         : N              
+msg[121]                     : C16       : input  : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : C17       :        :                   :         : 6         :                
 msg[110]                     : C18       : input  : 2.5 V             :         : 6         : N              
 ~ALTERA_ASDO_DATA1~ / RESERVED_INPUT_WITH_WEAK_PULLUP : D1        : input  : 2.5 V             :         : 1         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : D2        :        :                   :         : 1         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : D3        :        :                   :         : 1         :                
+mensagem_criptografada[4]    : D2        : output : 2.5 V             :         : 1         : N              
+mensagem_criptografada[5]    : D3        : output : 2.5 V             :         : 1         : N              
 VCCIO8                       : D4        : power  :                   : 2.5V    : 8         :                
-mensagem_criptografada[25]   : D5        : output : 2.5 V             :         : 8         : N              
+mensagem_criptografada[22]   : D5        : output : 2.5 V             :         : 8         : N              
 VCCIO8                       : D6        : power  :                   : 2.5V    : 8         :                
-msg[79]                      : D7        : input  : 2.5 V             :         : 8         : N              
+msg[75]                      : D7        : input  : 2.5 V             :         : 8         : N              
 VCCIO8                       : D8        : power  :                   : 2.5V    : 8         :                
-msg[28]                      : D9        : input  : 2.5 V             :         : 8         : N              
-mensagem_criptografada[47]   : D10       : output : 2.5 V             :         : 7         : N              
+msg[47]                      : D9        : input  : 2.5 V             :         : 8         : N              
+mensagem_criptografada[45]   : D10       : output : 2.5 V             :         : 7         : N              
 VCCIO7                       : D11       : power  :                   : 2.5V    : 7         :                
-mensagem_criptografada[62]   : D12       : output : 2.5 V             :         : 7         : N              
+msg[95]                      : D12       : input  : 2.5 V             :         : 7         : N              
 VCCIO7                       : D13       : power  :                   : 2.5V    : 7         :                
-mensagem_criptografada[19]   : D14       : output : 2.5 V             :         : 7         : N              
+mensagem_criptografada[16]   : D14       : output : 2.5 V             :         : 7         : N              
 VCCIO7                       : D15       : power  :                   : 2.5V    : 7         :                
-msg[63]                      : D16       : input  : 2.5 V             :         : 7         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : D17       :        :                   :         : 6         :                
-mensagem_criptografada[40]   : D18       : output : 2.5 V             :         : 6         : N              
-mensagem_criptografada[32]   : E1        : output : 2.5 V             :         : 1         : N              
+msg[62]                      : D16       : input  : 2.5 V             :         : 7         : N              
+clk                          : D17       : input  : 2.5 V             :         : 6         : N              
+msg[100]                     : D18       : input  : 2.5 V             :         : 6         : N              
+msg[46]                      : E1        : input  : 2.5 V             :         : 1         : N              
 ~ALTERA_FLASH_nCE_nCSO~ / RESERVED_INPUT_WITH_WEAK_PULLUP : E2        : input  : 2.5 V             :         : 1         : N              
 GND                          : E3        : gnd    :                   :         :           :                
 VCCA3                        : E4        : power  :                   : 2.5V    :           :                
 GNDA3                        : E5        : gnd    :                   :         :           :                
-msg[37]                      : E6        : input  : 2.5 V             :         : 8         : N              
-msg[111]                     : E7        : input  : 2.5 V             :         : 8         : N              
-msg[3]                       : E8        : input  : 2.5 V             :         : 8         : N              
-mensagem_criptografada[37]   : E9        : output : 2.5 V             :         : 8         : N              
-msg[2]                       : E10       : input  : 2.5 V             :         : 8         : N              
-msg[100]                     : E11       : input  : 2.5 V             :         : 7         : N              
-mensagem_criptografada[10]   : E12       : output : 2.5 V             :         : 7         : N              
-msg[35]                      : E13       : input  : 2.5 V             :         : 7         : N              
-mensagem_criptografada[53]   : E14       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : E6        :        :                   :         : 8         :                
+msg[65]                      : E7        : input  : 2.5 V             :         : 8         : N              
+mensagem_criptografada[48]   : E8        : output : 2.5 V             :         : 8         : N              
+mensagem_criptografada[50]   : E9        : output : 2.5 V             :         : 8         : N              
+mensagem_criptografada[63]   : E10       : output : 2.5 V             :         : 8         : N              
+En_regAdder                  : E11       : input  : 2.5 V             :         : 7         : N              
+msg[55]                      : E12       : input  : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : E13       :        :                   :         : 7         :                
+msg[119]                     : E14       : input  : 2.5 V             :         : 7         : N              
 VCCD_PLL2                    : E15       : power  :                   : 1.2V    :           :                
 GND                          : E16       : gnd    :                   :         :           :                
-msg[1]                       : E17       : input  : 2.5 V             :         : 6         : N              
+msg[88]                      : E17       : input  : 2.5 V             :         : 6         : N              
 ~ALTERA_nCEO~ / RESERVED_OUTPUT_OPEN_DRAIN : E18       : output : 2.5 V             :         : 6         : N              
 GND+                         : F1        :        :                   :         : 1         :                
 GND+                         : F2        :        :                   :         : 1         :                
-msg[43]                      : F3        : input  : 2.5 V             :         : 1         : N              
+msg[58]                      : F3        : input  : 2.5 V             :         : 1         : N              
 VCCIO1                       : F4        : power  :                   : 2.5V    : 1         :                
 VCCD_PLL3                    : F5        : power  :                   : 1.2V    :           :                
-msg[86]                      : F6        : input  : 2.5 V             :         : 8         : N              
-mensagem_criptografada[48]   : F7        : output : 2.5 V             :         : 8         : N              
-msg[22]                      : F8        : input  : 2.5 V             :         : 8         : N              
-msg[60]                      : F9        : input  : 2.5 V             :         : 8         : N              
-msg[112]                     : F10       : input  : 2.5 V             :         : 7         : N              
-msg[99]                      : F11       : input  : 2.5 V             :         : 7         : N              
-msg[117]                     : F12       : input  : 2.5 V             :         : 7         : N              
-msg[67]                      : F13       : input  : 2.5 V             :         : 7         : N              
+msg[85]                      : F6        : input  : 2.5 V             :         : 8         : N              
+msg[1]                       : F7        : input  : 2.5 V             :         : 8         : N              
+mensagem_criptografada[46]   : F8        : output : 2.5 V             :         : 8         : N              
+msg[59]                      : F9        : input  : 2.5 V             :         : 8         : N              
+msg[35]                      : F10       : input  : 2.5 V             :         : 7         : N              
+msg[113]                     : F11       : input  : 2.5 V             :         : 7         : N              
+mensagem_criptografada[7]    : F12       : output : 2.5 V             :         : 7         : N              
+msg[51]                      : F13       : input  : 2.5 V             :         : 7         : N              
 VCCA2                        : F14       : power  :                   : 2.5V    :           :                
 GNDA2                        : F15       : gnd    :                   :         :           :                
 VCCIO6                       : F16       : power  :                   : 2.5V    : 6         :                
 msg[7]                       : F17       : input  : 2.5 V             :         : 6         : N              
 msg[8]                       : F18       : input  : 2.5 V             :         : 6         : N              
 mensagem_criptografada[11]   : G1        : output : 2.5 V             :         : 1         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : G2        :        :                   :         : 1         :                
+mensagem_criptografada[35]   : G2        : output : 2.5 V             :         : 1         : N              
 GND                          : G3        : gnd    :                   :         :           :                
 VCCIO1                       : G4        : power  :                   : 2.5V    : 1         :                
 nSTATUS                      : G5        :        :                   :         : 1         :                
-msg[68]                      : G6        : input  : 2.5 V             :         : 8         : N              
+msg[67]                      : G6        : input  : 2.5 V             :         : 8         : N              
 VCCINT                       : G7        : power  :                   : 1.2V    :           :                
 VCCINT                       : G8        : power  :                   : 1.2V    :           :                
 GND                          : G9        : gnd    :                   :         :           :                
@@ -189,29 +189,29 @@ VCCINT                       : G10       : power  :                   : 1.2V    
 VCCINT                       : G11       : power  :                   : 1.2V    :           :                
 VCCINT                       : G12       : power  :                   : 1.2V    :           :                
 msg[126]                     : G13       : input  : 2.5 V             :         : 7         : N              
-mensagem_criptografada[6]    : G14       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : G14       :        :                   :         : 6         :                
 VCCIO6                       : G15       : power  :                   : 2.5V    : 6         :                
 GND                          : G16       : gnd    :                   :         :           :                
-msg[101]                     : G17       : input  : 2.5 V             :         : 6         : N              
-mensagem_criptografada[45]   : G18       : output : 2.5 V             :         : 6         : N              
+mensagem_criptografada[58]   : G17       : output : 2.5 V             :         : 6         : N              
+mensagem_criptografada[26]   : G18       : output : 2.5 V             :         : 6         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : H1        :        :                   :         : 1         :                
-msg[119]                     : H2        : input  : 2.5 V             :         : 1         : N              
+mensagem_criptografada[56]   : H2        : output : 2.5 V             :         : 1         : N              
 ~ALTERA_DATA0~ / RESERVED_INPUT_WITH_WEAK_PULLUP : H3        : input  : 2.5 V             :         : 1         : N              
 ~ALTERA_DCLK~                : H4        : output : 2.5 V             :         : 1         : N              
 nCONFIG                      : H5        :        :                   :         : 1         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : H6        :        :                   :         : 1         :                
+mensagem_criptografada[37]   : H6        : output : 2.5 V             :         : 1         : N              
 VCCINT                       : H7        : power  :                   : 1.2V    :           :                
 GND                          : H8        : gnd    :                   :         :           :                
 GND                          : H9        : gnd    :                   :         :           :                
 GND                          : H10       : gnd    :                   :         :           :                
 GND                          : H11       : gnd    :                   :         :           :                
 VCCINT                       : H12       : power  :                   : 1.2V    :           :                
-mensagem_criptografada[7]    : H13       : output : 2.5 V             :         : 6         : N              
-mensagem_criptografada[8]    : H14       : output : 2.5 V             :         : 6         : N              
-mensagem_criptografada[1]    : H15       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : H13       :        :                   :         : 6         :                
+msg[37]                      : H14       : input  : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : H15       :        :                   :         : 6         :                
 msg[109]                     : H16       : input  : 2.5 V             :         : 6         : N              
 msg[5]                       : H17       : input  : 2.5 V             :         : 6         : N              
-msg[102]                     : H18       : input  : 2.5 V             :         : 6         : N              
+mensagem_criptografada[36]   : H18       : output : 2.5 V             :         : 6         : N              
 TCK                          : J1        : input  :                   :         : 1         :                
 TMS                          : J2        : input  :                   :         : 1         :                
 GND                          : J3        : gnd    :                   :         :           :                
@@ -224,17 +224,17 @@ GND                          : J9        : gnd    :                   :         
 GND                          : J10       : gnd    :                   :         :           :                
 GND                          : J11       : gnd    :                   :         :           :                
 VCCINT                       : J12       : power  :                   : 1.2V    :           :                
-mensagem_criptografada[35]   : J13       : output : 2.5 V             :         : 6         : N              
+msg[2]                       : J13       : input  : 2.5 V             :         : 6         : N              
 MSEL3                        : J14       :        :                   :         : 6         :                
 VCCIO6                       : J15       : power  :                   : 2.5V    : 6         :                
 GND                          : J16       : gnd    :                   :         :           :                
 MSEL2                        : J17       :        :                   :         : 6         :                
 MSEL1                        : J18       :        :                   :         : 6         :                
-msg[127]                     : K1        : input  : 2.5 V             :         : 2         : N              
+msg[13]                      : K1        : input  : 2.5 V             :         : 2         : N              
 mensagem_criptografada[33]   : K2        : output : 2.5 V             :         : 2         : N              
 GND                          : K3        : gnd    :                   :         :           :                
 VCCIO2                       : K4        : power  :                   : 2.5V    : 2         :                
-mensagem_criptografada[31]   : K5        : output : 2.5 V             :         : 2         : N              
+mensagem_criptografada[2]    : K5        : output : 2.5 V             :         : 2         : N              
 nCE                          : K6        :        :                   :         : 1         :                
 VCCINT                       : K7        : power  :                   : 1.2V    :           :                
 GND                          : K8        : gnd    :                   :         :           :                
@@ -246,12 +246,12 @@ MSEL0                        : K13       :        :                   :         
 CONF_DONE                    : K14       :        :                   :         : 6         :                
 VCCIO5                       : K15       : power  :                   : 2.5V    : 5         :                
 GND                          : K16       : gnd    :                   :         :           :                
-msg[57]                      : K17       : input  : 2.5 V             :         : 5         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : K18       :        :                   :         : 5         :                
-mensagem_criptografada[39]   : L1        : output : 2.5 V             :         : 2         : N              
+msg[127]                     : K17       : input  : 2.5 V             :         : 5         : N              
+msg[41]                      : K18       : input  : 2.5 V             :         : 5         : N              
+mensagem_criptografada[27]   : L1        : output : 2.5 V             :         : 2         : N              
 mensagem_criptografada[28]   : L2        : output : 2.5 V             :         : 2         : N              
-mensagem_criptografada[38]   : L3        : output : 2.5 V             :         : 2         : N              
-msg[40]                      : L4        : input  : 2.5 V             :         : 2         : N              
+mensagem_criptografada[25]   : L3        : output : 2.5 V             :         : 2         : N              
+msg[52]                      : L4        : input  : 2.5 V             :         : 2         : N              
 mensagem_criptografada[30]   : L5        : output : 2.5 V             :         : 2         : N              
 mensagem_criptografada[29]   : L6        : output : 2.5 V             :         : 2         : N              
 VCCINT                       : L7        : power  :                   : 1.2V    :           :                
@@ -261,16 +261,16 @@ GND                          : L10       : gnd    :                   :         
 GND                          : L11       : gnd    :                   :         :           :                
 VCCINT                       : L12       : power  :                   : 1.2V    :           :                
 msg[106]                     : L13       : input  : 2.5 V             :         : 5         : N              
-mensagem_criptografada[13]   : L14       : output : 2.5 V             :         : 5         : N              
-mensagem_criptografada[17]   : L15       : output : 2.5 V             :         : 5         : N              
-msg[17]                      : L16       : input  : 2.5 V             :         : 5         : N              
+msg[89]                      : L14       : input  : 2.5 V             :         : 5         : N              
+msg[20]                      : L15       : input  : 2.5 V             :         : 5         : N              
+mensagem_criptografada[10]   : L16       : output : 2.5 V             :         : 5         : N              
 msg[15]                      : L17       : input  : 2.5 V             :         : 5         : N              
-msg[56]                      : L18       : input  : 2.5 V             :         : 5         : N              
-mensagem_criptografada[46]   : M1        : output : 2.5 V             :         : 2         : N              
-mensagem_criptografada[24]   : M2        : output : 2.5 V             :         : 2         : N              
-msg[38]                      : M3        : input  : 2.5 V             :         : 2         : N              
+msg[78]                      : L18       : input  : 2.5 V             :         : 5         : N              
+msg[61]                      : M1        : input  : 2.5 V             :         : 2         : N              
+msg[27]                      : M2        : input  : 2.5 V             :         : 2         : N              
+msg[36]                      : M3        : input  : 2.5 V             :         : 2         : N              
 VCCIO2                       : M4        : power  :                   : 2.5V    : 2         :                
-mensagem_criptografada[58]   : M5        : output : 2.5 V             :         : 2         : N              
+mensagem_criptografada[14]   : M5        : output : 2.5 V             :         : 2         : N              
 msg[122]                     : M6        : input  : 2.5 V             :         : 3         : N              
 VCCINT                       : M7        : power  :                   : 1.2V    :           :                
 VCCINT                       : M8        : power  :                   : 1.2V    :           :                
@@ -278,117 +278,117 @@ VCCINT                       : M9        : power  :                   : 1.2V    
 GND                          : M10       : gnd    :                   :         :           :                
 VCCINT                       : M11       : power  :                   : 1.2V    :           :                
 VCCINT                       : M12       : power  :                   : 1.2V    :           :                
-mensagem_criptografada[15]   : M13       : output : 2.5 V             :         : 4         : N              
-msg[124]                     : M14       : input  : 2.5 V             :         : 5         : N              
+msg[68]                      : M13       : input  : 2.5 V             :         : 4         : N              
+msg[32]                      : M14       : input  : 2.5 V             :         : 5         : N              
 VCCIO5                       : M15       : power  :                   : 2.5V    : 5         :                
 GND                          : M16       : gnd    :                   :         :           :                
-mensagem_criptografada[52]   : M17       : output : 2.5 V             :         : 5         : N              
-mensagem_criptografada[14]   : M18       : output : 2.5 V             :         : 5         : N              
+msg[39]                      : M17       : input  : 2.5 V             :         : 5         : N              
+msg[16]                      : M18       : input  : 2.5 V             :         : 5         : N              
 GND+                         : N1        :        :                   :         : 2         :                
 GND+                         : N2        :        :                   :         : 2         :                
 GND                          : N3        : gnd    :                   :         :           :                
 VCCIO2                       : N4        : power  :                   : 2.5V    : 2         :                
 VCCA1                        : N5        : power  :                   : 2.5V    :           :                
-msg[59]                      : N6        : input  : 2.5 V             :         : 3         : N              
+msg[54]                      : N6        : input  : 2.5 V             :         : 3         : N              
 mensagem_criptografada[49]   : N7        : output : 2.5 V             :         : 3         : N              
-msg[18]                      : N8        : input  : 2.5 V             :         : 3         : N              
-msg[46]                      : N9        : input  : 2.5 V             :         : 3         : N              
-msg[118]                     : N10       : input  : 2.5 V             :         : 4         : N              
-msg[107]                     : N11       : input  : 2.5 V             :         : 4         : N              
+mensagem_criptografada[60]   : N8        : output : 2.5 V             :         : 3         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : N9        :        :                   :         : 3         :                
+msg[117]                     : N10       : input  : 2.5 V             :         : 4         : N              
+msg[43]                      : N11       : input  : 2.5 V             :         : 4         : N              
 msg[123]                     : N12       : input  : 2.5 V             :         : 4         : N              
-msg[77]                      : N13       : input  : 2.5 V             :         : 4         : N              
+msg[80]                      : N13       : input  : 2.5 V             :         : 4         : N              
 VCCA4                        : N14       : power  :                   : 2.5V    :           :                
-msg[31]                      : N15       : input  : 2.5 V             :         : 5         : N              
-msg[9]                       : N16       : input  : 2.5 V             :         : 5         : N              
+reset                        : N15       : input  : 2.5 V             :         : 5         : N              
+mensagem_criptografada[59]   : N16       : output : 2.5 V             :         : 5         : N              
 msg[10]                      : N17       : input  : 2.5 V             :         : 5         : N              
 msg[11]                      : N18       : input  : 2.5 V             :         : 5         : N              
-msg[83]                      : P1        : input  : 2.5 V             :         : 2         : N              
-msg[91]                      : P2        : input  : 2.5 V             :         : 2         : N              
+mensagem_criptografada[21]   : P1        : output : 2.5 V             :         : 2         : N              
+msg[90]                      : P2        : input  : 2.5 V             :         : 2         : N              
 GND                          : P3        : gnd    :                   :         :           :                
 VCCD_PLL1                    : P4        : power  :                   : 1.2V    :           :                
 GNDA1                        : P5        : gnd    :                   :         :           :                
-mensagem_criptografada[20]   : P6        : output : 2.5 V             :         : 3         : N              
-msg[52]                      : P7        : input  : 2.5 V             :         : 3         : N              
-msg[4]                       : P8        : input  : 2.5 V             :         : 3         : N              
-msg[64]                      : P9        : input  : 2.5 V             :         : 3         : N              
-msg[20]                      : P10       : input  : 2.5 V             :         : 4         : N              
-mensagem_criptografada[16]   : P11       : output : 2.5 V             :         : 4         : N              
-mensagem_criptografada[60]   : P12       : output : 2.5 V             :         : 4         : N              
-msg[62]                      : P13       : input  : 2.5 V             :         : 4         : N              
+mensagem_criptografada[18]   : P6        : output : 2.5 V             :         : 3         : N              
+msg[30]                      : P7        : input  : 2.5 V             :         : 3         : N              
+msg[83]                      : P8        : input  : 2.5 V             :         : 3         : N              
+msg[63]                      : P9        : input  : 2.5 V             :         : 3         : N              
+msg[86]                      : P10       : input  : 2.5 V             :         : 4         : N              
+msg[19]                      : P11       : input  : 2.5 V             :         : 4         : N              
+msg[77]                      : P12       : input  : 2.5 V             :         : 4         : N              
+msg[3]                       : P13       : input  : 2.5 V             :         : 4         : N              
 GNDA4                        : P14       : gnd    :                   :         :           :                
 VCCD_PLL4                    : P15       : power  :                   : 1.2V    :           :                
 GND                          : P16       : gnd    :                   :         :           :                
-msg[89]                      : P17       : input  : 2.5 V             :         : 5         : N              
-msg[24]                      : P18       : input  : 2.5 V             :         : 5         : N              
-msg[72]                      : R1        : input  : 2.5 V             :         : 2         : N              
-mensagem_criptografada[55]   : R2        : output : 2.5 V             :         : 2         : N              
-msg[69]                      : R3        : input  : 2.5 V             :         : 2         : N              
+msg[23]                      : P17       : input  : 2.5 V             :         : 5         : N              
+mensagem_criptografada[0]    : P18       : output : 2.5 V             :         : 5         : N              
+msg[71]                      : R1        : input  : 2.5 V             :         : 2         : N              
+mensagem_criptografada[53]   : R2        : output : 2.5 V             :         : 2         : N              
+mensagem_criptografada[57]   : R3        : output : 2.5 V             :         : 2         : N              
 mensagem_criptografada[12]   : R4        : output : 2.5 V             :         : 2         : N              
-msg[70]                      : R5        : input  : 2.5 V             :         : 2         : N              
+mensagem_criptografada[47]   : R5        : output : 2.5 V             :         : 2         : N              
 VCCIO3                       : R6        : power  :                   : 2.5V    : 3         :                
 VCCIO3                       : R7        : power  :                   : 2.5V    : 3         :                
-msg[39]                      : R8        : input  : 2.5 V             :         : 3         : N              
+msg[53]                      : R8        : input  : 2.5 V             :         : 3         : N              
 VCCIO3                       : R9        : power  :                   : 2.5V    : 3         :                
 VCCIO4                       : R10       : power  :                   : 2.5V    : 4         :                
-msg[80]                      : R11       : input  : 2.5 V             :         : 4         : N              
+mensagem_criptografada[3]    : R11       : output : 2.5 V             :         : 4         : N              
 VCCIO4                       : R12       : power  :                   : 2.5V    : 4         :                
-mensagem_criptografada[18]   : R13       : output : 2.5 V             :         : 4         : N              
+mensagem_criptografada[15]   : R13       : output : 2.5 V             :         : 4         : N              
 VCCIO4                       : R14       : power  :                   : 2.5V    : 4         :                
 VCCIO5                       : R15       : power  :                   : 2.5V    : 5         :                
 msg[29]                      : R16       : input  : 2.5 V             :         : 5         : N              
-msg[88]                      : R17       : input  : 2.5 V             :         : 5         : N              
-msg[26]                      : R18       : input  : 2.5 V             :         : 5         : N              
-msg[76]                      : T1        : input  : 2.5 V             :         : 2         : N              
-msg[51]                      : T2        : input  : 2.5 V             :         : 2         : N              
-msg[6]                       : T3        : input  : 2.5 V             :         : 2         : N              
-mensagem_criptografada[34]   : T4        : output : 2.5 V             :         : 3         : N              
+mensagem_criptografada[31]   : R17       : output : 2.5 V             :         : 5         : N              
+mensagem_criptografada[43]   : R18       : output : 2.5 V             :         : 5         : N              
+msg[57]                      : T1        : input  : 2.5 V             :         : 2         : N              
+msg[50]                      : T2        : input  : 2.5 V             :         : 2         : N              
+msg[69]                      : T3        : input  : 2.5 V             :         : 2         : N              
+mensagem_criptografada[32]   : T4        : output : 2.5 V             :         : 3         : N              
 GND                          : T5        : gnd    :                   :         :           :                
-msg[85]                      : T6        : input  : 2.5 V             :         : 3         : N              
+msg[98]                      : T6        : input  : 2.5 V             :         : 3         : N              
 GND                          : T7        : gnd    :                   :         :           :                
-msg[54]                      : T8        : input  : 2.5 V             :         : 3         : N              
+mensagem_criptografada[1]    : T8        : output : 2.5 V             :         : 3         : N              
 GND                          : T9        : gnd    :                   :         :           :                
 GND                          : T10       : gnd    :                   :         :           :                
-msg[61]                      : T11       : input  : 2.5 V             :         : 4         : N              
+msg[107]                     : T11       : input  : 2.5 V             :         : 4         : N              
 GND                          : T12       : gnd    :                   :         :           :                
-mensagem_criptografada[0]    : T13       : output : 2.5 V             :         : 4         : N              
-msg[32]                      : T14       : input  : 2.5 V             :         : 4         : N              
+msg[31]                      : T13       : input  : 2.5 V             :         : 4         : N              
+msg[73]                      : T14       : input  : 2.5 V             :         : 4         : N              
 GND                          : T15       : gnd    :                   :         :           :                
-msg[30]                      : T16       : input  : 2.5 V             :         : 5         : N              
-msg[14]                      : T17       : input  : 2.5 V             :         : 5         : N              
-msg[125]                     : T18       : input  : 2.5 V             :         : 5         : N              
-msg[45]                      : U1        : input  : 2.5 V             :         : 3         : N              
-msg[47]                      : U2        : input  : 2.5 V             :         : 3         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : U3        :        :                   :         : 3         :                
-msg[48]                      : U4        : input  : 2.5 V             :         : 3         : N              
-msg[65]                      : U5        : input  : 2.5 V             :         : 3         : N              
-msg[42]                      : U6        : input  : 2.5 V             :         : 3         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : U7        :        :                   :         : 3         :                
-msg[36]                      : U8        : input  : 2.5 V             :         : 3         : N              
+msg[26]                      : T16       : input  : 2.5 V             :         : 5         : N              
+msg[12]                      : T17       : input  : 2.5 V             :         : 5         : N              
+msg[28]                      : T18       : input  : 2.5 V             :         : 5         : N              
+msg[44]                      : U1        : input  : 2.5 V             :         : 3         : N              
+msg[45]                      : U2        : input  : 2.5 V             :         : 3         : N              
+msg[66]                      : U3        : input  : 2.5 V             :         : 3         : N              
+msg[87]                      : U4        : input  : 2.5 V             :         : 3         : N              
+msg[64]                      : U5        : input  : 2.5 V             :         : 3         : N              
+msg[56]                      : U6        : input  : 2.5 V             :         : 3         : N              
+msg[38]                      : U7        : input  : 2.5 V             :         : 3         : N              
+msg[124]                     : U8        : input  : 2.5 V             :         : 3         : N              
 msg[34]                      : U9        : input  : 2.5 V             :         : 3         : N              
 msg[94]                      : U10       : input  : 2.5 V             :         : 4         : N              
-msg[92]                      : U11       : input  : 2.5 V             :         : 4         : N              
-msg[90]                      : U12       : input  : 2.5 V             :         : 4         : N              
-msg[116]                     : U13       : input  : 2.5 V             :         : 4         : N              
-mensagem_criptografada[5]    : U14       : output : 2.5 V             :         : 4         : N              
-msg[81]                      : U15       : input  : 2.5 V             :         : 4         : N              
-msg[98]                      : U16       : input  : 2.5 V             :         : 4         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : U17       :        :                   :         : 4         :                
-msg[95]                      : U18       : input  : 2.5 V             :         : 4         : N              
-msg[66]                      : V1        : input  : 2.5 V             :         : 3         : N              
-msg[55]                      : V2        : input  : 2.5 V             :         : 3         : N              
-msg[75]                      : V3        : input  : 2.5 V             :         : 3         : N              
-msg[58]                      : V4        : input  : 2.5 V             :         : 3         : N              
-msg[25]                      : V5        : input  : 2.5 V             :         : 3         : N              
-msg[84]                      : V6        : input  : 2.5 V             :         : 3         : N              
-msg[41]                      : V7        : input  : 2.5 V             :         : 3         : N              
-msg[49]                      : V8        : input  : 2.5 V             :         : 3         : N              
+msg[4]                       : U11       : input  : 2.5 V             :         : 4         : N              
+msg[60]                      : U12       : input  : 2.5 V             :         : 4         : N              
+msg[24]                      : U13       : input  : 2.5 V             :         : 4         : N              
+mensagem_criptografada[34]   : U14       : output : 2.5 V             :         : 4         : N              
+msg[115]                     : U15       : input  : 2.5 V             :         : 4         : N              
+msg[116]                     : U16       : input  : 2.5 V             :         : 4         : N              
+mensagem_criptografada[8]    : U17       : output : 2.5 V             :         : 4         : N              
+msg[105]                     : U18       : input  : 2.5 V             :         : 4         : N              
+mensagem_criptografada[42]   : V1        : output : 2.5 V             :         : 3         : N              
+mensagem_criptografada[39]   : V2        : output : 2.5 V             :         : 3         : N              
+msg[74]                      : V3        : input  : 2.5 V             :         : 3         : N              
+msg[40]                      : V4        : input  : 2.5 V             :         : 3         : N              
+msg[99]                      : V5        : input  : 2.5 V             :         : 3         : N              
+mensagem_criptografada[52]   : V6        : output : 2.5 V             :         : 3         : N              
+msg[84]                      : V7        : input  : 2.5 V             :         : 3         : N              
+msg[48]                      : V8        : input  : 2.5 V             :         : 3         : N              
 msg[33]                      : V9        : input  : 2.5 V             :         : 3         : N              
 msg[93]                      : V10       : input  : 2.5 V             :         : 4         : N              
-mensagem_criptografada[22]   : V11       : output : 2.5 V             :         : 4         : N              
-msg[23]                      : V12       : input  : 2.5 V             :         : 4         : N              
-msg[87]                      : V13       : input  : 2.5 V             :         : 4         : N              
-mensagem_criptografada[21]   : V14       : output : 2.5 V             :         : 4         : N              
-mensagem_criptografada[41]   : V15       : output : 2.5 V             :         : 4         : N              
-mensagem_criptografada[54]   : V16       : output : 2.5 V             :         : 4         : N              
-msg[71]                      : V17       : input  : 2.5 V             :         : 4         : N              
-mensagem_criptografada[27]   : V18       : output : 2.5 V             :         : 4         : N              
+msg[91]                      : V11       : input  : 2.5 V             :         : 4         : N              
+msg[22]                      : V12       : input  : 2.5 V             :         : 4         : N              
+msg[104]                     : V13       : input  : 2.5 V             :         : 4         : N              
+mensagem_criptografada[19]   : V14       : output : 2.5 V             :         : 4         : N              
+mensagem_criptografada[38]   : V15       : output : 2.5 V             :         : 4         : N              
+mensagem_criptografada[51]   : V16       : output : 2.5 V             :         : 4         : N              
+mensagem_criptografada[13]   : V17       : output : 2.5 V             :         : 4         : N              
+mensagem_criptografada[24]   : V18       : output : 2.5 V             :         : 4         : N              

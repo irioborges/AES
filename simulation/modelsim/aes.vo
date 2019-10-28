@@ -16,7 +16,7 @@
 // PROGRAM "Quartus II 64-Bit"
 // VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
 
-// DATE "09/20/2019 10:43:24"
+// DATE "10/28/2019 16:01:59"
 
 // 
 // Device: Altera EP3C25F324C6 Package FBGA324
@@ -30,203 +30,212 @@
 
 module aes (
 	msg,
-	mensagem_criptografada);
+	mensagem_criptografada,
+	clk,
+	reset,
+	En_regAdder);
 input 	[0:127] msg;
 output 	[0:63] mensagem_criptografada;
+input 	clk;
+input 	reset;
+input 	En_regAdder;
 
 // Design Ports Information
-// msg[127]	=>  Location: PIN_K1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[127]	=>  Location: PIN_K17,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[126]	=>  Location: PIN_G13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[125]	=>  Location: PIN_T18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[124]	=>  Location: PIN_M14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[125]	=>  Location: PIN_A2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[124]	=>  Location: PIN_U8,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[123]	=>  Location: PIN_N12,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[122]	=>  Location: PIN_M6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[121]	=>  Location: PIN_A15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[121]	=>  Location: PIN_C16,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[120]	=>  Location: PIN_A13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[119]	=>  Location: PIN_H2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[118]	=>  Location: PIN_N10,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[117]	=>  Location: PIN_F12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[116]	=>  Location: PIN_U13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[115]	=>  Location: PIN_A16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[119]	=>  Location: PIN_E14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[118]	=>  Location: PIN_A12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[117]	=>  Location: PIN_N10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[116]	=>  Location: PIN_U16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[115]	=>  Location: PIN_U15,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[114]	=>  Location: PIN_B16,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[113]	=>  Location: PIN_C14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[112]	=>  Location: PIN_F10,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[111]	=>  Location: PIN_E7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[113]	=>  Location: PIN_F11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[112]	=>  Location: PIN_C14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[111]	=>  Location: PIN_A3,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[110]	=>  Location: PIN_C18,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[109]	=>  Location: PIN_H16,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[108]	=>  Location: PIN_A7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[107]	=>  Location: PIN_N11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[107]	=>  Location: PIN_T11,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[106]	=>  Location: PIN_L13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[105]	=>  Location: PIN_B13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[104]	=>  Location: PIN_A12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[103]	=>  Location: PIN_B18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[102]	=>  Location: PIN_H18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[101]	=>  Location: PIN_G17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[100]	=>  Location: PIN_E11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[99]	=>  Location: PIN_F11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[98]	=>  Location: PIN_U16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[105]	=>  Location: PIN_U18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[104]	=>  Location: PIN_V13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[103]	=>  Location: PIN_B12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[102]	=>  Location: PIN_C1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[101]	=>  Location: PIN_B7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[100]	=>  Location: PIN_D18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[99]	=>  Location: PIN_V5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[98]	=>  Location: PIN_T6,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[97]	=>  Location: PIN_A10,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[96]	=>  Location: PIN_B10,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[95]	=>  Location: PIN_U18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[95]	=>  Location: PIN_D12,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[94]	=>  Location: PIN_U10,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[93]	=>  Location: PIN_V10,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[92]	=>  Location: PIN_U11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[91]	=>  Location: PIN_P2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[90]	=>  Location: PIN_U12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[89]	=>  Location: PIN_P17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[88]	=>  Location: PIN_R17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[87]	=>  Location: PIN_V13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[86]	=>  Location: PIN_F6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[85]	=>  Location: PIN_T6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[84]	=>  Location: PIN_V6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[83]	=>  Location: PIN_P1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[92]	=>  Location: PIN_B13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[91]	=>  Location: PIN_V11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[90]	=>  Location: PIN_P2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[89]	=>  Location: PIN_L14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[88]	=>  Location: PIN_E17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[87]	=>  Location: PIN_U4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[86]	=>  Location: PIN_P10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[85]	=>  Location: PIN_F6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[84]	=>  Location: PIN_V7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[83]	=>  Location: PIN_P8,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[82]	=>  Location: PIN_B5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[81]	=>  Location: PIN_U15,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[80]	=>  Location: PIN_R11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[79]	=>  Location: PIN_D7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[78]	=>  Location: PIN_A5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[77]	=>  Location: PIN_N13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[76]	=>  Location: PIN_T1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[75]	=>  Location: PIN_V3,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[74]	=>  Location: PIN_C7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[73]	=>  Location: PIN_C17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[72]	=>  Location: PIN_R1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[71]	=>  Location: PIN_V17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[70]	=>  Location: PIN_R5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[69]	=>  Location: PIN_R3,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[68]	=>  Location: PIN_G6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[67]	=>  Location: PIN_F13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[66]	=>  Location: PIN_V1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[65]	=>  Location: PIN_U5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[64]	=>  Location: PIN_P9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[63]	=>  Location: PIN_D16,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[62]	=>  Location: PIN_P13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[61]	=>  Location: PIN_T11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[60]	=>  Location: PIN_F9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[59]	=>  Location: PIN_N6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[58]	=>  Location: PIN_V4,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[57]	=>  Location: PIN_K17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[56]	=>  Location: PIN_L18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[55]	=>  Location: PIN_V2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[54]	=>  Location: PIN_T8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[53]	=>  Location: PIN_B6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[52]	=>  Location: PIN_P7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[51]	=>  Location: PIN_T2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[50]	=>  Location: PIN_B8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[49]	=>  Location: PIN_V8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[48]	=>  Location: PIN_U4,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[47]	=>  Location: PIN_U2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[46]	=>  Location: PIN_N9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[45]	=>  Location: PIN_U1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[44]	=>  Location: PIN_C10,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[43]	=>  Location: PIN_F3,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[42]	=>  Location: PIN_U6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[41]	=>  Location: PIN_V7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[40]	=>  Location: PIN_L4,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[39]	=>  Location: PIN_R8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[38]	=>  Location: PIN_M3,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[37]	=>  Location: PIN_E6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[36]	=>  Location: PIN_U8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[35]	=>  Location: PIN_E13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[81]	=>  Location: PIN_A6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[80]	=>  Location: PIN_N13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[79]	=>  Location: PIN_A5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[78]	=>  Location: PIN_L18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[77]	=>  Location: PIN_P12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[76]	=>  Location: PIN_B11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[75]	=>  Location: PIN_D7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[74]	=>  Location: PIN_V3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[73]	=>  Location: PIN_T14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[72]	=>  Location: PIN_C2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[71]	=>  Location: PIN_R1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[70]	=>  Location: PIN_A17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[69]	=>  Location: PIN_T3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[68]	=>  Location: PIN_M13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[67]	=>  Location: PIN_G6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[66]	=>  Location: PIN_U3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[65]	=>  Location: PIN_E7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[64]	=>  Location: PIN_U5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[63]	=>  Location: PIN_P9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[62]	=>  Location: PIN_D16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[61]	=>  Location: PIN_M1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[60]	=>  Location: PIN_U12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[59]	=>  Location: PIN_F9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[58]	=>  Location: PIN_F3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[57]	=>  Location: PIN_T1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[56]	=>  Location: PIN_U6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[55]	=>  Location: PIN_E12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[54]	=>  Location: PIN_N6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[53]	=>  Location: PIN_R8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[52]	=>  Location: PIN_L4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[51]	=>  Location: PIN_F13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[50]	=>  Location: PIN_T2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[49]	=>  Location: PIN_B8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[48]	=>  Location: PIN_V8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[47]	=>  Location: PIN_D9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[46]	=>  Location: PIN_E1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[45]	=>  Location: PIN_U2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[44]	=>  Location: PIN_U1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[43]	=>  Location: PIN_N11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[42]	=>  Location: PIN_C10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[41]	=>  Location: PIN_K18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[40]	=>  Location: PIN_V4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[39]	=>  Location: PIN_M17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[38]	=>  Location: PIN_U7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[37]	=>  Location: PIN_H14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[36]	=>  Location: PIN_M3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[35]	=>  Location: PIN_F10,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[34]	=>  Location: PIN_U9,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[33]	=>  Location: PIN_V9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[32]	=>  Location: PIN_T14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[31]	=>  Location: PIN_N15,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[30]	=>  Location: PIN_T16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[32]	=>  Location: PIN_M14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[31]	=>  Location: PIN_T13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[30]	=>  Location: PIN_P7,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[29]	=>  Location: PIN_R16,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[28]	=>  Location: PIN_D9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[27]	=>  Location: PIN_A1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[26]	=>  Location: PIN_R18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[25]	=>  Location: PIN_V5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[24]	=>  Location: PIN_P18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[23]	=>  Location: PIN_V12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[22]	=>  Location: PIN_F8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[28]	=>  Location: PIN_T18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[27]	=>  Location: PIN_M2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[26]	=>  Location: PIN_T16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[25]	=>  Location: PIN_A1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[24]	=>  Location: PIN_U13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[23]	=>  Location: PIN_P17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[22]	=>  Location: PIN_V12,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[21]	=>  Location: PIN_A14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[20]	=>  Location: PIN_P10,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[19]	=>  Location: PIN_B14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[18]	=>  Location: PIN_N8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[17]	=>  Location: PIN_L16,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[16]	=>  Location: PIN_B12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[20]	=>  Location: PIN_L15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[19]	=>  Location: PIN_P11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[18]	=>  Location: PIN_B14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[17]	=>  Location: PIN_A8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[16]	=>  Location: PIN_M18,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[15]	=>  Location: PIN_L17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[14]	=>  Location: PIN_T17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[13]	=>  Location: PIN_B1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[12]	=>  Location: PIN_C9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[14]	=>  Location: PIN_A11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[13]	=>  Location: PIN_K1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[12]	=>  Location: PIN_T17,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[11]	=>  Location: PIN_N18,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[10]	=>  Location: PIN_N17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[9]	=>  Location: PIN_N16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[9]	=>  Location: PIN_B1,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[8]	=>  Location: PIN_F18,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[7]	=>  Location: PIN_F17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[6]	=>  Location: PIN_T3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[6]	=>  Location: PIN_A15,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // msg[5]	=>  Location: PIN_H17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[4]	=>  Location: PIN_P8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[3]	=>  Location: PIN_E8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[2]	=>  Location: PIN_E10,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[1]	=>  Location: PIN_E17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// msg[0]	=>  Location: PIN_B15,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[63]	=>  Location: PIN_A18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[62]	=>  Location: PIN_D12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[61]	=>  Location: PIN_B2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[60]	=>  Location: PIN_P12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[59]	=>  Location: PIN_A11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[58]	=>  Location: PIN_M5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[57]	=>  Location: PIN_A17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[56]	=>  Location: PIN_B7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[55]	=>  Location: PIN_R2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[54]	=>  Location: PIN_V16,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[53]	=>  Location: PIN_E14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[52]	=>  Location: PIN_M17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[51]	=>  Location: PIN_C5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[50]	=>  Location: PIN_C16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[4]	=>  Location: PIN_U11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[3]	=>  Location: PIN_P13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[2]	=>  Location: PIN_J13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[1]	=>  Location: PIN_F7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// msg[0]	=>  Location: PIN_C9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[63]	=>  Location: PIN_E10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[62]	=>  Location: PIN_B15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[61]	=>  Location: PIN_A18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[60]	=>  Location: PIN_N8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[59]	=>  Location: PIN_N16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[58]	=>  Location: PIN_G17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[57]	=>  Location: PIN_R3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[56]	=>  Location: PIN_H2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[55]	=>  Location: PIN_C7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[54]	=>  Location: PIN_B6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[53]	=>  Location: PIN_R2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[52]	=>  Location: PIN_V6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[51]	=>  Location: PIN_V16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[50]	=>  Location: PIN_E9,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // mensagem_criptografada[49]	=>  Location: PIN_N7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[48]	=>  Location: PIN_F7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[47]	=>  Location: PIN_D10,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[46]	=>  Location: PIN_M1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[45]	=>  Location: PIN_G18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[44]	=>  Location: PIN_A4,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[43]	=>  Location: PIN_A3,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[42]	=>  Location: PIN_C12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[41]	=>  Location: PIN_V15,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[40]	=>  Location: PIN_D18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[39]	=>  Location: PIN_L1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[38]	=>  Location: PIN_L3,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[37]	=>  Location: PIN_E9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[36]	=>  Location: PIN_A6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[35]	=>  Location: PIN_J13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[34]	=>  Location: PIN_T4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[48]	=>  Location: PIN_E8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[47]	=>  Location: PIN_R5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[46]	=>  Location: PIN_F8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[45]	=>  Location: PIN_D10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[44]	=>  Location: PIN_C5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[43]	=>  Location: PIN_R18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[42]	=>  Location: PIN_V1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[41]	=>  Location: PIN_A4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[40]	=>  Location: PIN_C12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[39]	=>  Location: PIN_V2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[38]	=>  Location: PIN_V15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[37]	=>  Location: PIN_H6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[36]	=>  Location: PIN_H18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[35]	=>  Location: PIN_G2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[34]	=>  Location: PIN_U14,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // mensagem_criptografada[33]	=>  Location: PIN_K2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[32]	=>  Location: PIN_E1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[31]	=>  Location: PIN_K5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[32]	=>  Location: PIN_T4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[31]	=>  Location: PIN_R17,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // mensagem_criptografada[30]	=>  Location: PIN_L5,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // mensagem_criptografada[29]	=>  Location: PIN_L6,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // mensagem_criptografada[28]	=>  Location: PIN_L2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[27]	=>  Location: PIN_V18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[26]	=>  Location: PIN_B4,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[25]	=>  Location: PIN_D5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[24]	=>  Location: PIN_M2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[23]	=>  Location: PIN_B3,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[22]	=>  Location: PIN_V11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[21]	=>  Location: PIN_V14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[20]	=>  Location: PIN_P6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[19]	=>  Location: PIN_D14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[18]	=>  Location: PIN_R13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[17]	=>  Location: PIN_L15,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[16]	=>  Location: PIN_P11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[15]	=>  Location: PIN_M13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[14]	=>  Location: PIN_M18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[13]	=>  Location: PIN_L14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[27]	=>  Location: PIN_L1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[26]	=>  Location: PIN_G18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[25]	=>  Location: PIN_L3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[24]	=>  Location: PIN_V18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[23]	=>  Location: PIN_B4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[22]	=>  Location: PIN_D5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[21]	=>  Location: PIN_P1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[20]	=>  Location: PIN_B3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[19]	=>  Location: PIN_V14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[18]	=>  Location: PIN_P6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[17]	=>  Location: PIN_A16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[16]	=>  Location: PIN_D14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[15]	=>  Location: PIN_R13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[14]	=>  Location: PIN_M5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[13]	=>  Location: PIN_V17,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // mensagem_criptografada[12]	=>  Location: PIN_R4,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // mensagem_criptografada[11]	=>  Location: PIN_G1,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[10]	=>  Location: PIN_E12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[9]	=>  Location: PIN_B11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[8]	=>  Location: PIN_H14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[7]	=>  Location: PIN_H13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[6]	=>  Location: PIN_G14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[5]	=>  Location: PIN_U14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[4]	=>  Location: PIN_A2,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[3]	=>  Location: PIN_A8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[2]	=>  Location: PIN_B17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[1]	=>  Location: PIN_H15,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// mensagem_criptografada[0]	=>  Location: PIN_T13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[10]	=>  Location: PIN_L16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[9]	=>  Location: PIN_B2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[8]	=>  Location: PIN_U17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[7]	=>  Location: PIN_F12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[6]	=>  Location: PIN_C3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[5]	=>  Location: PIN_D3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[4]	=>  Location: PIN_D2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[3]	=>  Location: PIN_R11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[2]	=>  Location: PIN_K5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[1]	=>  Location: PIN_T8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mensagem_criptografada[0]	=>  Location: PIN_P18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// En_regAdder	=>  Location: PIN_E11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// clk	=>  Location: PIN_D17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// reset	=>  Location: PIN_N15,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
 wire gnd;
@@ -368,6 +377,9 @@ wire \msg[3]~input_o ;
 wire \msg[2]~input_o ;
 wire \msg[1]~input_o ;
 wire \msg[0]~input_o ;
+wire \En_regAdder~input_o ;
+wire \clk~input_o ;
+wire \reset~input_o ;
 wire \mensagem_criptografada[63]~output_o ;
 wire \mensagem_criptografada[62]~output_o ;
 wire \mensagem_criptografada[61]~output_o ;
@@ -434,7 +446,7 @@ wire \mensagem_criptografada[1]~output_o ;
 wire \mensagem_criptografada[0]~output_o ;
 
 
-// Location: IOOBUF_X49_Y34_N2
+// Location: IOOBUF_X23_Y34_N2
 cycloneiii_io_obuf \mensagem_criptografada[63]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -447,7 +459,7 @@ defparam \mensagem_criptografada[63]~output .bus_hold = "false";
 defparam \mensagem_criptografada[63]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X38_Y34_N2
+// Location: IOOBUF_X34_Y34_N2
 cycloneiii_io_obuf \mensagem_criptografada[62]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -460,7 +472,7 @@ defparam \mensagem_criptografada[62]~output .bus_hold = "false";
 defparam \mensagem_criptografada[62]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X0_Y30_N2
+// Location: IOOBUF_X49_Y34_N2
 cycloneiii_io_obuf \mensagem_criptografada[61]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -473,7 +485,7 @@ defparam \mensagem_criptografada[61]~output .bus_hold = "false";
 defparam \mensagem_criptografada[61]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X38_Y0_N9
+// Location: IOOBUF_X7_Y0_N9
 cycloneiii_io_obuf \mensagem_criptografada[60]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -486,7 +498,7 @@ defparam \mensagem_criptografada[60]~output .bus_hold = "false";
 defparam \mensagem_criptografada[60]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X29_Y34_N9
+// Location: IOOBUF_X53_Y9_N9
 cycloneiii_io_obuf \mensagem_criptografada[59]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -499,7 +511,7 @@ defparam \mensagem_criptografada[59]~output .bus_hold = "false";
 defparam \mensagem_criptografada[59]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X0_Y5_N23
+// Location: IOOBUF_X53_Y20_N16
 cycloneiii_io_obuf \mensagem_criptografada[58]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -512,7 +524,7 @@ defparam \mensagem_criptografada[58]~output .bus_hold = "false";
 defparam \mensagem_criptografada[58]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X49_Y34_N9
+// Location: IOOBUF_X0_Y5_N16
 cycloneiii_io_obuf \mensagem_criptografada[57]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -525,7 +537,7 @@ defparam \mensagem_criptografada[57]~output .bus_hold = "false";
 defparam \mensagem_criptografada[57]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X18_Y34_N2
+// Location: IOOBUF_X0_Y23_N16
 cycloneiii_io_obuf \mensagem_criptografada[56]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -538,7 +550,7 @@ defparam \mensagem_criptografada[56]~output .bus_hold = "false";
 defparam \mensagem_criptografada[56]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X0_Y8_N23
+// Location: IOOBUF_X18_Y34_N23
 cycloneiii_io_obuf \mensagem_criptografada[55]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -551,7 +563,7 @@ defparam \mensagem_criptografada[55]~output .bus_hold = "false";
 defparam \mensagem_criptografada[55]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X40_Y0_N16
+// Location: IOOBUF_X18_Y34_N16
 cycloneiii_io_obuf \mensagem_criptografada[54]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -564,7 +576,7 @@ defparam \mensagem_criptografada[54]~output .bus_hold = "false";
 defparam \mensagem_criptografada[54]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X45_Y34_N9
+// Location: IOOBUF_X0_Y8_N23
 cycloneiii_io_obuf \mensagem_criptografada[53]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -577,7 +589,7 @@ defparam \mensagem_criptografada[53]~output .bus_hold = "false";
 defparam \mensagem_criptografada[53]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y12_N2
+// Location: IOOBUF_X20_Y0_N9
 cycloneiii_io_obuf \mensagem_criptografada[52]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -590,7 +602,7 @@ defparam \mensagem_criptografada[52]~output .bus_hold = "false";
 defparam \mensagem_criptografada[52]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X16_Y34_N16
+// Location: IOOBUF_X40_Y0_N16
 cycloneiii_io_obuf \mensagem_criptografada[51]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -603,7 +615,7 @@ defparam \mensagem_criptografada[51]~output .bus_hold = "false";
 defparam \mensagem_criptografada[51]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X51_Y34_N16
+// Location: IOOBUF_X23_Y34_N23
 cycloneiii_io_obuf \mensagem_criptografada[50]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -629,7 +641,7 @@ defparam \mensagem_criptografada[49]~output .bus_hold = "false";
 defparam \mensagem_criptografada[49]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X7_Y34_N16
+// Location: IOOBUF_X14_Y34_N16
 cycloneiii_io_obuf \mensagem_criptografada[48]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -642,7 +654,7 @@ defparam \mensagem_criptografada[48]~output .bus_hold = "false";
 defparam \mensagem_criptografada[48]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X27_Y34_N9
+// Location: IOOBUF_X0_Y4_N16
 cycloneiii_io_obuf \mensagem_criptografada[47]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -655,7 +667,7 @@ defparam \mensagem_criptografada[47]~output .bus_hold = "false";
 defparam \mensagem_criptografada[47]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X0_Y11_N9
+// Location: IOOBUF_X9_Y34_N16
 cycloneiii_io_obuf \mensagem_criptografada[46]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -668,7 +680,7 @@ defparam \mensagem_criptografada[46]~output .bus_hold = "false";
 defparam \mensagem_criptografada[46]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y20_N23
+// Location: IOOBUF_X27_Y34_N9
 cycloneiii_io_obuf \mensagem_criptografada[45]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -681,7 +693,7 @@ defparam \mensagem_criptografada[45]~output .bus_hold = "false";
 defparam \mensagem_criptografada[45]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X14_Y34_N23
+// Location: IOOBUF_X16_Y34_N16
 cycloneiii_io_obuf \mensagem_criptografada[44]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -694,7 +706,7 @@ defparam \mensagem_criptografada[44]~output .bus_hold = "false";
 defparam \mensagem_criptografada[44]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X9_Y34_N23
+// Location: IOOBUF_X53_Y8_N16
 cycloneiii_io_obuf \mensagem_criptografada[43]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -707,7 +719,7 @@ defparam \mensagem_criptografada[43]~output .bus_hold = "false";
 defparam \mensagem_criptografada[43]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X36_Y34_N16
+// Location: IOOBUF_X1_Y0_N16
 cycloneiii_io_obuf \mensagem_criptografada[42]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -720,7 +732,7 @@ defparam \mensagem_criptografada[42]~output .bus_hold = "false";
 defparam \mensagem_criptografada[42]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X38_Y0_N23
+// Location: IOOBUF_X14_Y34_N23
 cycloneiii_io_obuf \mensagem_criptografada[41]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -733,7 +745,7 @@ defparam \mensagem_criptografada[41]~output .bus_hold = "false";
 defparam \mensagem_criptografada[41]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y23_N23
+// Location: IOOBUF_X36_Y34_N16
 cycloneiii_io_obuf \mensagem_criptografada[40]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -746,7 +758,7 @@ defparam \mensagem_criptografada[40]~output .bus_hold = "false";
 defparam \mensagem_criptografada[40]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X0_Y13_N23
+// Location: IOOBUF_X5_Y0_N16
 cycloneiii_io_obuf \mensagem_criptografada[39]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -759,7 +771,7 @@ defparam \mensagem_criptografada[39]~output .bus_hold = "false";
 defparam \mensagem_criptografada[39]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X0_Y12_N9
+// Location: IOOBUF_X38_Y0_N23
 cycloneiii_io_obuf \mensagem_criptografada[38]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -772,7 +784,7 @@ defparam \mensagem_criptografada[38]~output .bus_hold = "false";
 defparam \mensagem_criptografada[38]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X23_Y34_N23
+// Location: IOOBUF_X0_Y24_N16
 cycloneiii_io_obuf \mensagem_criptografada[37]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -785,7 +797,7 @@ defparam \mensagem_criptografada[37]~output .bus_hold = "false";
 defparam \mensagem_criptografada[37]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X18_Y34_N9
+// Location: IOOBUF_X53_Y19_N9
 cycloneiii_io_obuf \mensagem_criptografada[36]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -798,7 +810,7 @@ defparam \mensagem_criptografada[36]~output .bus_hold = "false";
 defparam \mensagem_criptografada[36]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y21_N23
+// Location: IOOBUF_X0_Y24_N23
 cycloneiii_io_obuf \mensagem_criptografada[35]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -811,7 +823,7 @@ defparam \mensagem_criptografada[35]~output .bus_hold = "false";
 defparam \mensagem_criptografada[35]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X3_Y0_N23
+// Location: IOOBUF_X36_Y0_N16
 cycloneiii_io_obuf \mensagem_criptografada[34]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -837,7 +849,7 @@ defparam \mensagem_criptografada[33]~output .bus_hold = "false";
 defparam \mensagem_criptografada[33]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X0_Y25_N9
+// Location: IOOBUF_X3_Y0_N23
 cycloneiii_io_obuf \mensagem_criptografada[32]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -850,7 +862,7 @@ defparam \mensagem_criptografada[32]~output .bus_hold = "false";
 defparam \mensagem_criptografada[32]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X0_Y14_N2
+// Location: IOOBUF_X53_Y8_N9
 cycloneiii_io_obuf \mensagem_criptografada[31]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -902,7 +914,7 @@ defparam \mensagem_criptografada[28]~output .bus_hold = "false";
 defparam \mensagem_criptografada[28]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X49_Y0_N2
+// Location: IOOBUF_X0_Y13_N23
 cycloneiii_io_obuf \mensagem_criptografada[27]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -915,7 +927,7 @@ defparam \mensagem_criptografada[27]~output .bus_hold = "false";
 defparam \mensagem_criptografada[27]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X11_Y34_N2
+// Location: IOOBUF_X53_Y20_N23
 cycloneiii_io_obuf \mensagem_criptografada[26]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -928,7 +940,7 @@ defparam \mensagem_criptografada[26]~output .bus_hold = "false";
 defparam \mensagem_criptografada[26]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X3_Y34_N2
+// Location: IOOBUF_X0_Y12_N9
 cycloneiii_io_obuf \mensagem_criptografada[25]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -941,7 +953,7 @@ defparam \mensagem_criptografada[25]~output .bus_hold = "false";
 defparam \mensagem_criptografada[25]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X0_Y11_N2
+// Location: IOOBUF_X49_Y0_N2
 cycloneiii_io_obuf \mensagem_criptografada[24]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -954,7 +966,7 @@ defparam \mensagem_criptografada[24]~output .bus_hold = "false";
 defparam \mensagem_criptografada[24]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X7_Y34_N2
+// Location: IOOBUF_X11_Y34_N2
 cycloneiii_io_obuf \mensagem_criptografada[23]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -967,7 +979,7 @@ defparam \mensagem_criptografada[23]~output .bus_hold = "false";
 defparam \mensagem_criptografada[23]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X29_Y0_N16
+// Location: IOOBUF_X3_Y34_N2
 cycloneiii_io_obuf \mensagem_criptografada[22]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -980,7 +992,7 @@ defparam \mensagem_criptografada[22]~output .bus_hold = "false";
 defparam \mensagem_criptografada[22]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X36_Y0_N9
+// Location: IOOBUF_X0_Y8_N16
 cycloneiii_io_obuf \mensagem_criptografada[21]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -993,7 +1005,7 @@ defparam \mensagem_criptografada[21]~output .bus_hold = "false";
 defparam \mensagem_criptografada[21]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X3_Y0_N2
+// Location: IOOBUF_X7_Y34_N2
 cycloneiii_io_obuf \mensagem_criptografada[20]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1006,7 +1018,7 @@ defparam \mensagem_criptografada[20]~output .bus_hold = "false";
 defparam \mensagem_criptografada[20]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X45_Y34_N2
+// Location: IOOBUF_X36_Y0_N9
 cycloneiii_io_obuf \mensagem_criptografada[19]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1019,7 +1031,7 @@ defparam \mensagem_criptografada[19]~output .bus_hold = "false";
 defparam \mensagem_criptografada[19]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X45_Y0_N16
+// Location: IOOBUF_X3_Y0_N2
 cycloneiii_io_obuf \mensagem_criptografada[18]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1032,7 +1044,7 @@ defparam \mensagem_criptografada[18]~output .bus_hold = "false";
 defparam \mensagem_criptografada[18]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y11_N9
+// Location: IOOBUF_X38_Y34_N16
 cycloneiii_io_obuf \mensagem_criptografada[17]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1045,7 +1057,7 @@ defparam \mensagem_criptografada[17]~output .bus_hold = "false";
 defparam \mensagem_criptografada[17]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X36_Y0_N23
+// Location: IOOBUF_X45_Y34_N2
 cycloneiii_io_obuf \mensagem_criptografada[16]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1058,7 +1070,7 @@ defparam \mensagem_criptografada[16]~output .bus_hold = "false";
 defparam \mensagem_criptografada[16]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X51_Y0_N16
+// Location: IOOBUF_X45_Y0_N16
 cycloneiii_io_obuf \mensagem_criptografada[15]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1071,7 +1083,7 @@ defparam \mensagem_criptografada[15]~output .bus_hold = "false";
 defparam \mensagem_criptografada[15]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y14_N9
+// Location: IOOBUF_X0_Y5_N23
 cycloneiii_io_obuf \mensagem_criptografada[14]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1084,7 +1096,7 @@ defparam \mensagem_criptografada[14]~output .bus_hold = "false";
 defparam \mensagem_criptografada[14]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y11_N2
+// Location: IOOBUF_X43_Y0_N2
 cycloneiii_io_obuf \mensagem_criptografada[13]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1123,7 +1135,7 @@ defparam \mensagem_criptografada[11]~output .bus_hold = "false";
 defparam \mensagem_criptografada[11]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X40_Y34_N9
+// Location: IOOBUF_X53_Y13_N9
 cycloneiii_io_obuf \mensagem_criptografada[10]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1136,7 +1148,7 @@ defparam \mensagem_criptografada[10]~output .bus_hold = "false";
 defparam \mensagem_criptografada[10]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X29_Y34_N16
+// Location: IOOBUF_X0_Y30_N2
 cycloneiii_io_obuf \mensagem_criptografada[9]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1149,7 +1161,7 @@ defparam \mensagem_criptografada[9]~output .bus_hold = "false";
 defparam \mensagem_criptografada[9]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y25_N9
+// Location: IOOBUF_X43_Y0_N9
 cycloneiii_io_obuf \mensagem_criptografada[8]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1162,7 +1174,7 @@ defparam \mensagem_criptografada[8]~output .bus_hold = "false";
 defparam \mensagem_criptografada[8]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y25_N2
+// Location: IOOBUF_X43_Y34_N23
 cycloneiii_io_obuf \mensagem_criptografada[7]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1175,7 +1187,7 @@ defparam \mensagem_criptografada[7]~output .bus_hold = "false";
 defparam \mensagem_criptografada[7]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y26_N23
+// Location: IOOBUF_X0_Y28_N2
 cycloneiii_io_obuf \mensagem_criptografada[6]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1188,7 +1200,7 @@ defparam \mensagem_criptografada[6]~output .bus_hold = "false";
 defparam \mensagem_criptografada[6]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X36_Y0_N16
+// Location: IOOBUF_X0_Y28_N9
 cycloneiii_io_obuf \mensagem_criptografada[5]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1201,7 +1213,7 @@ defparam \mensagem_criptografada[5]~output .bus_hold = "false";
 defparam \mensagem_criptografada[5]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X1_Y34_N9
+// Location: IOOBUF_X0_Y27_N2
 cycloneiii_io_obuf \mensagem_criptografada[4]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1214,7 +1226,7 @@ defparam \mensagem_criptografada[4]~output .bus_hold = "false";
 defparam \mensagem_criptografada[4]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X20_Y34_N9
+// Location: IOOBUF_X38_Y0_N16
 cycloneiii_io_obuf \mensagem_criptografada[3]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1227,7 +1239,7 @@ defparam \mensagem_criptografada[3]~output .bus_hold = "false";
 defparam \mensagem_criptografada[3]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y30_N2
+// Location: IOOBUF_X0_Y14_N2
 cycloneiii_io_obuf \mensagem_criptografada[2]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1240,7 +1252,7 @@ defparam \mensagem_criptografada[2]~output .bus_hold = "false";
 defparam \mensagem_criptografada[2]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X53_Y24_N23
+// Location: IOOBUF_X18_Y0_N23
 cycloneiii_io_obuf \mensagem_criptografada[1]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1253,7 +1265,7 @@ defparam \mensagem_criptografada[1]~output .bus_hold = "false";
 defparam \mensagem_criptografada[1]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X43_Y0_N23
+// Location: IOOBUF_X53_Y9_N23
 cycloneiii_io_obuf \mensagem_criptografada[0]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -1266,7 +1278,7 @@ defparam \mensagem_criptografada[0]~output .bus_hold = "false";
 defparam \mensagem_criptografada[0]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y15_N8
+// Location: IOIBUF_X53_Y16_N8
 cycloneiii_io_ibuf \msg[127]~input (
 	.i(msg[127]),
 	.ibar(gnd),
@@ -1286,7 +1298,7 @@ defparam \msg[126]~input .bus_hold = "false";
 defparam \msg[126]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y7_N8
+// Location: IOIBUF_X1_Y34_N8
 cycloneiii_io_ibuf \msg[125]~input (
 	.i(msg[125]),
 	.ibar(gnd),
@@ -1296,7 +1308,7 @@ defparam \msg[125]~input .bus_hold = "false";
 defparam \msg[125]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y10_N22
+// Location: IOIBUF_X23_Y0_N1
 cycloneiii_io_ibuf \msg[124]~input (
 	.i(msg[124]),
 	.ibar(gnd),
@@ -1326,7 +1338,7 @@ defparam \msg[122]~input .bus_hold = "false";
 defparam \msg[122]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X36_Y34_N22
+// Location: IOIBUF_X51_Y34_N15
 cycloneiii_io_ibuf \msg[121]~input (
 	.i(msg[121]),
 	.ibar(gnd),
@@ -1346,7 +1358,7 @@ defparam \msg[120]~input .bus_hold = "false";
 defparam \msg[120]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y23_N15
+// Location: IOIBUF_X45_Y34_N8
 cycloneiii_io_ibuf \msg[119]~input (
 	.i(msg[119]),
 	.ibar(gnd),
@@ -1356,7 +1368,7 @@ defparam \msg[119]~input .bus_hold = "false";
 defparam \msg[119]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X40_Y0_N8
+// Location: IOIBUF_X31_Y34_N22
 cycloneiii_io_ibuf \msg[118]~input (
 	.i(msg[118]),
 	.ibar(gnd),
@@ -1366,7 +1378,7 @@ defparam \msg[118]~input .bus_hold = "false";
 defparam \msg[118]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X43_Y34_N22
+// Location: IOIBUF_X40_Y0_N8
 cycloneiii_io_ibuf \msg[117]~input (
 	.i(msg[117]),
 	.ibar(gnd),
@@ -1376,7 +1388,7 @@ defparam \msg[117]~input .bus_hold = "false";
 defparam \msg[117]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X34_Y0_N22
+// Location: IOIBUF_X40_Y0_N22
 cycloneiii_io_ibuf \msg[116]~input (
 	.i(msg[116]),
 	.ibar(gnd),
@@ -1386,7 +1398,7 @@ defparam \msg[116]~input .bus_hold = "false";
 defparam \msg[116]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X38_Y34_N15
+// Location: IOIBUF_X36_Y0_N1
 cycloneiii_io_ibuf \msg[115]~input (
 	.i(msg[115]),
 	.ibar(gnd),
@@ -1406,7 +1418,7 @@ defparam \msg[114]~input .bus_hold = "false";
 defparam \msg[114]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X47_Y34_N22
+// Location: IOIBUF_X36_Y34_N1
 cycloneiii_io_ibuf \msg[113]~input (
 	.i(msg[113]),
 	.ibar(gnd),
@@ -1416,7 +1428,7 @@ defparam \msg[113]~input .bus_hold = "false";
 defparam \msg[113]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X36_Y34_N8
+// Location: IOIBUF_X47_Y34_N22
 cycloneiii_io_ibuf \msg[112]~input (
 	.i(msg[112]),
 	.ibar(gnd),
@@ -1426,7 +1438,7 @@ defparam \msg[112]~input .bus_hold = "false";
 defparam \msg[112]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X9_Y34_N8
+// Location: IOIBUF_X9_Y34_N22
 cycloneiii_io_ibuf \msg[111]~input (
 	.i(msg[111]),
 	.ibar(gnd),
@@ -1466,7 +1478,7 @@ defparam \msg[108]~input .bus_hold = "false";
 defparam \msg[108]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X40_Y0_N1
+// Location: IOIBUF_X38_Y0_N1
 cycloneiii_io_ibuf \msg[107]~input (
 	.i(msg[107]),
 	.ibar(gnd),
@@ -1486,7 +1498,7 @@ defparam \msg[106]~input .bus_hold = "false";
 defparam \msg[106]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X31_Y34_N8
+// Location: IOIBUF_X49_Y0_N8
 cycloneiii_io_ibuf \msg[105]~input (
 	.i(msg[105]),
 	.ibar(gnd),
@@ -1496,7 +1508,7 @@ defparam \msg[105]~input .bus_hold = "false";
 defparam \msg[105]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X31_Y34_N22
+// Location: IOIBUF_X34_Y0_N15
 cycloneiii_io_ibuf \msg[104]~input (
 	.i(msg[104]),
 	.ibar(gnd),
@@ -1506,7 +1518,7 @@ defparam \msg[104]~input .bus_hold = "false";
 defparam \msg[104]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y30_N8
+// Location: IOIBUF_X29_Y34_N1
 cycloneiii_io_ibuf \msg[103]~input (
 	.i(msg[103]),
 	.ibar(gnd),
@@ -1516,7 +1528,7 @@ defparam \msg[103]~input .bus_hold = "false";
 defparam \msg[103]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y19_N8
+// Location: IOIBUF_X0_Y29_N8
 cycloneiii_io_ibuf \msg[102]~input (
 	.i(msg[102]),
 	.ibar(gnd),
@@ -1526,7 +1538,7 @@ defparam \msg[102]~input .bus_hold = "false";
 defparam \msg[102]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y20_N15
+// Location: IOIBUF_X18_Y34_N1
 cycloneiii_io_ibuf \msg[101]~input (
 	.i(msg[101]),
 	.ibar(gnd),
@@ -1536,7 +1548,7 @@ defparam \msg[101]~input .bus_hold = "false";
 defparam \msg[101]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X29_Y34_N22
+// Location: IOIBUF_X53_Y23_N22
 cycloneiii_io_ibuf \msg[100]~input (
 	.i(msg[100]),
 	.ibar(gnd),
@@ -1546,7 +1558,7 @@ defparam \msg[100]~input .bus_hold = "false";
 defparam \msg[100]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X36_Y34_N1
+// Location: IOIBUF_X14_Y0_N1
 cycloneiii_io_ibuf \msg[99]~input (
 	.i(msg[99]),
 	.ibar(gnd),
@@ -1556,7 +1568,7 @@ defparam \msg[99]~input .bus_hold = "false";
 defparam \msg[99]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X40_Y0_N22
+// Location: IOIBUF_X11_Y0_N22
 cycloneiii_io_ibuf \msg[98]~input (
 	.i(msg[98]),
 	.ibar(gnd),
@@ -1586,7 +1598,7 @@ defparam \msg[96]~input .bus_hold = "false";
 defparam \msg[96]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X49_Y0_N8
+// Location: IOIBUF_X38_Y34_N1
 cycloneiii_io_ibuf \msg[95]~input (
 	.i(msg[95]),
 	.ibar(gnd),
@@ -1616,7 +1628,7 @@ defparam \msg[93]~input .bus_hold = "false";
 defparam \msg[93]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X29_Y0_N22
+// Location: IOIBUF_X31_Y34_N8
 cycloneiii_io_ibuf \msg[92]~input (
 	.i(msg[92]),
 	.ibar(gnd),
@@ -1626,7 +1638,7 @@ defparam \msg[92]~input .bus_hold = "false";
 defparam \msg[92]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y9_N8
+// Location: IOIBUF_X29_Y0_N15
 cycloneiii_io_ibuf \msg[91]~input (
 	.i(msg[91]),
 	.ibar(gnd),
@@ -1636,7 +1648,7 @@ defparam \msg[91]~input .bus_hold = "false";
 defparam \msg[91]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X29_Y0_N8
+// Location: IOIBUF_X0_Y9_N8
 cycloneiii_io_ibuf \msg[90]~input (
 	.i(msg[90]),
 	.ibar(gnd),
@@ -1646,7 +1658,7 @@ defparam \msg[90]~input .bus_hold = "false";
 defparam \msg[90]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y9_N15
+// Location: IOIBUF_X53_Y11_N1
 cycloneiii_io_ibuf \msg[89]~input (
 	.i(msg[89]),
 	.ibar(gnd),
@@ -1656,7 +1668,7 @@ defparam \msg[89]~input .bus_hold = "false";
 defparam \msg[89]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y8_N8
+// Location: IOIBUF_X53_Y22_N8
 cycloneiii_io_ibuf \msg[88]~input (
 	.i(msg[88]),
 	.ibar(gnd),
@@ -1666,7 +1678,7 @@ defparam \msg[88]~input .bus_hold = "false";
 defparam \msg[88]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X34_Y0_N15
+// Location: IOIBUF_X14_Y0_N22
 cycloneiii_io_ibuf \msg[87]~input (
 	.i(msg[87]),
 	.ibar(gnd),
@@ -1676,7 +1688,7 @@ defparam \msg[87]~input .bus_hold = "false";
 defparam \msg[87]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X5_Y34_N15
+// Location: IOIBUF_X34_Y0_N1
 cycloneiii_io_ibuf \msg[86]~input (
 	.i(msg[86]),
 	.ibar(gnd),
@@ -1686,7 +1698,7 @@ defparam \msg[86]~input .bus_hold = "false";
 defparam \msg[86]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X11_Y0_N22
+// Location: IOIBUF_X5_Y34_N15
 cycloneiii_io_ibuf \msg[85]~input (
 	.i(msg[85]),
 	.ibar(gnd),
@@ -1696,7 +1708,7 @@ defparam \msg[85]~input .bus_hold = "false";
 defparam \msg[85]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X20_Y0_N8
+// Location: IOIBUF_X23_Y0_N8
 cycloneiii_io_ibuf \msg[84]~input (
 	.i(msg[84]),
 	.ibar(gnd),
@@ -1706,7 +1718,7 @@ defparam \msg[84]~input .bus_hold = "false";
 defparam \msg[84]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y8_N15
+// Location: IOIBUF_X18_Y0_N15
 cycloneiii_io_ibuf \msg[83]~input (
 	.i(msg[83]),
 	.ibar(gnd),
@@ -1726,7 +1738,7 @@ defparam \msg[82]~input .bus_hold = "false";
 defparam \msg[82]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X36_Y0_N1
+// Location: IOIBUF_X18_Y34_N8
 cycloneiii_io_ibuf \msg[81]~input (
 	.i(msg[81]),
 	.ibar(gnd),
@@ -1736,7 +1748,7 @@ defparam \msg[81]~input .bus_hold = "false";
 defparam \msg[81]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X38_Y0_N15
+// Location: IOIBUF_X51_Y0_N1
 cycloneiii_io_ibuf \msg[80]~input (
 	.i(msg[80]),
 	.ibar(gnd),
@@ -1746,7 +1758,7 @@ defparam \msg[80]~input .bus_hold = "false";
 defparam \msg[80]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X16_Y34_N22
+// Location: IOIBUF_X16_Y34_N1
 cycloneiii_io_ibuf \msg[79]~input (
 	.i(msg[79]),
 	.ibar(gnd),
@@ -1756,7 +1768,7 @@ defparam \msg[79]~input .bus_hold = "false";
 defparam \msg[79]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X16_Y34_N1
+// Location: IOIBUF_X53_Y15_N8
 cycloneiii_io_ibuf \msg[78]~input (
 	.i(msg[78]),
 	.ibar(gnd),
@@ -1766,7 +1778,7 @@ defparam \msg[78]~input .bus_hold = "false";
 defparam \msg[78]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X51_Y0_N1
+// Location: IOIBUF_X38_Y0_N8
 cycloneiii_io_ibuf \msg[77]~input (
 	.i(msg[77]),
 	.ibar(gnd),
@@ -1776,7 +1788,7 @@ defparam \msg[77]~input .bus_hold = "false";
 defparam \msg[77]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y6_N15
+// Location: IOIBUF_X29_Y34_N15
 cycloneiii_io_ibuf \msg[76]~input (
 	.i(msg[76]),
 	.ibar(gnd),
@@ -1786,7 +1798,7 @@ defparam \msg[76]~input .bus_hold = "false";
 defparam \msg[76]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X11_Y0_N8
+// Location: IOIBUF_X16_Y34_N22
 cycloneiii_io_ibuf \msg[75]~input (
 	.i(msg[75]),
 	.ibar(gnd),
@@ -1796,7 +1808,7 @@ defparam \msg[75]~input .bus_hold = "false";
 defparam \msg[75]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X18_Y34_N22
+// Location: IOIBUF_X11_Y0_N8
 cycloneiii_io_ibuf \msg[74]~input (
 	.i(msg[74]),
 	.ibar(gnd),
@@ -1806,7 +1818,7 @@ defparam \msg[74]~input .bus_hold = "false";
 defparam \msg[74]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y28_N22
+// Location: IOIBUF_X43_Y0_N15
 cycloneiii_io_ibuf \msg[73]~input (
 	.i(msg[73]),
 	.ibar(gnd),
@@ -1816,7 +1828,7 @@ defparam \msg[73]~input .bus_hold = "false";
 defparam \msg[73]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y7_N1
+// Location: IOIBUF_X0_Y29_N1
 cycloneiii_io_ibuf \msg[72]~input (
 	.i(msg[72]),
 	.ibar(gnd),
@@ -1826,7 +1838,7 @@ defparam \msg[72]~input .bus_hold = "false";
 defparam \msg[72]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X43_Y0_N1
+// Location: IOIBUF_X0_Y7_N1
 cycloneiii_io_ibuf \msg[71]~input (
 	.i(msg[71]),
 	.ibar(gnd),
@@ -1836,7 +1848,7 @@ defparam \msg[71]~input .bus_hold = "false";
 defparam \msg[71]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y4_N15
+// Location: IOIBUF_X49_Y34_N8
 cycloneiii_io_ibuf \msg[70]~input (
 	.i(msg[70]),
 	.ibar(gnd),
@@ -1846,7 +1858,7 @@ defparam \msg[70]~input .bus_hold = "false";
 defparam \msg[70]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y5_N15
+// Location: IOIBUF_X0_Y6_N22
 cycloneiii_io_ibuf \msg[69]~input (
 	.i(msg[69]),
 	.ibar(gnd),
@@ -1856,7 +1868,7 @@ defparam \msg[69]~input .bus_hold = "false";
 defparam \msg[69]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X1_Y34_N22
+// Location: IOIBUF_X51_Y0_N15
 cycloneiii_io_ibuf \msg[68]~input (
 	.i(msg[68]),
 	.ibar(gnd),
@@ -1866,7 +1878,7 @@ defparam \msg[68]~input .bus_hold = "false";
 defparam \msg[68]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X51_Y34_N1
+// Location: IOIBUF_X1_Y34_N22
 cycloneiii_io_ibuf \msg[67]~input (
 	.i(msg[67]),
 	.ibar(gnd),
@@ -1876,7 +1888,7 @@ defparam \msg[67]~input .bus_hold = "false";
 defparam \msg[67]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X1_Y0_N15
+// Location: IOIBUF_X11_Y0_N15
 cycloneiii_io_ibuf \msg[66]~input (
 	.i(msg[66]),
 	.ibar(gnd),
@@ -1886,7 +1898,7 @@ defparam \msg[66]~input .bus_hold = "false";
 defparam \msg[66]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X14_Y0_N8
+// Location: IOIBUF_X9_Y34_N8
 cycloneiii_io_ibuf \msg[65]~input (
 	.i(msg[65]),
 	.ibar(gnd),
@@ -1896,7 +1908,7 @@ defparam \msg[65]~input .bus_hold = "false";
 defparam \msg[65]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X18_Y0_N8
+// Location: IOIBUF_X14_Y0_N8
 cycloneiii_io_ibuf \msg[64]~input (
 	.i(msg[64]),
 	.ibar(gnd),
@@ -1906,7 +1918,7 @@ defparam \msg[64]~input .bus_hold = "false";
 defparam \msg[64]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X51_Y34_N22
+// Location: IOIBUF_X18_Y0_N8
 cycloneiii_io_ibuf \msg[63]~input (
 	.i(msg[63]),
 	.ibar(gnd),
@@ -1916,7 +1928,7 @@ defparam \msg[63]~input .bus_hold = "false";
 defparam \msg[63]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X47_Y0_N22
+// Location: IOIBUF_X51_Y34_N22
 cycloneiii_io_ibuf \msg[62]~input (
 	.i(msg[62]),
 	.ibar(gnd),
@@ -1926,7 +1938,7 @@ defparam \msg[62]~input .bus_hold = "false";
 defparam \msg[62]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X38_Y0_N1
+// Location: IOIBUF_X0_Y11_N8
 cycloneiii_io_ibuf \msg[61]~input (
 	.i(msg[61]),
 	.ibar(gnd),
@@ -1936,7 +1948,7 @@ defparam \msg[61]~input .bus_hold = "false";
 defparam \msg[61]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X14_Y34_N8
+// Location: IOIBUF_X29_Y0_N8
 cycloneiii_io_ibuf \msg[60]~input (
 	.i(msg[60]),
 	.ibar(gnd),
@@ -1946,7 +1958,7 @@ defparam \msg[60]~input .bus_hold = "false";
 defparam \msg[60]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X1_Y0_N1
+// Location: IOIBUF_X14_Y34_N8
 cycloneiii_io_ibuf \msg[59]~input (
 	.i(msg[59]),
 	.ibar(gnd),
@@ -1956,7 +1968,7 @@ defparam \msg[59]~input .bus_hold = "false";
 defparam \msg[59]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X14_Y0_N15
+// Location: IOIBUF_X0_Y26_N15
 cycloneiii_io_ibuf \msg[58]~input (
 	.i(msg[58]),
 	.ibar(gnd),
@@ -1966,7 +1978,7 @@ defparam \msg[58]~input .bus_hold = "false";
 defparam \msg[58]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y16_N8
+// Location: IOIBUF_X0_Y6_N15
 cycloneiii_io_ibuf \msg[57]~input (
 	.i(msg[57]),
 	.ibar(gnd),
@@ -1976,7 +1988,7 @@ defparam \msg[57]~input .bus_hold = "false";
 defparam \msg[57]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y15_N8
+// Location: IOIBUF_X18_Y0_N1
 cycloneiii_io_ibuf \msg[56]~input (
 	.i(msg[56]),
 	.ibar(gnd),
@@ -1986,7 +1998,7 @@ defparam \msg[56]~input .bus_hold = "false";
 defparam \msg[56]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X5_Y0_N15
+// Location: IOIBUF_X40_Y34_N8
 cycloneiii_io_ibuf \msg[55]~input (
 	.i(msg[55]),
 	.ibar(gnd),
@@ -1996,7 +2008,7 @@ defparam \msg[55]~input .bus_hold = "false";
 defparam \msg[55]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X18_Y0_N22
+// Location: IOIBUF_X1_Y0_N1
 cycloneiii_io_ibuf \msg[54]~input (
 	.i(msg[54]),
 	.ibar(gnd),
@@ -2006,7 +2018,7 @@ defparam \msg[54]~input .bus_hold = "false";
 defparam \msg[54]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X18_Y34_N15
+// Location: IOIBUF_X16_Y0_N15
 cycloneiii_io_ibuf \msg[53]~input (
 	.i(msg[53]),
 	.ibar(gnd),
@@ -2016,7 +2028,7 @@ defparam \msg[53]~input .bus_hold = "false";
 defparam \msg[53]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X9_Y0_N1
+// Location: IOIBUF_X0_Y12_N1
 cycloneiii_io_ibuf \msg[52]~input (
 	.i(msg[52]),
 	.ibar(gnd),
@@ -2026,7 +2038,7 @@ defparam \msg[52]~input .bus_hold = "false";
 defparam \msg[52]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y7_N8
+// Location: IOIBUF_X51_Y34_N1
 cycloneiii_io_ibuf \msg[51]~input (
 	.i(msg[51]),
 	.ibar(gnd),
@@ -2036,7 +2048,7 @@ defparam \msg[51]~input .bus_hold = "false";
 defparam \msg[51]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X20_Y34_N15
+// Location: IOIBUF_X0_Y7_N8
 cycloneiii_io_ibuf \msg[50]~input (
 	.i(msg[50]),
 	.ibar(gnd),
@@ -2046,7 +2058,7 @@ defparam \msg[50]~input .bus_hold = "false";
 defparam \msg[50]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X25_Y0_N15
+// Location: IOIBUF_X20_Y34_N15
 cycloneiii_io_ibuf \msg[49]~input (
 	.i(msg[49]),
 	.ibar(gnd),
@@ -2056,7 +2068,7 @@ defparam \msg[49]~input .bus_hold = "false";
 defparam \msg[49]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X14_Y0_N22
+// Location: IOIBUF_X25_Y0_N15
 cycloneiii_io_ibuf \msg[48]~input (
 	.i(msg[48]),
 	.ibar(gnd),
@@ -2066,7 +2078,7 @@ defparam \msg[48]~input .bus_hold = "false";
 defparam \msg[48]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X5_Y0_N22
+// Location: IOIBUF_X23_Y34_N15
 cycloneiii_io_ibuf \msg[47]~input (
 	.i(msg[47]),
 	.ibar(gnd),
@@ -2076,7 +2088,7 @@ defparam \msg[47]~input .bus_hold = "false";
 defparam \msg[47]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X11_Y0_N1
+// Location: IOIBUF_X0_Y25_N8
 cycloneiii_io_ibuf \msg[46]~input (
 	.i(msg[46]),
 	.ibar(gnd),
@@ -2086,7 +2098,7 @@ defparam \msg[46]~input .bus_hold = "false";
 defparam \msg[46]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X1_Y0_N22
+// Location: IOIBUF_X5_Y0_N22
 cycloneiii_io_ibuf \msg[45]~input (
 	.i(msg[45]),
 	.ibar(gnd),
@@ -2096,7 +2108,7 @@ defparam \msg[45]~input .bus_hold = "false";
 defparam \msg[45]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X27_Y34_N1
+// Location: IOIBUF_X1_Y0_N22
 cycloneiii_io_ibuf \msg[44]~input (
 	.i(msg[44]),
 	.ibar(gnd),
@@ -2106,7 +2118,7 @@ defparam \msg[44]~input .bus_hold = "false";
 defparam \msg[44]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y26_N15
+// Location: IOIBUF_X40_Y0_N1
 cycloneiii_io_ibuf \msg[43]~input (
 	.i(msg[43]),
 	.ibar(gnd),
@@ -2116,7 +2128,7 @@ defparam \msg[43]~input .bus_hold = "false";
 defparam \msg[43]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X18_Y0_N1
+// Location: IOIBUF_X27_Y34_N1
 cycloneiii_io_ibuf \msg[42]~input (
 	.i(msg[42]),
 	.ibar(gnd),
@@ -2126,7 +2138,7 @@ defparam \msg[42]~input .bus_hold = "false";
 defparam \msg[42]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X23_Y0_N8
+// Location: IOIBUF_X53_Y15_N1
 cycloneiii_io_ibuf \msg[41]~input (
 	.i(msg[41]),
 	.ibar(gnd),
@@ -2136,7 +2148,7 @@ defparam \msg[41]~input .bus_hold = "false";
 defparam \msg[41]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y12_N1
+// Location: IOIBUF_X14_Y0_N15
 cycloneiii_io_ibuf \msg[40]~input (
 	.i(msg[40]),
 	.ibar(gnd),
@@ -2146,7 +2158,7 @@ defparam \msg[40]~input .bus_hold = "false";
 defparam \msg[40]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X16_Y0_N15
+// Location: IOIBUF_X53_Y12_N1
 cycloneiii_io_ibuf \msg[39]~input (
 	.i(msg[39]),
 	.ibar(gnd),
@@ -2156,7 +2168,7 @@ defparam \msg[39]~input .bus_hold = "false";
 defparam \msg[39]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y10_N22
+// Location: IOIBUF_X20_Y0_N1
 cycloneiii_io_ibuf \msg[38]~input (
 	.i(msg[38]),
 	.ibar(gnd),
@@ -2166,7 +2178,7 @@ defparam \msg[38]~input .bus_hold = "false";
 defparam \msg[38]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X7_Y34_N8
+// Location: IOIBUF_X53_Y25_N8
 cycloneiii_io_ibuf \msg[37]~input (
 	.i(msg[37]),
 	.ibar(gnd),
@@ -2176,7 +2188,7 @@ defparam \msg[37]~input .bus_hold = "false";
 defparam \msg[37]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X23_Y0_N1
+// Location: IOIBUF_X0_Y10_N22
 cycloneiii_io_ibuf \msg[36]~input (
 	.i(msg[36]),
 	.ibar(gnd),
@@ -2186,7 +2198,7 @@ defparam \msg[36]~input .bus_hold = "false";
 defparam \msg[36]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X45_Y34_N15
+// Location: IOIBUF_X36_Y34_N8
 cycloneiii_io_ibuf \msg[35]~input (
 	.i(msg[35]),
 	.ibar(gnd),
@@ -2216,7 +2228,7 @@ defparam \msg[33]~input .bus_hold = "false";
 defparam \msg[33]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X43_Y0_N15
+// Location: IOIBUF_X53_Y10_N22
 cycloneiii_io_ibuf \msg[32]~input (
 	.i(msg[32]),
 	.ibar(gnd),
@@ -2226,7 +2238,7 @@ defparam \msg[32]~input .bus_hold = "false";
 defparam \msg[32]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y5_N22
+// Location: IOIBUF_X43_Y0_N22
 cycloneiii_io_ibuf \msg[31]~input (
 	.i(msg[31]),
 	.ibar(gnd),
@@ -2236,7 +2248,7 @@ defparam \msg[31]~input .bus_hold = "false";
 defparam \msg[31]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y6_N22
+// Location: IOIBUF_X9_Y0_N1
 cycloneiii_io_ibuf \msg[30]~input (
 	.i(msg[30]),
 	.ibar(gnd),
@@ -2256,7 +2268,7 @@ defparam \msg[29]~input .bus_hold = "false";
 defparam \msg[29]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X23_Y34_N15
+// Location: IOIBUF_X53_Y7_N8
 cycloneiii_io_ibuf \msg[28]~input (
 	.i(msg[28]),
 	.ibar(gnd),
@@ -2266,7 +2278,7 @@ defparam \msg[28]~input .bus_hold = "false";
 defparam \msg[28]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X1_Y34_N1
+// Location: IOIBUF_X0_Y11_N1
 cycloneiii_io_ibuf \msg[27]~input (
 	.i(msg[27]),
 	.ibar(gnd),
@@ -2276,7 +2288,7 @@ defparam \msg[27]~input .bus_hold = "false";
 defparam \msg[27]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y8_N15
+// Location: IOIBUF_X53_Y6_N22
 cycloneiii_io_ibuf \msg[26]~input (
 	.i(msg[26]),
 	.ibar(gnd),
@@ -2286,7 +2298,7 @@ defparam \msg[26]~input .bus_hold = "false";
 defparam \msg[26]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X14_Y0_N1
+// Location: IOIBUF_X1_Y34_N1
 cycloneiii_io_ibuf \msg[25]~input (
 	.i(msg[25]),
 	.ibar(gnd),
@@ -2296,7 +2308,7 @@ defparam \msg[25]~input .bus_hold = "false";
 defparam \msg[25]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y9_N22
+// Location: IOIBUF_X34_Y0_N22
 cycloneiii_io_ibuf \msg[24]~input (
 	.i(msg[24]),
 	.ibar(gnd),
@@ -2306,7 +2318,7 @@ defparam \msg[24]~input .bus_hold = "false";
 defparam \msg[24]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X29_Y0_N1
+// Location: IOIBUF_X53_Y9_N15
 cycloneiii_io_ibuf \msg[23]~input (
 	.i(msg[23]),
 	.ibar(gnd),
@@ -2316,7 +2328,7 @@ defparam \msg[23]~input .bus_hold = "false";
 defparam \msg[23]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X9_Y34_N15
+// Location: IOIBUF_X29_Y0_N1
 cycloneiii_io_ibuf \msg[22]~input (
 	.i(msg[22]),
 	.ibar(gnd),
@@ -2336,7 +2348,7 @@ defparam \msg[21]~input .bus_hold = "false";
 defparam \msg[21]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X34_Y0_N1
+// Location: IOIBUF_X53_Y11_N8
 cycloneiii_io_ibuf \msg[20]~input (
 	.i(msg[20]),
 	.ibar(gnd),
@@ -2346,7 +2358,7 @@ defparam \msg[20]~input .bus_hold = "false";
 defparam \msg[20]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X34_Y34_N15
+// Location: IOIBUF_X36_Y0_N22
 cycloneiii_io_ibuf \msg[19]~input (
 	.i(msg[19]),
 	.ibar(gnd),
@@ -2356,7 +2368,7 @@ defparam \msg[19]~input .bus_hold = "false";
 defparam \msg[19]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X7_Y0_N8
+// Location: IOIBUF_X34_Y34_N15
 cycloneiii_io_ibuf \msg[18]~input (
 	.i(msg[18]),
 	.ibar(gnd),
@@ -2366,7 +2378,7 @@ defparam \msg[18]~input .bus_hold = "false";
 defparam \msg[18]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y13_N8
+// Location: IOIBUF_X20_Y34_N8
 cycloneiii_io_ibuf \msg[17]~input (
 	.i(msg[17]),
 	.ibar(gnd),
@@ -2376,7 +2388,7 @@ defparam \msg[17]~input .bus_hold = "false";
 defparam \msg[17]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X29_Y34_N1
+// Location: IOIBUF_X53_Y14_N8
 cycloneiii_io_ibuf \msg[16]~input (
 	.i(msg[16]),
 	.ibar(gnd),
@@ -2396,7 +2408,7 @@ defparam \msg[15]~input .bus_hold = "false";
 defparam \msg[15]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y8_N22
+// Location: IOIBUF_X29_Y34_N8
 cycloneiii_io_ibuf \msg[14]~input (
 	.i(msg[14]),
 	.ibar(gnd),
@@ -2406,7 +2418,7 @@ defparam \msg[14]~input .bus_hold = "false";
 defparam \msg[14]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y30_N8
+// Location: IOIBUF_X0_Y15_N8
 cycloneiii_io_ibuf \msg[13]~input (
 	.i(msg[13]),
 	.ibar(gnd),
@@ -2416,7 +2428,7 @@ defparam \msg[13]~input .bus_hold = "false";
 defparam \msg[13]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X23_Y34_N8
+// Location: IOIBUF_X53_Y8_N22
 cycloneiii_io_ibuf \msg[12]~input (
 	.i(msg[12]),
 	.ibar(gnd),
@@ -2446,7 +2458,7 @@ defparam \msg[10]~input .bus_hold = "false";
 defparam \msg[10]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y9_N8
+// Location: IOIBUF_X0_Y30_N8
 cycloneiii_io_ibuf \msg[9]~input (
 	.i(msg[9]),
 	.ibar(gnd),
@@ -2476,7 +2488,7 @@ defparam \msg[7]~input .bus_hold = "false";
 defparam \msg[7]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y6_N22
+// Location: IOIBUF_X36_Y34_N22
 cycloneiii_io_ibuf \msg[6]~input (
 	.i(msg[6]),
 	.ibar(gnd),
@@ -2496,7 +2508,7 @@ defparam \msg[5]~input .bus_hold = "false";
 defparam \msg[5]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X18_Y0_N15
+// Location: IOIBUF_X29_Y0_N22
 cycloneiii_io_ibuf \msg[4]~input (
 	.i(msg[4]),
 	.ibar(gnd),
@@ -2506,7 +2518,7 @@ defparam \msg[4]~input .bus_hold = "false";
 defparam \msg[4]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X14_Y34_N15
+// Location: IOIBUF_X47_Y0_N22
 cycloneiii_io_ibuf \msg[3]~input (
 	.i(msg[3]),
 	.ibar(gnd),
@@ -2516,7 +2528,7 @@ defparam \msg[3]~input .bus_hold = "false";
 defparam \msg[3]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X23_Y34_N1
+// Location: IOIBUF_X53_Y21_N22
 cycloneiii_io_ibuf \msg[2]~input (
 	.i(msg[2]),
 	.ibar(gnd),
@@ -2526,7 +2538,7 @@ defparam \msg[2]~input .bus_hold = "false";
 defparam \msg[2]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X53_Y22_N8
+// Location: IOIBUF_X7_Y34_N15
 cycloneiii_io_ibuf \msg[1]~input (
 	.i(msg[1]),
 	.ibar(gnd),
@@ -2536,7 +2548,7 @@ defparam \msg[1]~input .bus_hold = "false";
 defparam \msg[1]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X34_Y34_N1
+// Location: IOIBUF_X23_Y34_N8
 cycloneiii_io_ibuf \msg[0]~input (
 	.i(msg[0]),
 	.ibar(gnd),
@@ -2544,6 +2556,36 @@ cycloneiii_io_ibuf \msg[0]~input (
 // synopsys translate_off
 defparam \msg[0]~input .bus_hold = "false";
 defparam \msg[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X29_Y34_N22
+cycloneiii_io_ibuf \En_regAdder~input (
+	.i(En_regAdder),
+	.ibar(gnd),
+	.o(\En_regAdder~input_o ));
+// synopsys translate_off
+defparam \En_regAdder~input .bus_hold = "false";
+defparam \En_regAdder~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X53_Y23_N15
+cycloneiii_io_ibuf \clk~input (
+	.i(clk),
+	.ibar(gnd),
+	.o(\clk~input_o ));
+// synopsys translate_off
+defparam \clk~input .bus_hold = "false";
+defparam \clk~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X53_Y5_N22
+cycloneiii_io_ibuf \reset~input (
+	.i(reset),
+	.ibar(gnd),
+	.o(\reset~input_o ));
+// synopsys translate_off
+defparam \reset~input .bus_hold = "false";
+defparam \reset~input .simulate_z_as = "z";
 // synopsys translate_on
 
 assign mensagem_criptografada[63] = \mensagem_criptografada[63]~output_o ;
