@@ -9,19 +9,27 @@ generic
 	);
   port(
     msg : in std_logic_vector(0 to 127);
-	 mensagem_criptografada : out std_logic_vector(0 to 63) ;
+	 mensagem_criptografada : out std_logic_vector(0 to 127) ;
 	 clk		  : in std_logic;
-	 reset : in std_logic;
-	 En_regAdder: in std_logic
+	 key : in std_logic_vector(0 to 127);
+	 reset : in std_logic
+	
   );
 end aes;
 
 architecture inst_aes of aes is
   type matriz is array (integer range 0 to 15) of std_logic_vector (0 to 7);
   type subByte is array (integer range 0 to 255) of std_logic_vector(0 to 7);
-  signal State, Cipherkey : matriz;
-  signal Key : std_logic_vector(0 to 127);
+  signal Cipherkey : matriz;
   signal TabSubBytes : subByte;
+  signal en_regSTATE : std_logic;
+  signal en_regKEY : std_logic;
+  signal temp2 : std_logic_vector(0 to 127);
+  signal temp3 : std_logic_vector(0 to 127);
+  signal enable : std_logic;
+  signal mux_STATE_RESULT : std_logic_vector(0 to 127);
+  signal sel_mux_STATE : std_logic;
+  signal subbytes_saida : std_logic_vector(0 to 127);
   signal temp : std_logic_vector(0 to 7);
   signal outMux1, outMux2, outAdder, outRegAdder, outRegA, outRegB, outInv : std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
   
@@ -44,6 +52,8 @@ component registerNbits is
 
 end component;  
   
+
+  
 component PC_AES is
     PORT (
 		  -- Portas principais
@@ -53,10 +63,35 @@ component PC_AES is
         cTRL_mux1 : out std_logic;
         cTRL_mux2 : out std_logic;
         en_regULA : out std_logic;
+		  en_regKEY : out std_logic;
+		  en_regSTATE : out std_logic;
+		  mux_STATE : out std_logic;
 		  -- Portas para depuração
 		  state_view : out std_logic_vector(2 downto 0)
     );
 END component;  
+
+component SubBytes is
+    PORT (
+		  -- Portas principais
+      msg	     : in std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
+		CipherKey  : in std_logic_vector ((DATA_WIDTH_AES-1) downto 0);
+		State	     : out std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
+		saida 		: out std_logic_vector 	((DATA_WIDTH_AES-1) downto 0)
+    );
+END component;  
+
+component Mux2p1 is
+    PORT(
+	 	a	   : in std_logic_vector  (127 downto 0);
+		b	   : in std_logic_vector  (127 downto 0);
+		sel   : in std_logic;
+		result : out std_logic_vector (127 downto 0)
+	 
+	 
+	 );
+	 
+END component;
   
 begin 
 
@@ -65,6 +100,9 @@ PC: 	PC_AES
 			 port map (
 						-- Portas de depuração
 							clock => clk,
+							en_regKEY => en_regKEY,
+							en_regSTATE => en_regSTATE,
+							mux_STATE => sel_mux_STATE,
 							reset => reset
 						--	a_PO => a_top,
 					--		b_PO => b_top,
@@ -83,57 +121,136 @@ PC: 	PC_AES
 					--		outRegB_view => outRegB_view, 
 						--	outInv_view => outInv_view
 						);	
-						
-RegAdder: 	registerNbits
-			 generic map (DATA_WIDTH => DATA_WIDTH_AES)
-			 port map (clk => clk, enable => En_regAdder, d => outAdder, q => outRegAdder);	
+
+State_reg : 	registerNbits
+			--generic map (DATA_WIDTH => GLOBAL_DATA_WIDTH)
+			port map(
+			   enable => en_regSTATE,
+			   clk => clk,
+			   d => mux_STATE_RESULT, 
+				q => temp2
+			);
+			
+Key_reg : 	registerNbits
+			--generic map (DATA_WIDTH => GLOBAL_DATA_WIDTH)
+			port map(
+			enable => en_regKEY,
+			   clk => clk,
+			   d => key,
+				
+				q => temp3
+			);
+		
+Mux_state : Mux2p1
+				port map(
+				   a => msg,
+					b => subbytes_saida,
+				 	sel => sel_mux_STATE,
+				   result => mux_STATE_RESULT 
+				);
+				
+inst_subbytes : SubBytes
+					port map(
+					    cipherkey => temp3,
+					    msg => temp2,
+					    saida => subbytes_saida	
+					);
+					
+
+		
+--RegAdder: 	registerNbits
+	--		 generic map (DATA_WIDTH => DATA_WIDTH_AES)
+		--	 port map (clk => clk, enable => En_regAdder, d => outAdder, q => outRegAdder);	
   --          0000    0001    0002    0003    0004    0005    0006    0007    0008    0009    0000    0001    0002    0003    0004    0005                                                                                            
-  Key <= "00110000001100010011001000110011001101000011010100110110001101110011100000111001001100000011000100110010001100110011010000110101";
+  --Key <= "00110000001100010011001000110011001101000011010100110110001101110011100000111001001100000011000100110010001100110011010000110101";
   process(clk)
   --Declaração de variáveis
-  variable posicao : integer;
+  --variable posicao : integer;
   --variable temp : std_logic_vector(0 to 7);
   --Fim de declaração de variáveis
   begin 
 
     --Assinala a mensagem a ser criptografada na matriz state
-	 for i in 0 to 15 loop 
-      State(i) <= msg((120 - (i * 8)) to (127 - (i * 8)));
-    end loop;
+	 --for i in 0 to 15 loop 
+      --State(i) <= msg((120 - (i * 8)) to (127 - (i * 8)));
+    --end loop;
 	 
     --Assinala a chave a ser utilizada(0123456789012345) na matriz key
-	 for i in 0 to 15 loop 
-      CipherKey(i) <= Key((120 - (i * 8)) to (127 - (i * 8)));
-    end loop;
+	 --for i in 0 to 15 loop 
+      --CipherKey(i) <= Key((120 - (i * 8)) to (127 - (i * 8)));
+    --end loop;
       
     --Faz o AddRoundKey
-    for i in 0 to 15 loop 
-	   for j in 0 to 7 loop 
-        State(i)(j) <= State(i)(j) xor CipherKey(i)(j);
-		end loop;  
-    end loop;
+    --for i in 0 to 15 loop 
+	   --for j in 0 to 7 loop 
+        --State(i)(j) <= State(i)(j) xor CipherKey(i)(j);
+		--end loop;  
+    --end loop;
 	 
 	
 	 
 	 --Etapa de SubBytes
-	 for i in 0 to 15 loop 
-	   posicao := to_integer(unsigned(State(i)(0 to 7)));
-      State(i) <= TabSubBytes(posicao);
-    end loop;
+	 --for i in 0 to 15 loop 
+	   --posicao := to_integer(unsigned(State(i)(0 to 7)));
+      --State(i) <= TabSubBytes(posicao);
+    --end loop;
 	 
 	 --Etapa de ShiftRows
-	 for i in 4 to 7 loop --Rotaciona um byte a esquerda
+	 --for i in 4 to 7 loop --Rotaciona um byte a esquerda
 	 
-	 end loop;
-	 for i in 8 to 11 loop --Rotaciona duas vezes um byte a esquerda
+	 --end loop;
+	 --for i in 8 to 11 loop --Rotaciona duas vezes um byte a esquerda
 	 
-	 end loop;
-	 for i in 12 to 15 loop --Rotaciona três vezes um byte a esquerda
+	 --end loop;
+	 --for i in 12 to 15 loop --Rotaciona três vezes um byte a esquerda
 	 
-	 end loop;
+	 --end loop;
 	 
   end process;
-  
+  process(clk)
+  --Declaração de variáveis
+  --variable posicao : integer;
+  --variable temp : std_logic_vector(0 to 7);
+  --Fim de declaração de variáveis
+  begin 
+
+    --Assinala a mensagem a ser criptografada na matriz state
+	 --for i in 0 to 15 loop 
+      --State(i) <= msg((120 - (i * 8)) to (127 - (i * 8)));
+    --end loop;
+	 
+    --Assinala a chave a ser utilizada(0123456789012345) na matriz key
+	 --for i in 0 to 15 loop 
+      --CipherKey(i) <= Key((120 - (i * 8)) to (127 - (i * 8)));
+    --end loop;
+      
+    --Faz o AddRoundKey
+    --for i in 0 to 15 loop 
+	   --for j in 0 to 7 loop 
+        --State(i)(j) <= State(i)(j) xor CipherKey(i)(j);
+		--end loop;  
+    --end loop;
+	 
+	
+	 
+	 --Etapa de SubBytes
+	 --for i in 0 to 15 loop 
+	   --posicao := to_integer(unsigned(State(i)(0 to 7)));
+      --State(i) <= TabSubBytes(posicao);
+    --end loop;
+	 
+	 --Etapa de ShiftRows
+	 --for i in 4 to 7 loop --Rotaciona um byte a esquerda
+	 
+	 --end loop;
+	 --for i in 8 to 11 loop --Rotaciona duas vezes um byte a esquerda
+	 
+	 --end loop;
+	 --for i in 12 to 15 loop --Rotaciona três vezes um byte a esquerda
+	 
+	 --end loop;
+	 mensagem_criptografada <= temp2;
+  end process;
 end inst_aes;
 
 

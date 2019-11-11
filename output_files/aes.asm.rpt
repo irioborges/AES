@@ -1,5 +1,5 @@
 Assembler report for aes
-Mon Oct 28 16:01:53 2019
+Sat Nov 09 13:04:32 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -10,7 +10,7 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/designs/semipresencial/output_files/aes.sof
+  5. Assembler Device Options: C:/designs/aes/output_files/aes.sof
   6. Assembler Messages
 
 
@@ -37,11 +37,11 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Oct 28 16:01:53 2019 ;
+; Assembler Status      ; Successful - Sat Nov 09 13:04:32 2019 ;
 ; Revision Name         ; aes                                   ;
 ; Top-level Entity Name ; aes                                   ;
 ; Family                ; Cyclone III                           ;
-; Device                ; EP3C25F324C6                          ;
+; Device                ; EP3C40F780C8                          ;
 +-----------------------+---------------------------------------+
 
 
@@ -77,24 +77,24 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+----------+---------------+
 
 
-+------------------------------------------------+
-; Assembler Generated Files                      ;
-+------------------------------------------------+
-; File Name                                      ;
-+------------------------------------------------+
-; C:/designs/semipresencial/output_files/aes.sof ;
-+------------------------------------------------+
++-------------------------------------+
+; Assembler Generated Files           ;
++-------------------------------------+
+; File Name                           ;
++-------------------------------------+
+; C:/designs/aes/output_files/aes.sof ;
++-------------------------------------+
 
 
-+--------------------------------------------------------------------------+
-; Assembler Device Options: C:/designs/semipresencial/output_files/aes.sof ;
-+----------------+---------------------------------------------------------+
-; Option         ; Setting                                                 ;
-+----------------+---------------------------------------------------------+
-; Device         ; EP3C25F324C6                                            ;
-; JTAG usercode  ; 0x0012D717                                              ;
-; Checksum       ; 0x0012D717                                              ;
-+----------------+---------------------------------------------------------+
++---------------------------------------------------------------+
+; Assembler Device Options: C:/designs/aes/output_files/aes.sof ;
++----------------+----------------------------------------------+
+; Option         ; Setting                                      ;
++----------------+----------------------------------------------+
+; Device         ; EP3C40F780C8                                 ;
+; JTAG usercode  ; 0x001E12B5                                   ;
+; Checksum       ; 0x001E12B5                                   ;
++----------------+----------------------------------------------+
 
 
 +--------------------+
@@ -103,14 +103,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Oct 28 16:01:51 2019
+    Info: Processing started: Sat Nov 09 13:04:29 2019
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off aes -c aes
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 409 megabytes
-    Info: Processing ended: Mon Oct 28 16:01:53 2019
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Peak virtual memory: 405 megabytes
+    Info: Processing ended: Sat Nov 09 13:04:32 2019
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 

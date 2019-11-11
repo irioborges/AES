@@ -8,7 +8,7 @@ entity registerNbits is
 
 	generic
 	(
-		DATA_WIDTH : natural := 8
+		DATA_WIDTH : natural := 128
 	);
 
 	port 

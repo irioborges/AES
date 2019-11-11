@@ -11,6 +11,9 @@ entity PC_AES is
         cTRL_mux1 : out std_logic;
         cTRL_mux2 : out std_logic;
         en_regULA : out std_logic;
+		  en_regKEY : out std_logic;
+		  en_regSTATE : out std_logic;
+		  mux_STATE : out std_logic;
 		  -- Portas para depuração
 		  state_view : out std_logic_vector(2 downto 0)
     );
