@@ -218,7 +218,114 @@ inst_subbytes1 : SubBytes
 		saida => saida_subbytes1
     );
 				
---inst_subbytes : SubBytes
+inst_subbytes2 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (8 to 15),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes3 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (16 to 23),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes4 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (24 to 31),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes5 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (32 to 39),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes6 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (40 to 47),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes7 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (48 to 55),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes8 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (56 to 63),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes9 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (64 to 71),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes10 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (72 to 79),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes11 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (80 to 87),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes12 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (88 to 95),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes13 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (96 to 103),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes14 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (104 to 111),
+		saida => saida_subbytes1
+    );
+
+inst_subbytes15 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (112 to 119),
+		saida => saida_subbytes1
+    );
+	 
+inst_subbytes16 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (120 to 127),
+		saida => saida_subbytes1
+    );
+				
+				
+				
+				--inst_subbytes : SubBytes
 	---				port map(
 		--			    cipherkey => temp3,
 			--		    msg => temp2,
