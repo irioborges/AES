@@ -13,7 +13,7 @@ generic
 	 clk		  : in std_logic;
 	 key : in std_logic_vector(0 to 127);
 	 reset : in std_logic;
-	 dbg_teste : out std_logic_vector(127 downto 0);
+	 dbg_teste : out std_logic_vector(7 downto 0);
 	 state_view : out std_logic_vector(3 downto 0)
   );
 end aes;
@@ -25,7 +25,10 @@ architecture inst_aes of aes is
   signal TabSubBytes : subByte;
   signal en_regSTATE : std_logic;
   signal en_regKEY : std_logic;
-  signal temp2 : std_logic_vector(0 to 127);
+  signal q_regState : std_logic_vector(0 to 127);
+  signal saida_subBytes : std_logic_vector (127 downto 0);
+  signal saida_subBytes1 : std_logic_vector (7 downto 0);
+  signal temp2 : std_logic_vector (7 downto 0);
   signal temp3 : std_logic_vector(0 to 127);
   signal saida_addRoundKey : std_logic_vector (0 to 127);
   signal enable : std_logic;
@@ -77,8 +80,8 @@ END component;
 component SubBytes is
     PORT (
 		  -- Portas principais
-		sel : in std_logic_vector (15 downto 0);
-		saida 		: out std_logic_vector 	((8-1) downto 0)
+		sel : in std_logic_vector (7 downto 0);
+		saida 		: out std_logic_vector 	(7 downto 0)
     );
 END component;  
 
@@ -167,8 +170,8 @@ PC: 	PC_AES
 
 MuxRegState : Mux16p1 
 			port map(
-			   a => saida_addRoundKey,
-				b => msg,
+			   a => msg,
+				b => saida_addRoundKey,
 				c => msg,
 				d => msg,
 				e => msg,
@@ -195,7 +198,7 @@ State_reg : 	registerNbits
 			   enable => en_regSTATE,
 			   clk => clk,
 			   d => mux_STATE_RESULT, 
-				q => temp2
+				q => q_regState
 			);
 			
 Key_reg : 	registerNbits
@@ -208,13 +211,12 @@ Key_reg : 	registerNbits
 				q => temp3
 			);
 		
---Mux_state : Mux2p1
-	--			port map(
-		--		   a => msg,
-			--		b => subbytes_saida,
-			  --  	sel => sel_mux_STATE,
-	--			   result => mux_STATE_RESULT 
-		--		);
+inst_subbytes1 : SubBytes 
+    port map (
+		  -- Portas principais
+		sel => q_regState (0 to 7),
+		saida => saida_subbytes1
+    );
 				
 --inst_subbytes : SubBytes
 	---				port map(
@@ -224,7 +226,7 @@ Key_reg : 	registerNbits
 					--);
 inst_AddRoundKey : AddRoundKey
 						port map(
-						msg	     => temp2,
+						msg	     => q_regState,
 						CipherKey  => temp3,
 					   --State	     : out std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
 						saida 		=>   saida_addRoundKey
@@ -324,8 +326,18 @@ inst_AddRoundKey : AddRoundKey
 	 --for i in 12 to 15 loop --Rotaciona três vezes um byte a esquerda
 	 
 	 --end loop;
-	 dbg_teste <= saida_addRoundKey;
-	 mensagem_criptografada <= temp2;
+	 --temp2 <= q_regState(127 downto 120);
+	 --dbg_teste <= saida_subbytes1;
+	 dbg_teste <= q_regState(0 to 7);
+	 --dbg_teste(1) <= q_regState(121);
+	 --dbg_teste(2) <= q_regState(122);
+	 --dbg_teste(3) <= q_regState(123);
+	 --dbg_teste(4) <= q_regState(124);
+	 --dbg_teste(5) <= q_regState(125);
+	 --dbg_teste(6) <= q_regState(126);
+	 --dbg_teste(7) <= q_regState(127);
+	 
+	 mensagem_criptografada <= q_regState;
   end process;
 end inst_aes;
 

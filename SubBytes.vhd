@@ -10,8 +10,8 @@ generic
 	port 
 	(
 	-- Portas principais
-		sel : in std_logic_vector (15 downto 0);
-		saida 		: out std_logic_vector 	((8-1) downto 0)
+		sel : in std_logic_vector (7 downto 0);
+		saida 		: out std_logic_vector 	(7 downto 0)
 	);
 
 end entity;

@@ -61,7 +61,7 @@ begin
 					--ctrl_mux2 <= '0';
 					en_regKEY <= '1';
 		         en_regSTATE <= '1';
-		         mux_STATE <= "0001";
+		         mux_STATE <= "0000";
 					state_view <= "0001";	-- saída usada para propósito de depuração.
 			 when state2 =>
 					--en_inputs <= '0';
@@ -70,7 +70,7 @@ begin
                --ctrl_mux2 <= '0';
 					en_regKEY <= '1';
 		         en_regSTATE <= '1';
-		         mux_STATE <= "0001";
+		         mux_STATE <= "0000";
 					state_view <= "0010";	-- saída usada para propósito de depuração.
 			 when state3 =>
 					--En_inputs <= '0';
@@ -86,8 +86,8 @@ begin
 				   --ctrl_mux1 <= '0';
 				   --en_regULA <= '0';
 				   --ctrl_mux2 <= '0';			
-					en_regKEY <= '1';
-		         en_regSTATE <= '1';
+					en_regKEY <= '0';
+		         en_regSTATE <= '0';
 		         mux_STATE <= "0001";
 					state_view <= "0100";	-- saída usada para propósito de depuração.
 			when state5 =>
@@ -96,7 +96,7 @@ begin
 				   --en_regULA <= '0';
 				   --ctrl_mux2 <= '0';			
 					en_regKEY <= '1';
-		         en_regSTATE <= '1';
+		         en_regSTATE <= '0';
 		         mux_STATE <= "0001";
 					state_view <= "0101";	-- saída usada para propósito de depuração.
 			when state6 =>
@@ -105,7 +105,7 @@ begin
 				   --en_regULA <= '0';
 				   --ctrl_mux2 <= '0';			
 					en_regKEY <= '1';
-		         en_regSTATE <= '1';
+		         en_regSTATE <= '0';
 		         mux_STATE <= "0001";
 					state_view <= "0110";	-- saída usada para propósito de depuração.
 			when state7 =>
@@ -114,7 +114,7 @@ begin
 				   --en_regULA <= '0';
 				   --ctrl_mux2 <= '0';			
 					en_regKEY <= '1';
-		         en_regSTATE <= '1';
+		         en_regSTATE <= '0';
 		         mux_STATE <= "0001";
 					state_view <= "0111";	-- saída usada para propósito de depuração.		
  		end case;
