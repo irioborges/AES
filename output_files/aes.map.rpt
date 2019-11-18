@@ -1,5 +1,5 @@
 Analysis & Synthesis report for aes
-Sat Nov 09 13:04:10 2019
+Mon Nov 18 14:01:07 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -15,17 +15,15 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   7. Analysis & Synthesis Resource Utilization by Entity
   8. State Machine - |aes|PC_AES:PC|state
   9. Registers Removed During Synthesis
- 10. Removed Registers Triggering Further Register Optimizations
- 11. General Register Statistics
- 12. Parameter Settings for User Entity Instance: Top-level Entity: |aes
+ 10. General Register Statistics
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |aes
+ 12. Parameter Settings for User Entity Instance: mux16p1:MuxRegState
  13. Parameter Settings for User Entity Instance: registerNbits:State_reg
  14. Parameter Settings for User Entity Instance: registerNbits:Key_reg
- 15. Parameter Settings for User Entity Instance: mux2p1:Mux_state
- 16. Parameter Settings for User Entity Instance: SubBytes:inst_subbytes
- 17. Port Connectivity Checks: "SubBytes:inst_subbytes"
- 18. Port Connectivity Checks: "PC_AES:PC"
- 19. Elapsed Time Per Partition
- 20. Analysis & Synthesis Messages
+ 15. Parameter Settings for User Entity Instance: AddRoundKey:inst_AddRoundKey
+ 16. Port Connectivity Checks: "PC_AES:PC"
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
 
 
 
@@ -51,16 +49,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Nov 09 13:04:09 2019           ;
+; Analysis & Synthesis Status        ; Successful - Mon Nov 18 14:01:07 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; aes                                             ;
 ; Top-level Entity Name              ; aes                                             ;
 ; Family                             ; Cyclone III                                     ;
-; Total logic elements               ; 0                                               ;
-;     Total combinational functions  ; 0                                               ;
-;     Dedicated logic registers      ; 0                                               ;
-; Total registers                    ; 0                                               ;
-; Total pins                         ; 386                                             ;
+; Total logic elements               ; 393                                             ;
+;     Total combinational functions  ; 132                                             ;
+;     Dedicated logic registers      ; 262                                             ;
+; Total registers                    ; 262                                             ;
+; Total pins                         ; 518                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -172,87 +170,81 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path     ; Library ;
 +----------------------------------+-----------------+-----------------+----------------------------------+---------+
 ; aes.vhd                          ; yes             ; User VHDL File  ; C:/designs/aes/aes.vhd           ;         ;
+; AddRoundKey.vhd                  ; yes             ; User VHDL File  ; C:/designs/aes/AddRoundKey.vhd   ;         ;
 ; registerNbits.vhd                ; yes             ; User VHDL File  ; C:/designs/aes/registerNbits.vhd ;         ;
-; SubBytes.vhd                     ; yes             ; User VHDL File  ; C:/designs/aes/SubBytes.vhd      ;         ;
 ; PC_AES.vhd                       ; yes             ; User VHDL File  ; C:/designs/aes/PC_AES.vhd        ;         ;
-; Mux2p1.vhd                       ; yes             ; User VHDL File  ; C:/designs/aes/Mux2p1.vhd        ;         ;
+; Mux16p1.vhd                      ; yes             ; User VHDL File  ; C:/designs/aes/Mux16p1.vhd       ;         ;
 +----------------------------------+-----------------+-----------------+----------------------------------+---------+
 
 
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-;                                             ;          ;
-; Total combinational functions               ; 0        ;
-; Logic element usage by number of LUT inputs ;          ;
-;     -- 4 input functions                    ; 0        ;
-;     -- 3 input functions                    ; 0        ;
-;     -- <=2 input functions                  ; 0        ;
-;                                             ;          ;
-; Logic elements by mode                      ;          ;
-;     -- normal mode                          ; 0        ;
-;     -- arithmetic mode                      ; 0        ;
-;                                             ;          ;
-; Total registers                             ; 0        ;
-;     -- Dedicated logic registers            ; 0        ;
-;     -- I/O registers                        ; 0        ;
-;                                             ;          ;
-; I/O pins                                    ; 386      ;
-; Embedded Multiplier 9-bit elements          ; 0        ;
-; Maximum fan-out node                        ; msg[127] ;
-; Maximum fan-out                             ; 1        ;
-; Total fan-out                               ; 386      ;
-; Average fan-out                             ; 0.50     ;
-+---------------------------------------------+----------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 393       ;
+;                                             ;           ;
+; Total combinational functions               ; 132       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 0         ;
+;     -- 3 input functions                    ; 3         ;
+;     -- <=2 input functions                  ; 129       ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 132       ;
+;     -- arithmetic mode                      ; 0         ;
+;                                             ;           ;
+; Total registers                             ; 262       ;
+;     -- Dedicated logic registers            ; 262       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 518       ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 262       ;
+; Total fan-out                               ; 1572      ;
+; Average fan-out                             ; 1.10      ;
++---------------------------------------------+-----------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |aes                       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 386  ; 0            ; |aes                ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                              ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
+; Compilation Hierarchy Node        ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name               ; Library Name ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
+; |aes                              ; 132 (0)           ; 262 (0)      ; 0           ; 0            ; 0       ; 0         ; 518  ; 0            ; |aes                              ; work         ;
+;    |AddRoundKey:inst_AddRoundKey| ; 128 (128)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|AddRoundKey:inst_AddRoundKey ; work         ;
+;    |PC_AES:PC|                    ; 4 (4)             ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|PC_AES:PC                    ; work         ;
+;    |registerNbits:Key_reg|        ; 0 (0)             ; 128 (128)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|registerNbits:Key_reg        ; work         ;
+;    |registerNbits:State_reg|      ; 0 (0)             ; 128 (128)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|registerNbits:State_reg      ; work         ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
-+--------------------------------------------------------------------------+
-; State Machine - |aes|PC_AES:PC|state                                     ;
-+--------------+--------------+--------------+--------------+--------------+
-; Name         ; state.state2 ; state.state4 ; state.state3 ; state.state1 ;
-+--------------+--------------+--------------+--------------+--------------+
-; state.state1 ; 0            ; 0            ; 0            ; 0            ;
-; state.state3 ; 0            ; 0            ; 1            ; 1            ;
-; state.state4 ; 0            ; 1            ; 0            ; 1            ;
-; state.state2 ; 1            ; 0            ; 0            ; 1            ;
-+--------------+--------------+--------------+--------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |aes|PC_AES:PC|state                                                                                  ;
++--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+; Name         ; state.state2 ; state.state7 ; state.state6 ; state.state5 ; state.state4 ; state.state3 ; state.state1 ;
++--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+; state.state1 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
+; state.state3 ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 1            ;
+; state.state4 ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 1            ;
+; state.state5 ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 1            ;
+; state.state6 ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 1            ;
+; state.state7 ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; state.state2 ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
++--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
 
 
-+---------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                    ;
-+-----------------------------------------+---------------------------------------------+
-; Register name                           ; Reason for Removal                          ;
-+-----------------------------------------+---------------------------------------------+
-; registerNbits:State_reg|q[0..127]       ; Stuck at GND due to stuck port clock_enable ;
-; PC_AES:PC|state.state3                  ; Lost fanout                                 ;
-; PC_AES:PC|state.state4                  ; Lost fanout                                 ;
-; PC_AES:PC|state.state2                  ; Lost fanout                                 ;
-; PC_AES:PC|state.state1                  ; Lost fanout                                 ;
-; Total Number of Removed Registers = 132 ;                                             ;
-+-----------------------------------------+---------------------------------------------+
-
-
-+--------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                          ;
-+------------------------+--------------------+----------------------------------------+
-; Register name          ; Reason for Removal ; Registers Removed due to This Register ;
-+------------------------+--------------------+----------------------------------------+
-; PC_AES:PC|state.state3 ; Lost Fanouts       ; PC_AES:PC|state.state2                 ;
-; PC_AES:PC|state.state4 ; Lost Fanouts       ; PC_AES:PC|state.state1                 ;
-+------------------------+--------------------+----------------------------------------+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; PC_AES:PC|state.state7                ; Lost fanout        ;
+; Total Number of Removed Registers = 1 ;                    ;
++---------------------------------------+--------------------+
 
 
 +------------------------------------------------------+
@@ -260,10 +252,10 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 262   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 6     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
@@ -277,6 +269,16 @@ Encoding Type:  One-Hot
 +----------------+-------+--------------------------------------------+
 ; DATA_WIDTH_AES ; 128   ; Signed Integer                             ;
 +----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mux16p1:MuxRegState ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; data_width     ; 128   ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -300,46 +302,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mux2p1:Mux_state ;
-+----------------+-------+--------------------------------------+
-; Parameter Name ; Value ; Type                                 ;
-+----------------+-------+--------------------------------------+
-; DATA_WIDTH     ; 128   ; Signed Integer                       ;
-+----------------+-------+--------------------------------------+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: AddRoundKey:inst_AddRoundKey ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; DATA_WIDTH_AES ; 128   ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: SubBytes:inst_subbytes ;
-+----------------+-------+--------------------------------------------+
-; Parameter Name ; Value ; Type                                       ;
-+----------------+-------+--------------------------------------------+
-; DATA_WIDTH_AES ; 128   ; Signed Integer                             ;
-+----------------+-------+--------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "SubBytes:inst_subbytes"                                                              ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-; Port  ; Type   ; Severity ; Details                                                                             ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-; state ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "PC_AES:PC"                                                                                ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; en_inputs  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; ctrl_mux1  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; ctrl_mux2  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; en_regula  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; state_view ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "PC_AES:PC"                                                                               ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; en_inputs ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; ctrl_mux1 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; ctrl_mux2 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; en_regula ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -347,7 +329,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -357,7 +339,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sat Nov 09 13:04:07 2019
+    Info: Processing started: Mon Nov 18 14:01:03 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off aes -c aes
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file aes.vhd
@@ -378,416 +360,37 @@ Info (12021): Found 2 design units, including 1 entities, in source file pc_aes.
 Info (12021): Found 2 design units, including 1 entities, in source file mux2p1.vhd
     Info (12022): Found design unit 1: mux2p1-rtlBSN
     Info (12023): Found entity 1: mux2p1
+Info (12021): Found 2 design units, including 1 entities, in source file mux256p18b.vhd
+    Info (12022): Found design unit 1: mux256p18b-rtlBSN
+    Info (12023): Found entity 1: mux256p18b
+Info (12021): Found 2 design units, including 1 entities, in source file mux16p1.vhd
+    Info (12022): Found design unit 1: mux16p1-rtlBSN
+    Info (12023): Found entity 1: mux16p1
 Info (12127): Elaborating entity "aes" for the top level hierarchy
-Warning (10492): VHDL Process Statement warning at aes.vhd(253): signal "temp2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(327): signal "saida_addRoundKey" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(328): signal "temp2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "PC_AES" for hierarchy "PC_AES:PC"
-Warning (10541): VHDL Signal Declaration warning at PC_AES.vhd(14): used implicit default value for signal "en_regKEY" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at PC_AES.vhd(15): used implicit default value for signal "en_regSTATE" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at PC_AES.vhd(16): used implicit default value for signal "mux_STATE" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at PC_AES.vhd(10): used implicit default value for signal "en_inputs" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at PC_AES.vhd(11): used implicit default value for signal "cTRL_mux1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at PC_AES.vhd(12): used implicit default value for signal "cTRL_mux2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at PC_AES.vhd(13): used implicit default value for signal "en_regULA" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "mux16p1" for hierarchy "mux16p1:MuxRegState"
 Info (12128): Elaborating entity "registerNbits" for hierarchy "registerNbits:State_reg"
-Info (12128): Elaborating entity "mux2p1" for hierarchy "mux2p1:Mux_state"
-Info (12128): Elaborating entity "SubBytes" for hierarchy "SubBytes:inst_subbytes"
-Warning (10541): VHDL Signal Declaration warning at SubBytes.vhd(15): used implicit default value for signal "State" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at SubBytes.vhd(16): used implicit default value for signal "saida" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at SubBytes.vhd(23): object "TabSubBytes" assigned a value but never read
+Info (12128): Elaborating entity "AddRoundKey" for hierarchy "AddRoundKey:inst_AddRoundKey"
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "mensagem_criptografada[127]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[126]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[125]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[124]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[123]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[122]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[121]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[120]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[119]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[118]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[117]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[116]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[115]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[114]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[113]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[112]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[111]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[110]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[109]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[108]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[107]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[106]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[105]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[104]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[103]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[102]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[101]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[100]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[99]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[98]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[97]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[96]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[95]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[94]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[93]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[92]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[91]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[90]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[89]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[88]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[87]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[86]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[85]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[84]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[83]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[82]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[81]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[80]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[79]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[78]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[77]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[76]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[75]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[74]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[73]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[72]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[71]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[70]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[69]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[68]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[67]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[66]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[65]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[64]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[63]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[62]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[61]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[60]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[59]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[58]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[57]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[56]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[55]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[54]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[53]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[52]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[51]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[50]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[49]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[48]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[47]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[46]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[45]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[44]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[43]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[42]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[41]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[40]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[39]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[38]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[37]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[36]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[35]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[34]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[33]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[32]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[31]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[30]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[29]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[28]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[27]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[26]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[25]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[24]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[23]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[22]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[21]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[20]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[19]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[18]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[17]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[16]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[15]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[14]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[13]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[12]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[11]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[10]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[9]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[8]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[7]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[6]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[5]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[4]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[3]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[2]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[1]" is stuck at GND
-    Warning (13410): Pin "mensagem_criptografada[0]" is stuck at GND
-Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+    Warning (13410): Pin "state_view[3]" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 258 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "msg[127]"
-    Warning (15610): No output dependent on input pin "msg[126]"
-    Warning (15610): No output dependent on input pin "msg[125]"
-    Warning (15610): No output dependent on input pin "msg[124]"
-    Warning (15610): No output dependent on input pin "msg[123]"
-    Warning (15610): No output dependent on input pin "msg[122]"
-    Warning (15610): No output dependent on input pin "msg[121]"
-    Warning (15610): No output dependent on input pin "msg[120]"
-    Warning (15610): No output dependent on input pin "msg[119]"
-    Warning (15610): No output dependent on input pin "msg[118]"
-    Warning (15610): No output dependent on input pin "msg[117]"
-    Warning (15610): No output dependent on input pin "msg[116]"
-    Warning (15610): No output dependent on input pin "msg[115]"
-    Warning (15610): No output dependent on input pin "msg[114]"
-    Warning (15610): No output dependent on input pin "msg[113]"
-    Warning (15610): No output dependent on input pin "msg[112]"
-    Warning (15610): No output dependent on input pin "msg[111]"
-    Warning (15610): No output dependent on input pin "msg[110]"
-    Warning (15610): No output dependent on input pin "msg[109]"
-    Warning (15610): No output dependent on input pin "msg[108]"
-    Warning (15610): No output dependent on input pin "msg[107]"
-    Warning (15610): No output dependent on input pin "msg[106]"
-    Warning (15610): No output dependent on input pin "msg[105]"
-    Warning (15610): No output dependent on input pin "msg[104]"
-    Warning (15610): No output dependent on input pin "msg[103]"
-    Warning (15610): No output dependent on input pin "msg[102]"
-    Warning (15610): No output dependent on input pin "msg[101]"
-    Warning (15610): No output dependent on input pin "msg[100]"
-    Warning (15610): No output dependent on input pin "msg[99]"
-    Warning (15610): No output dependent on input pin "msg[98]"
-    Warning (15610): No output dependent on input pin "msg[97]"
-    Warning (15610): No output dependent on input pin "msg[96]"
-    Warning (15610): No output dependent on input pin "msg[95]"
-    Warning (15610): No output dependent on input pin "msg[94]"
-    Warning (15610): No output dependent on input pin "msg[93]"
-    Warning (15610): No output dependent on input pin "msg[92]"
-    Warning (15610): No output dependent on input pin "msg[91]"
-    Warning (15610): No output dependent on input pin "msg[90]"
-    Warning (15610): No output dependent on input pin "msg[89]"
-    Warning (15610): No output dependent on input pin "msg[88]"
-    Warning (15610): No output dependent on input pin "msg[87]"
-    Warning (15610): No output dependent on input pin "msg[86]"
-    Warning (15610): No output dependent on input pin "msg[85]"
-    Warning (15610): No output dependent on input pin "msg[84]"
-    Warning (15610): No output dependent on input pin "msg[83]"
-    Warning (15610): No output dependent on input pin "msg[82]"
-    Warning (15610): No output dependent on input pin "msg[81]"
-    Warning (15610): No output dependent on input pin "msg[80]"
-    Warning (15610): No output dependent on input pin "msg[79]"
-    Warning (15610): No output dependent on input pin "msg[78]"
-    Warning (15610): No output dependent on input pin "msg[77]"
-    Warning (15610): No output dependent on input pin "msg[76]"
-    Warning (15610): No output dependent on input pin "msg[75]"
-    Warning (15610): No output dependent on input pin "msg[74]"
-    Warning (15610): No output dependent on input pin "msg[73]"
-    Warning (15610): No output dependent on input pin "msg[72]"
-    Warning (15610): No output dependent on input pin "msg[71]"
-    Warning (15610): No output dependent on input pin "msg[70]"
-    Warning (15610): No output dependent on input pin "msg[69]"
-    Warning (15610): No output dependent on input pin "msg[68]"
-    Warning (15610): No output dependent on input pin "msg[67]"
-    Warning (15610): No output dependent on input pin "msg[66]"
-    Warning (15610): No output dependent on input pin "msg[65]"
-    Warning (15610): No output dependent on input pin "msg[64]"
-    Warning (15610): No output dependent on input pin "msg[63]"
-    Warning (15610): No output dependent on input pin "msg[62]"
-    Warning (15610): No output dependent on input pin "msg[61]"
-    Warning (15610): No output dependent on input pin "msg[60]"
-    Warning (15610): No output dependent on input pin "msg[59]"
-    Warning (15610): No output dependent on input pin "msg[58]"
-    Warning (15610): No output dependent on input pin "msg[57]"
-    Warning (15610): No output dependent on input pin "msg[56]"
-    Warning (15610): No output dependent on input pin "msg[55]"
-    Warning (15610): No output dependent on input pin "msg[54]"
-    Warning (15610): No output dependent on input pin "msg[53]"
-    Warning (15610): No output dependent on input pin "msg[52]"
-    Warning (15610): No output dependent on input pin "msg[51]"
-    Warning (15610): No output dependent on input pin "msg[50]"
-    Warning (15610): No output dependent on input pin "msg[49]"
-    Warning (15610): No output dependent on input pin "msg[48]"
-    Warning (15610): No output dependent on input pin "msg[47]"
-    Warning (15610): No output dependent on input pin "msg[46]"
-    Warning (15610): No output dependent on input pin "msg[45]"
-    Warning (15610): No output dependent on input pin "msg[44]"
-    Warning (15610): No output dependent on input pin "msg[43]"
-    Warning (15610): No output dependent on input pin "msg[42]"
-    Warning (15610): No output dependent on input pin "msg[41]"
-    Warning (15610): No output dependent on input pin "msg[40]"
-    Warning (15610): No output dependent on input pin "msg[39]"
-    Warning (15610): No output dependent on input pin "msg[38]"
-    Warning (15610): No output dependent on input pin "msg[37]"
-    Warning (15610): No output dependent on input pin "msg[36]"
-    Warning (15610): No output dependent on input pin "msg[35]"
-    Warning (15610): No output dependent on input pin "msg[34]"
-    Warning (15610): No output dependent on input pin "msg[33]"
-    Warning (15610): No output dependent on input pin "msg[32]"
-    Warning (15610): No output dependent on input pin "msg[31]"
-    Warning (15610): No output dependent on input pin "msg[30]"
-    Warning (15610): No output dependent on input pin "msg[29]"
-    Warning (15610): No output dependent on input pin "msg[28]"
-    Warning (15610): No output dependent on input pin "msg[27]"
-    Warning (15610): No output dependent on input pin "msg[26]"
-    Warning (15610): No output dependent on input pin "msg[25]"
-    Warning (15610): No output dependent on input pin "msg[24]"
-    Warning (15610): No output dependent on input pin "msg[23]"
-    Warning (15610): No output dependent on input pin "msg[22]"
-    Warning (15610): No output dependent on input pin "msg[21]"
-    Warning (15610): No output dependent on input pin "msg[20]"
-    Warning (15610): No output dependent on input pin "msg[19]"
-    Warning (15610): No output dependent on input pin "msg[18]"
-    Warning (15610): No output dependent on input pin "msg[17]"
-    Warning (15610): No output dependent on input pin "msg[16]"
-    Warning (15610): No output dependent on input pin "msg[15]"
-    Warning (15610): No output dependent on input pin "msg[14]"
-    Warning (15610): No output dependent on input pin "msg[13]"
-    Warning (15610): No output dependent on input pin "msg[12]"
-    Warning (15610): No output dependent on input pin "msg[11]"
-    Warning (15610): No output dependent on input pin "msg[10]"
-    Warning (15610): No output dependent on input pin "msg[9]"
-    Warning (15610): No output dependent on input pin "msg[8]"
-    Warning (15610): No output dependent on input pin "msg[7]"
-    Warning (15610): No output dependent on input pin "msg[6]"
-    Warning (15610): No output dependent on input pin "msg[5]"
-    Warning (15610): No output dependent on input pin "msg[4]"
-    Warning (15610): No output dependent on input pin "msg[3]"
-    Warning (15610): No output dependent on input pin "msg[2]"
-    Warning (15610): No output dependent on input pin "msg[1]"
-    Warning (15610): No output dependent on input pin "msg[0]"
-    Warning (15610): No output dependent on input pin "key[127]"
-    Warning (15610): No output dependent on input pin "key[126]"
-    Warning (15610): No output dependent on input pin "key[125]"
-    Warning (15610): No output dependent on input pin "key[124]"
-    Warning (15610): No output dependent on input pin "key[123]"
-    Warning (15610): No output dependent on input pin "key[122]"
-    Warning (15610): No output dependent on input pin "key[121]"
-    Warning (15610): No output dependent on input pin "key[120]"
-    Warning (15610): No output dependent on input pin "key[119]"
-    Warning (15610): No output dependent on input pin "key[118]"
-    Warning (15610): No output dependent on input pin "key[117]"
-    Warning (15610): No output dependent on input pin "key[116]"
-    Warning (15610): No output dependent on input pin "key[115]"
-    Warning (15610): No output dependent on input pin "key[114]"
-    Warning (15610): No output dependent on input pin "key[113]"
-    Warning (15610): No output dependent on input pin "key[112]"
-    Warning (15610): No output dependent on input pin "key[111]"
-    Warning (15610): No output dependent on input pin "key[110]"
-    Warning (15610): No output dependent on input pin "key[109]"
-    Warning (15610): No output dependent on input pin "key[108]"
-    Warning (15610): No output dependent on input pin "key[107]"
-    Warning (15610): No output dependent on input pin "key[106]"
-    Warning (15610): No output dependent on input pin "key[105]"
-    Warning (15610): No output dependent on input pin "key[104]"
-    Warning (15610): No output dependent on input pin "key[103]"
-    Warning (15610): No output dependent on input pin "key[102]"
-    Warning (15610): No output dependent on input pin "key[101]"
-    Warning (15610): No output dependent on input pin "key[100]"
-    Warning (15610): No output dependent on input pin "key[99]"
-    Warning (15610): No output dependent on input pin "key[98]"
-    Warning (15610): No output dependent on input pin "key[97]"
-    Warning (15610): No output dependent on input pin "key[96]"
-    Warning (15610): No output dependent on input pin "key[95]"
-    Warning (15610): No output dependent on input pin "key[94]"
-    Warning (15610): No output dependent on input pin "key[93]"
-    Warning (15610): No output dependent on input pin "key[92]"
-    Warning (15610): No output dependent on input pin "key[91]"
-    Warning (15610): No output dependent on input pin "key[90]"
-    Warning (15610): No output dependent on input pin "key[89]"
-    Warning (15610): No output dependent on input pin "key[88]"
-    Warning (15610): No output dependent on input pin "key[87]"
-    Warning (15610): No output dependent on input pin "key[86]"
-    Warning (15610): No output dependent on input pin "key[85]"
-    Warning (15610): No output dependent on input pin "key[84]"
-    Warning (15610): No output dependent on input pin "key[83]"
-    Warning (15610): No output dependent on input pin "key[82]"
-    Warning (15610): No output dependent on input pin "key[81]"
-    Warning (15610): No output dependent on input pin "key[80]"
-    Warning (15610): No output dependent on input pin "key[79]"
-    Warning (15610): No output dependent on input pin "key[78]"
-    Warning (15610): No output dependent on input pin "key[77]"
-    Warning (15610): No output dependent on input pin "key[76]"
-    Warning (15610): No output dependent on input pin "key[75]"
-    Warning (15610): No output dependent on input pin "key[74]"
-    Warning (15610): No output dependent on input pin "key[73]"
-    Warning (15610): No output dependent on input pin "key[72]"
-    Warning (15610): No output dependent on input pin "key[71]"
-    Warning (15610): No output dependent on input pin "key[70]"
-    Warning (15610): No output dependent on input pin "key[69]"
-    Warning (15610): No output dependent on input pin "key[68]"
-    Warning (15610): No output dependent on input pin "key[67]"
-    Warning (15610): No output dependent on input pin "key[66]"
-    Warning (15610): No output dependent on input pin "key[65]"
-    Warning (15610): No output dependent on input pin "key[64]"
-    Warning (15610): No output dependent on input pin "key[63]"
-    Warning (15610): No output dependent on input pin "key[62]"
-    Warning (15610): No output dependent on input pin "key[61]"
-    Warning (15610): No output dependent on input pin "key[60]"
-    Warning (15610): No output dependent on input pin "key[59]"
-    Warning (15610): No output dependent on input pin "key[58]"
-    Warning (15610): No output dependent on input pin "key[57]"
-    Warning (15610): No output dependent on input pin "key[56]"
-    Warning (15610): No output dependent on input pin "key[55]"
-    Warning (15610): No output dependent on input pin "key[54]"
-    Warning (15610): No output dependent on input pin "key[53]"
-    Warning (15610): No output dependent on input pin "key[52]"
-    Warning (15610): No output dependent on input pin "key[51]"
-    Warning (15610): No output dependent on input pin "key[50]"
-    Warning (15610): No output dependent on input pin "key[49]"
-    Warning (15610): No output dependent on input pin "key[48]"
-    Warning (15610): No output dependent on input pin "key[47]"
-    Warning (15610): No output dependent on input pin "key[46]"
-    Warning (15610): No output dependent on input pin "key[45]"
-    Warning (15610): No output dependent on input pin "key[44]"
-    Warning (15610): No output dependent on input pin "key[43]"
-    Warning (15610): No output dependent on input pin "key[42]"
-    Warning (15610): No output dependent on input pin "key[41]"
-    Warning (15610): No output dependent on input pin "key[40]"
-    Warning (15610): No output dependent on input pin "key[39]"
-    Warning (15610): No output dependent on input pin "key[38]"
-    Warning (15610): No output dependent on input pin "key[37]"
-    Warning (15610): No output dependent on input pin "key[36]"
-    Warning (15610): No output dependent on input pin "key[35]"
-    Warning (15610): No output dependent on input pin "key[34]"
-    Warning (15610): No output dependent on input pin "key[33]"
-    Warning (15610): No output dependent on input pin "key[32]"
-    Warning (15610): No output dependent on input pin "key[31]"
-    Warning (15610): No output dependent on input pin "key[30]"
-    Warning (15610): No output dependent on input pin "key[29]"
-    Warning (15610): No output dependent on input pin "key[28]"
-    Warning (15610): No output dependent on input pin "key[27]"
-    Warning (15610): No output dependent on input pin "key[26]"
-    Warning (15610): No output dependent on input pin "key[25]"
-    Warning (15610): No output dependent on input pin "key[24]"
-    Warning (15610): No output dependent on input pin "key[23]"
-    Warning (15610): No output dependent on input pin "key[22]"
-    Warning (15610): No output dependent on input pin "key[21]"
-    Warning (15610): No output dependent on input pin "key[20]"
-    Warning (15610): No output dependent on input pin "key[19]"
-    Warning (15610): No output dependent on input pin "key[18]"
-    Warning (15610): No output dependent on input pin "key[17]"
-    Warning (15610): No output dependent on input pin "key[16]"
-    Warning (15610): No output dependent on input pin "key[15]"
-    Warning (15610): No output dependent on input pin "key[14]"
-    Warning (15610): No output dependent on input pin "key[13]"
-    Warning (15610): No output dependent on input pin "key[12]"
-    Warning (15610): No output dependent on input pin "key[11]"
-    Warning (15610): No output dependent on input pin "key[10]"
-    Warning (15610): No output dependent on input pin "key[9]"
-    Warning (15610): No output dependent on input pin "key[8]"
-    Warning (15610): No output dependent on input pin "key[7]"
-    Warning (15610): No output dependent on input pin "key[6]"
-    Warning (15610): No output dependent on input pin "key[5]"
-    Warning (15610): No output dependent on input pin "key[4]"
-    Warning (15610): No output dependent on input pin "key[3]"
-    Warning (15610): No output dependent on input pin "key[2]"
-    Warning (15610): No output dependent on input pin "key[1]"
-    Warning (15610): No output dependent on input pin "key[0]"
-    Warning (15610): No output dependent on input pin "clk"
-    Warning (15610): No output dependent on input pin "reset"
-Info (21057): Implemented 386 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 911 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 258 input pins
-    Info (21059): Implemented 128 output pins
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 396 warnings
-    Info: Peak virtual memory: 476 megabytes
-    Info: Processing ended: Sat Nov 09 13:04:10 2019
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:02
+    Info (21059): Implemented 260 output pins
+    Info (21061): Implemented 393 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 484 megabytes
+    Info: Processing ended: Mon Nov 18 14:01:07 2019
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
 
 

@@ -12,8 +12,9 @@ generic
 	 mensagem_criptografada : out std_logic_vector(0 to 127) ;
 	 clk		  : in std_logic;
 	 key : in std_logic_vector(0 to 127);
-	 reset : in std_logic
-	
+	 reset : in std_logic;
+	 dbg_teste : out std_logic_vector(127 downto 0);
+	 state_view : out std_logic_vector(3 downto 0)
   );
 end aes;
 
@@ -26,10 +27,12 @@ architecture inst_aes of aes is
   signal en_regKEY : std_logic;
   signal temp2 : std_logic_vector(0 to 127);
   signal temp3 : std_logic_vector(0 to 127);
+  signal saida_addRoundKey : std_logic_vector (0 to 127);
   signal enable : std_logic;
-  signal mux_STATE_RESULT : std_logic_vector(0 to 127);
-  signal sel_mux_STATE : std_logic;
-  signal subbytes_saida : std_logic_vector(0 to 127);
+  signal mux_STATE_RESULT : std_logic_vector(127 downto 0);
+  signal sel_mux_STATE : std_logic_vector (3 downto 0);
+  signal subbytes_saida : std_logic_vector(127 downto 0);
+  signal dbg_addroundkey : std_logic_vector(127 downto 0);
   signal temp : std_logic_vector(0 to 7);
   signal outMux1, outMux2, outAdder, outRegAdder, outRegA, outRegB, outInv : std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
   
@@ -65,19 +68,17 @@ component PC_AES is
         en_regULA : out std_logic;
 		  en_regKEY : out std_logic;
 		  en_regSTATE : out std_logic;
-		  mux_STATE : out std_logic;
+		  mux_STATE : out std_logic_vector(3 downto 0);
 		  -- Portas para depuração
-		  state_view : out std_logic_vector(2 downto 0)
+		  state_view : out std_logic_vector(3 downto 0)
     );
 END component;  
 
 component SubBytes is
     PORT (
 		  -- Portas principais
-      msg	     : in std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
-		CipherKey  : in std_logic_vector ((DATA_WIDTH_AES-1) downto 0);
-		State	     : out std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
-		saida 		: out std_logic_vector 	((DATA_WIDTH_AES-1) downto 0)
+		sel : in std_logic_vector (15 downto 0);
+		saida 		: out std_logic_vector 	((8-1) downto 0)
     );
 END component;  
 
@@ -86,9 +87,50 @@ component Mux2p1 is
 	 	a	   : in std_logic_vector  (127 downto 0);
 		b	   : in std_logic_vector  (127 downto 0);
 		sel   : in std_logic;
-		result : out std_logic_vector (127 downto 0)
+		result : out std_logic_vector (127 downto 0)	 
+	 );
 	 
-	 
+END component;
+
+component mux16p1 is
+
+	generic
+	(
+		DATA_WIDTH : natural := 128
+	);
+
+	port 
+	(
+		a	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		b	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		c	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		d	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		e	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		f	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		g	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		h	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		i	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		j	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		k	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		l	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		m	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		n	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		o	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		p	   : in std_logic_vector  ((DATA_WIDTH-1) downto 0);
+		
+		sel   : in std_logic_vector (3 downto 0);
+		result : out std_logic_vector ((DATA_WIDTH-1) downto 0)
+	);
+
+end component;
+
+component AddRoundKey is
+    PORT(
+	 -- Portas principais
+		msg	     : in std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
+		CipherKey  : in std_logic_vector ((DATA_WIDTH_AES-1) downto 0);
+		--State	     : out std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
+		saida 		: out std_logic_vector 	((DATA_WIDTH_AES-1) downto 0)
 	 );
 	 
 END component;
@@ -103,7 +145,8 @@ PC: 	PC_AES
 							en_regKEY => en_regKEY,
 							en_regSTATE => en_regSTATE,
 							mux_STATE => sel_mux_STATE,
-							reset => reset
+							reset => reset,
+							state_view => state_view
 						--	a_PO => a_top,
 					--		b_PO => b_top,
 					--		Ctrl_mux1 => ctrl_mux1_conect,
@@ -122,6 +165,30 @@ PC: 	PC_AES
 						--	outInv_view => outInv_view
 						);	
 
+MuxRegState : Mux16p1 
+			port map(
+			   a => saida_addRoundKey,
+				b => msg,
+				c => msg,
+				d => msg,
+				e => msg,
+				f => msg,
+				g => msg,
+				h => msg,
+				i => msg,
+				j => msg,
+				k => msg,
+				l => msg,
+				m => msg,
+				n => msg,
+				o => msg,
+				p => msg,
+				
+				sel => sel_mux_STATE,
+				result => mux_STATE_RESULT
+			  
+			);
+						
 State_reg : 	registerNbits
 			--generic map (DATA_WIDTH => GLOBAL_DATA_WIDTH)
 			port map(
@@ -141,21 +208,29 @@ Key_reg : 	registerNbits
 				q => temp3
 			);
 		
-Mux_state : Mux2p1
-				port map(
-				   a => msg,
-					b => subbytes_saida,
-				 	sel => sel_mux_STATE,
-				   result => mux_STATE_RESULT 
-				);
+--Mux_state : Mux2p1
+	--			port map(
+		--		   a => msg,
+			--		b => subbytes_saida,
+			  --  	sel => sel_mux_STATE,
+	--			   result => mux_STATE_RESULT 
+		--		);
 				
-inst_subbytes : SubBytes
-					port map(
-					    cipherkey => temp3,
-					    msg => temp2,
-					    saida => subbytes_saida	
-					);
-					
+--inst_subbytes : SubBytes
+	---				port map(
+		--			    cipherkey => temp3,
+			--		    msg => temp2,
+				--	    saida => subbytes_saida	
+					--);
+inst_AddRoundKey : AddRoundKey
+						port map(
+						msg	     => temp2,
+						CipherKey  => temp3,
+					   --State	     : out std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
+						saida 		=>   saida_addRoundKey
+						
+						
+						);
 
 		
 --RegAdder: 	registerNbits
@@ -249,6 +324,7 @@ inst_subbytes : SubBytes
 	 --for i in 12 to 15 loop --Rotaciona três vezes um byte a esquerda
 	 
 	 --end loop;
+	 dbg_teste <= saida_addRoundKey;
 	 mensagem_criptografada <= temp2;
   end process;
 end inst_aes;

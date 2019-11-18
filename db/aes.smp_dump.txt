@@ -1,7 +1,10 @@
 
 State Machine - |aes|PC_AES:PC|state
-Name state.state2 state.state4 state.state3 state.state1 
-state.state1 0 0 0 0 
-state.state3 0 0 1 1 
-state.state4 0 1 0 1 
-state.state2 1 0 0 1 
+Name state.state2 state.state7 state.state6 state.state5 state.state4 state.state3 state.state1 
+state.state1 0 0 0 0 0 0 0 
+state.state3 0 0 0 0 0 1 1 
+state.state4 0 0 0 0 1 0 1 
+state.state5 0 0 0 1 0 0 1 
+state.state6 0 0 1 0 0 0 1 
+state.state7 0 1 0 0 0 0 1 
+state.state2 1 0 0 0 0 0 1 

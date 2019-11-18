@@ -13,15 +13,15 @@ entity PC_AES is
         en_regULA : out std_logic;
 		  en_regKEY : out std_logic;
 		  en_regSTATE : out std_logic;
-		  mux_STATE : out std_logic;
+		  mux_STATE : out std_logic_vector (3 downto 0);
 		  -- Portas para depuração
-		  state_view : out std_logic_vector(2 downto 0)
+		  state_view : out std_logic_vector(3 downto 0)
     );
 END PC_AES;
 
 architecture BEHAVIOR of PC_AES is
 
-   type type_state is (state2,state3,state4,state1);
+   type type_state is (state2,state3,state4, state5, state6, state7, state1);
    
 	signal state: type_state;
 
@@ -40,7 +40,13 @@ begin
                 when state3 =>
                     state <= state4;
                 when state4 =>
-                    state <= state4;
+                    state <= state5;
+					 when state5 =>
+                    state <= state6;
+					when state6 =>
+                    state <= state7;
+					when state7 =>
+                    state <= state7;	  
             end case;
         end if;
     end process;
@@ -49,29 +55,68 @@ begin
     begin			  
 		case state is
 			 when state1 =>
-					en_inputs <= '1';
-					ctrl_mux1 <= '0';
-					en_regULA <= '0';
-					ctrl_mux2 <= '0';
-					state_view <= "001";	-- saída usada para propósito de depuração.
+					--en_inputs <= '1';
+					--ctrl_mux1 <= '0';
+					--en_regULA <= '0';
+					--ctrl_mux2 <= '0';
+					en_regKEY <= '1';
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0001";
+					state_view <= "0001";	-- saída usada para propósito de depuração.
 			 when state2 =>
-					en_inputs <= '0';
-					ctrl_mux1 <= '1';
-					en_regULA <= '1';
-               ctrl_mux2 <= '0';
-					state_view <= "010";	-- saída usada para propósito de depuração.
+					--en_inputs <= '0';
+					--ctrl_mux1 <= '1';
+					--en_regULA <= '1';
+               --ctrl_mux2 <= '0';
+					en_regKEY <= '1';
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0001";
+					state_view <= "0010";	-- saída usada para propósito de depuração.
 			 when state3 =>
-					En_inputs <= '0';
-				   ctrl_mux1 <= '0';
-				   en_regULA <= '1';
-				   ctrl_mux2 <= '1';
-					state_view <= "011";	-- saída usada para propósito de depuração.
+					--En_inputs <= '0';
+				   --ctrl_mux1 <= '0';
+				   --en_regULA <= '1';
+				   --ctrl_mux2 <= '1';
+					en_regKEY <= '1';
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0001";
+					state_view <= "0011";	-- saída usada para propósito de depuração.
 			 when state4 =>
-				   en_inputs <= '0';
-				   ctrl_mux1 <= '0';
-				   en_regULA <= '0';
-				   ctrl_mux2 <= '0';			
-					state_view <= "100";	-- saída usada para propósito de depuração.
+				   --en_inputs <= '0';
+				   --ctrl_mux1 <= '0';
+				   --en_regULA <= '0';
+				   --ctrl_mux2 <= '0';			
+					en_regKEY <= '1';
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0001";
+					state_view <= "0100";	-- saída usada para propósito de depuração.
+			when state5 =>
+				   --en_inputs <= '0';
+				   --ctrl_mux1 <= '0';
+				   --en_regULA <= '0';
+				   --ctrl_mux2 <= '0';			
+					en_regKEY <= '1';
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0001";
+					state_view <= "0101";	-- saída usada para propósito de depuração.
+			when state6 =>
+				   --en_inputs <= '0';
+				   --ctrl_mux1 <= '0';
+				   --en_regULA <= '0';
+				   --ctrl_mux2 <= '0';			
+					en_regKEY <= '1';
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0001";
+					state_view <= "0110";	-- saída usada para propósito de depuração.
+			when state7 =>
+				   --en_inputs <= '0';
+				   --ctrl_mux1 <= '0';
+				   --en_regULA <= '0';
+				   --ctrl_mux2 <= '0';			
+					en_regKEY <= '1';
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0001";
+					state_view <= "0111";	-- saída usada para propósito de depuração.		
  		end case;
     end process;          
 	 
