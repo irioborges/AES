@@ -190,7 +190,7 @@ MuxRegState : Mux16p1
 			   a => msg,
 				b => saida_addRoundKey,
 				c => saida_subbytes1 & saida_subbytes2 & saida_subbytes3 & saida_subbytes4 & saida_subbytes5 & saida_subbytes6 & saida_subbytes7 & saida_subbytes8 & saida_subbytes9 & saida_subbytes10 & saida_subbytes11 & saida_subbytes12 & saida_subbytes13 & saida_subbytes14 & saida_subbytes15 & saida_subbytes16,
-				d => q_regState (0 to 31) & q_regState(32 to 127),
+				d => q_regState (0 to 31) & q_regState(40 to 63) & q_regState(32 to 39) & q_regState(64 to 95) & q_regState(96 to 127),
 				e => msg,
 				f => msg,
 				g => msg,
