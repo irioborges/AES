@@ -96,8 +96,8 @@ begin
 				   --en_regULA <= '0';
 				   --ctrl_mux2 <= '0';			
 					en_regKEY <= '1';
-		         en_regSTATE <= '0';
-		         mux_STATE <= "0001";
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0010";
 					state_view <= "0101";	-- saída usada para propósito de depuração.
 			when state6 =>
 				   --en_inputs <= '0';

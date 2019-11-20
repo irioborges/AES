@@ -42,6 +42,7 @@ begin
 
 	result <= a when sel = "0000" else
 				 b when sel = "0001" else
-				 c;
+				 c when sel = "0010" else
+				 d;
 
 end rtlBSN;

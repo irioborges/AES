@@ -1,0 +1,27 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity ShiftRows is
+ generic
+	(
+		DATA_WIDTH_AES : natural := 128
+	);
+
+	port 
+	(
+	-- Portas principais
+		msg	     : in std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
+		CipherKey  : in std_logic_vector ((DATA_WIDTH_AES-1) downto 0);
+		--State	     : out std_logic_vector  ((DATA_WIDTH_AES-1) downto 0);
+		saida 		: out std_logic_vector 	((DATA_WIDTH_AES-1) downto 0)
+	);
+
+end AddRoundKey;
+
+architecture inst_AddRoundKey of AddRoundKey is
+begin 
+  
+    
+  
+  
+end inst_AddRoundKey;

@@ -112,8 +112,8 @@ begin
 				 "10011010" when sel = "00100111" else 
 				 "00000111" when sel = "00101000" else 
 				 "00010010" when sel = "00101001" else 
-				 "10000000" when sel = "00101010" else 
-				 "11100010" when sel = "00101011" else 
+				 "11100101" when sel = "00101010" else 
+				 "11110001" when sel = "00101011" else 
 				 "11101011" when sel = "00101100" else 
 				 "00100111" when sel = "00101101" else 
 				 "10110010" when sel = "00101110" else 
@@ -132,7 +132,7 @@ begin
 				 "11010110" when sel = "00111010" else 
 				 "10110011" when sel = "00111011" else 
 				 "00101001" when sel = "00111100" else 
-				 "11100011" when sel = "00111101" else 
+				 "00100111" when sel = "00111101" else 
 				 "00101111" when sel = "00111110" else 
 				 "10000100" when sel = "00111111" else --63
 				 
