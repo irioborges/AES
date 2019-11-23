@@ -21,7 +21,7 @@ END PC_AES;
 
 architecture BEHAVIOR of PC_AES is
 
-   type type_state is (state2,state3,state4, state5, state6, state7, state1);
+   type type_state is (state2,state3,state4, state5, state6, state7, state8, state9, state0, state1);
    
 	signal state: type_state;
 
@@ -46,7 +46,13 @@ begin
 					when state6 =>
                     state <= state7;
 					when state7 =>
-                    state <= state7;	  
+                    state <= state8;	  
+					when state8 =>
+                    state <= state9;	  
+					when state9 =>
+                    state <= state0;	  
+					when state0 =>
+                    state <= state0;	  	  
             end case;
         end if;
     end process;
@@ -114,9 +120,36 @@ begin
 				   --en_regULA <= '0';
 				   --ctrl_mux2 <= '0';			
 					en_regKEY <= '1';
-		         en_regSTATE <= '0';
-		         mux_STATE <= "0001";
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0011";
 					state_view <= "0111";	-- saída usada para propósito de depuração.		
+			when state8 =>
+				   --en_inputs <= '0';
+				   --ctrl_mux1 <= '0';
+				   --en_regULA <= '0';
+				   --ctrl_mux2 <= '0';			
+					en_regKEY <= '1';
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0011";
+					state_view <= "1000";	-- saída usada para propósito de depuração.	
+			when state9 =>
+				   --en_inputs <= '0';
+				   --ctrl_mux1 <= '0';
+				   --en_regULA <= '0';
+				   --ctrl_mux2 <= '0';			
+					en_regKEY <= '1';
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0011";
+					state_view <= "1001";	-- saída usada para propósito de depuração.	
+			when state0 =>
+				   --en_inputs <= '0';
+				   --ctrl_mux1 <= '0';
+				   --en_regULA <= '0';
+				   --ctrl_mux2 <= '0';			
+					en_regKEY <= '1';
+		         en_regSTATE <= '1';
+		         mux_STATE <= "0011";
+					state_view <= "1010";	-- saída usada para propósito de depuração.			
  		end case;
     end process;          
 	 

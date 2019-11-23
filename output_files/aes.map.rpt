@@ -1,5 +1,5 @@
 Analysis & Synthesis report for aes
-Wed Nov 20 11:53:22 2019
+Fri Nov 22 16:23:51 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -65,15 +65,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Nov 20 11:53:22 2019           ;
+; Analysis & Synthesis Status        ; Successful - Fri Nov 22 16:23:51 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; aes                                             ;
 ; Top-level Entity Name              ; aes                                             ;
 ; Family                             ; Cyclone III                                     ;
-; Total logic elements               ; 3,879                                           ;
-;     Total combinational functions  ; 3,746                                           ;
-;     Dedicated logic registers      ; 263                                             ;
-; Total registers                    ; 263                                             ;
+; Total logic elements               ; 4,075                                           ;
+;     Total combinational functions  ; 3,939                                           ;
+;     Dedicated logic registers      ; 266                                             ;
+; Total registers                    ; 266                                             ;
 ; Total pins                         ; 398                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -199,28 +199,28 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 3,879     ;
+; Estimated Total logic elements              ; 4,075     ;
 ;                                             ;           ;
-; Total combinational functions               ; 3746      ;
+; Total combinational functions               ; 3939      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 3374      ;
-;     -- 3 input functions                    ; 257       ;
-;     -- <=2 input functions                  ; 115       ;
+;     -- 4 input functions                    ; 3651      ;
+;     -- 3 input functions                    ; 159       ;
+;     -- <=2 input functions                  ; 129       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 3746      ;
+;     -- normal mode                          ; 3939      ;
 ;     -- arithmetic mode                      ; 0         ;
 ;                                             ;           ;
-; Total registers                             ; 263       ;
-;     -- Dedicated logic registers            ; 263       ;
+; Total registers                             ; 266       ;
+;     -- Dedicated logic registers            ; 266       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 398       ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 263       ;
-; Total fan-out                               ; 16077     ;
-; Average fan-out                             ; 3.35      ;
+; Maximum fan-out                             ; 266       ;
+; Total fan-out                               ; 16689     ;
+; Average fan-out                             ; 3.34      ;
 +---------------------------------------------+-----------+
 
 
@@ -229,46 +229,49 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node        ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name               ; Library Name ;
 +-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
-; |aes                              ; 3746 (0)          ; 263 (0)      ; 0           ; 0            ; 0       ; 0         ; 398  ; 0            ; |aes                              ; work         ;
-;    |AddRoundKey:inst_AddRoundKey| ; 96 (96)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|AddRoundKey:inst_AddRoundKey ; work         ;
-;    |PC_AES:PC|                    ; 7 (7)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|PC_AES:PC                    ; work         ;
-;    |SubBytes:inst_subbytes10|     ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes10     ; work         ;
-;    |SubBytes:inst_subbytes11|     ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes11     ; work         ;
-;    |SubBytes:inst_subbytes12|     ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes12     ; work         ;
-;    |SubBytes:inst_subbytes13|     ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes13     ; work         ;
-;    |SubBytes:inst_subbytes14|     ; 167 (167)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes14     ; work         ;
-;    |SubBytes:inst_subbytes15|     ; 167 (167)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes15     ; work         ;
-;    |SubBytes:inst_subbytes16|     ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes16     ; work         ;
-;    |SubBytes:inst_subbytes1|      ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes1      ; work         ;
-;    |SubBytes:inst_subbytes2|      ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes2      ; work         ;
-;    |SubBytes:inst_subbytes3|      ; 166 (166)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes3      ; work         ;
-;    |SubBytes:inst_subbytes4|      ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes4      ; work         ;
-;    |SubBytes:inst_subbytes5|      ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes5      ; work         ;
-;    |SubBytes:inst_subbytes6|      ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes6      ; work         ;
-;    |SubBytes:inst_subbytes7|      ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes7      ; work         ;
-;    |SubBytes:inst_subbytes8|      ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes8      ; work         ;
-;    |SubBytes:inst_subbytes9|      ; 163 (163)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes9      ; work         ;
-;    |mux16p1:MuxRegState|          ; 880 (880)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|mux16p1:MuxRegState          ; work         ;
+; |aes                              ; 3939 (0)          ; 266 (0)      ; 0           ; 0            ; 0       ; 0         ; 398  ; 0            ; |aes                              ; work         ;
+;    |AddRoundKey:inst_AddRoundKey| ; 106 (106)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|AddRoundKey:inst_AddRoundKey ; work         ;
+;    |PC_AES:PC|                    ; 10 (10)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|PC_AES:PC                    ; work         ;
+;    |SubBytes:inst_subbytes10|     ; 165 (165)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes10     ; work         ;
+;    |SubBytes:inst_subbytes11|     ; 165 (165)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes11     ; work         ;
+;    |SubBytes:inst_subbytes12|     ; 165 (165)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes12     ; work         ;
+;    |SubBytes:inst_subbytes13|     ; 165 (165)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes13     ; work         ;
+;    |SubBytes:inst_subbytes14|     ; 165 (165)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes14     ; work         ;
+;    |SubBytes:inst_subbytes15|     ; 165 (165)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes15     ; work         ;
+;    |SubBytes:inst_subbytes16|     ; 165 (165)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes16     ; work         ;
+;    |SubBytes:inst_subbytes1|      ; 170 (170)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes1      ; work         ;
+;    |SubBytes:inst_subbytes2|      ; 171 (171)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes2      ; work         ;
+;    |SubBytes:inst_subbytes3|      ; 176 (176)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes3      ; work         ;
+;    |SubBytes:inst_subbytes4|      ; 177 (177)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes4      ; work         ;
+;    |SubBytes:inst_subbytes5|      ; 165 (165)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes5      ; work         ;
+;    |SubBytes:inst_subbytes6|      ; 165 (165)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes6      ; work         ;
+;    |SubBytes:inst_subbytes7|      ; 164 (164)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes7      ; work         ;
+;    |SubBytes:inst_subbytes8|      ; 165 (165)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes8      ; work         ;
+;    |SubBytes:inst_subbytes9|      ; 165 (165)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|SubBytes:inst_subbytes9      ; work         ;
+;    |mux16p1:MuxRegState|          ; 1140 (1140)       ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|mux16p1:MuxRegState          ; work         ;
 ;    |registerNbits:Key_reg|        ; 0 (0)             ; 128 (128)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|registerNbits:Key_reg        ; work         ;
-;    |registerNbits:State_reg|      ; 144 (144)         ; 128 (128)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|registerNbits:State_reg      ; work         ;
+;    |registerNbits:State_reg|      ; 10 (10)           ; 128 (128)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |aes|registerNbits:State_reg      ; work         ;
 +-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
-+-----------------------------------------------------------------------------------------------------------------------+
-; State Machine - |aes|PC_AES:PC|state                                                                                  ;
-+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
-; Name         ; state.state2 ; state.state7 ; state.state6 ; state.state5 ; state.state4 ; state.state3 ; state.state1 ;
-+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
-; state.state1 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
-; state.state3 ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 1            ;
-; state.state4 ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 1            ;
-; state.state5 ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 1            ;
-; state.state6 ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 1            ;
-; state.state7 ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 1            ;
-; state.state2 ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
-+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |aes|PC_AES:PC|state                                                                                                                               ;
++--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+; Name         ; state.state2 ; state.state0 ; state.state9 ; state.state8 ; state.state7 ; state.state6 ; state.state5 ; state.state4 ; state.state3 ; state.state1 ;
++--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+; state.state1 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
+; state.state3 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 1            ;
+; state.state4 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 1            ;
+; state.state5 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 1            ;
+; state.state6 ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 1            ;
+; state.state7 ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; state.state8 ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; state.state9 ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; state.state0 ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; state.state2 ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
++--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
 
 
 +------------------------------------------------------+
@@ -276,10 +279,10 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 263   ;
+; Total registers                              ; 266   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 128   ;
-; Number of registers using Asynchronous Clear ; 7     ;
+; Number of registers using Synchronous Load   ; 8     ;
+; Number of registers using Asynchronous Clear ; 10    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 256   ;
 ; Number of registers using Preset             ; 0     ;
@@ -291,22 +294,22 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[1]   ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[9]   ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[17]  ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[30]  ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[38]  ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[41]  ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[54]  ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[57]  ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[70]  ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[73]  ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[86]  ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[94]  ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[102] ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[105] ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[113] ;
-; 258:1              ; 2 bits    ; 344 LEs       ; 264 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[121] ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[1]   ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[9]   ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[17]  ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[30]  ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[38]  ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[41]  ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[54]  ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[57]  ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[70]  ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[73]  ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[86]  ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 266 LEs              ; 80 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[94]  ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 264 LEs              ; 82 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[102] ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 264 LEs              ; 82 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[105] ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 264 LEs              ; 82 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[113] ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 264 LEs              ; 82 LEs                 ; Yes        ; |aes|registerNbits:State_reg|q[121] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
 
 
@@ -537,7 +540,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:01:25     ;
+; Top            ; 00:01:29     ;
 +----------------+--------------+
 
 
@@ -547,7 +550,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Nov 20 11:51:53 2019
+    Info: Processing started: Fri Nov 22 16:22:17 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off aes -c aes
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file aes.vhd
@@ -584,8 +587,8 @@ Info (12021): Found 2 design units, including 1 entities, in source file shiftro
     Info (12022): Found design unit 1: ShiftRows1-inst_ShiftRows
     Info (12023): Found entity 1: ShiftRows1
 Info (12127): Elaborating entity "aes" for the top level hierarchy
-Warning (10492): VHDL Process Statement warning at aes.vhd(455): signal "q_regState" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at aes.vhd(464): signal "q_regState" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(456): signal "q_regState" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at aes.vhd(465): signal "q_regState" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "PC_AES" for hierarchy "PC_AES:PC"
 Warning (10541): VHDL Signal Declaration warning at PC_AES.vhd(10): used implicit default value for signal "en_inputs" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at PC_AES.vhd(11): used implicit default value for signal "cTRL_mux1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
@@ -603,19 +606,17 @@ Info (10041): Inferred latch for "saida[5]" at SubBytes.vhd(71)
 Info (10041): Inferred latch for "saida[6]" at SubBytes.vhd(71)
 Info (10041): Inferred latch for "saida[7]" at SubBytes.vhd(71)
 Info (12128): Elaborating entity "AddRoundKey" for hierarchy "AddRoundKey:inst_AddRoundKey"
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "state_view[3]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 4277 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 4473 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 258 input pins
     Info (21059): Implemented 140 output pins
-    Info (21061): Implemented 3879 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 544 megabytes
-    Info: Processing ended: Wed Nov 20 11:53:22 2019
-    Info: Elapsed time: 00:01:29
-    Info: Total CPU time (on all processors): 00:01:29
+    Info (21061): Implemented 4075 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 549 megabytes
+    Info: Processing ended: Fri Nov 22 16:23:51 2019
+    Info: Elapsed time: 00:01:34
+    Info: Total CPU time (on all processors): 00:01:33
 
 
